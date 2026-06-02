@@ -1,0 +1,1883 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperDTP | Architectural Localization & Document Layout Infrastructure</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;600&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+        document.documentElement.classList.add('js-enabled');
+    </script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Instrument Serif"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"Space Grotesk"', 'monospace'],
+                    },
+                    colors: {
+                        brandBg: '#09090b',
+                        brandAccent: '#d4af37',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        html { scroll-behavior: smooth; }
+        html.lenis { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto !important; }
+        .lenis.lenis-stopped { overflow: hidden; }
+        body {
+            background-color: #09090b;
+            color: #fafafa;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Ambient Film Grain Overlay */
+        .grain-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.025;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Typography Mask Reveals */
+        .reveal-parent { overflow: hidden; position: relative; }
+        .reveal-child { display: inline-block; transform: translateY(100%); }
+
+        /* Document Wireframe Structural Elements */
+        .doc-canvas {
+            position: relative;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            overflow: hidden;
+            aspect-ratio: 3 / 4;
+            width: 100%;
+            max-width: 280px;
+            margin: 0 auto;
+        }
+
+        .doc-canvas::before {
+            content: '';
+            position: absolute;
+            inset: -45% 0 auto;
+            height: 42%;
+            background: linear-gradient(180deg, transparent, rgba(212,175,55,0.16), transparent);
+            opacity: 0;
+            transform: translateY(-80%);
+            pointer-events: none;
+            z-index: 4;
+        }
+
+        .doc-canvas.is-scanning::before {
+            animation: scan-document 2.8s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+        }
+
+        @keyframes scan-document {
+            0% { opacity: 0; transform: translateY(-95%); }
+            12% { opacity: 1; }
+            72% { opacity: 0.85; }
+            100% { opacity: 0; transform: translateY(340%); }
+        }
+
+        #page-bg-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(212,175,55,0.16), transparent 30%),
+                radial-gradient(circle at 80% 10%, rgba(56,189,248,0.12), transparent 28%),
+                #050507;
+            opacity: 0;
+        }
+
+        #cursor-light {
+            position: fixed;
+            width: 420px;
+            height: 420px;
+            left: 0;
+            top: 0;
+            z-index: 6;
+            pointer-events: none;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(212,175,55,0.13), transparent 62%);
+            opacity: 0;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: screen;
+        }
+
+        header,
+        section,
+        footer {
+            position: relative;
+            z-index: 5;
+        }
+
+        .nav-link {
+            opacity: 0.48;
+            transition: opacity 0.35s ease, color 0.35s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            opacity: 1;
+            color: #fff;
+        }
+
+        #next-section-btn {
+            position: fixed;
+            right: 2rem;
+            bottom: 2rem;
+            z-index: 80;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.12);
+            backdrop-filter: blur(14px);
+            opacity: 0;
+            visibility: hidden;
+            cursor: pointer;
+            transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1), border-color 0.35s ease;
+        }
+
+        #next-section-btn:hover {
+            transform: translateY(-4px);
+            border-color: rgba(212,175,55,0.45);
+        }
+
+        #next-section-btn svg {
+            position: absolute;
+            transition: opacity 0.25s ease, transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        #next-section-btn.is-bottom #arr-down {
+            opacity: 0;
+            transform: rotate(180deg);
+        }
+
+        #next-section-btn:not(.is-bottom) #arr-up {
+            opacity: 0;
+            transform: rotate(-180deg);
+        }
+        .hero-grid {
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+        }
+
+        .live-data-card {
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(15, 23, 42, 0.88);
+            backdrop-filter: blur(18px);
+            transform-style: preserve-3d;
+            transition: border-color 0.35s ease, background 0.35s ease, transform 0.35s ease;
+        }
+
+        .live-data-card:hover {
+            border-color: rgba(212,175,55,0.28);
+            background: rgba(18, 25, 39, 0.94);
+        }
+
+        .data-highlight {
+            color: #d4af37;
+        }
+
+        .type-hero {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(1.75rem, 3.8vw, 4rem);
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            color: #fff;
+        }
+
+        .hero-subtext {
+            font-size: clamp(0.9rem, 2vw, 1.2rem);
+            line-height: 1.65;
+            opacity: 0.55;
+            font-weight: 300;
+        }
+
+        .line-internal {
+            opacity: 1;
+            transform: translateY(0);
+            will-change: transform, opacity;
+            display: inline-block;
+        }
+
+        body.anim-ready .line-internal {
+            opacity: 0;
+            transform: translateY(100%);
+        }
+
+        .pill-button {
+            height: 50px;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 28px;
+            font-size: 0.75rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+
+        .pill-button-primary {
+            background: rgba(255,255,255,0.95);
+            color: #000;
+        }
+
+        .pill-button-secondary {
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+        }
+
+        #home-action-bar {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        body.anim-ready #home-action-bar {
+            opacity: 0;
+            transform: translateY(24px);
+        }
+
+        .hero-scene {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.92;
+        }
+
+        .hero-scene canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .hero-layer {
+            position: relative;
+            z-index: 2;
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+
+        #hero {
+            position: relative;
+            padding-bottom: 1.5rem;
+            transform-origin: center top;
+            padding-top: 5rem;
+            min-height: 100svh;
+            max-height: 100svh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        #infographics {
+            margin-top: -10rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .paper-twist {
+            position: absolute;
+            right: 4%;
+            bottom: 8%;
+            width: 260px;
+            height: 520px;
+            background: linear-gradient(180deg, #fdfdfd 0%, #f5f6f8 42%, #e9ebee 100%);
+            border-radius: 42px;
+            box-shadow: 0 40px 90px rgba(0,0,0,0.22);
+            transform: perspective(900px) rotateX(10deg) rotateY(-12deg) rotateZ(-5deg);
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .paper-twist::before,
+        .paper-twist::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            border-radius: inherit;
+            pointer-events: none;
+        }
+
+        .paper-twist::before {
+            top: 0;
+            height: 20%;
+            background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.12) 100%);
+        }
+
+        .paper-twist::after {
+            bottom: 0;
+            height: 28%;
+            background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.55), transparent 55%);
+            transform: translateY(16%) scaleX(1.03);
+        }
+
+        .paper-lines {
+            position: absolute;
+            inset: 20px 22px 22px 22px;
+            display: grid;
+            gap: 18px;
+        }
+
+        .paper-line {
+            height: 8px;
+            background: rgba(0,0,0,0.06);
+            border-radius: 999px;
+            width: 100%;
+            opacity: 0.95;
+        }
+
+        .paper-line.short {
+            width: 62%;
+        }
+
+        .background-grid {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 80px 80px;
+            opacity: 0.12;
+            pointer-events: none;
+        }
+
+        .section-fade-bg {
+            isolation: isolate;
+        }
+
+        .diagram-panel {
+            will-change: transform, opacity;
+        }
+
+        .diagram-panel .doc-canvas {
+            transition: border-color 0.45s ease, filter 0.45s ease, transform 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .diagram-panel:hover .doc-canvas {
+            border-color: rgba(212,175,55,0.34);
+            filter: saturate(1.2);
+            transform: translateY(-6px);
+        }
+
+        .visual-shell {
+            border: 1px solid rgba(255,255,255,0.08);
+            background:
+                linear-gradient(135deg, rgba(255,255,255,0.08), transparent 38%),
+                rgba(9, 9, 11, 0.76);
+            backdrop-filter: blur(18px);
+            overflow: hidden;
+            min-height: 620px;
+        }
+
+        .visual-stage {
+            position: relative;
+            min-height: 560px;
+            background:
+                linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),
+                radial-gradient(circle at 18% 18%, rgba(212,175,55,0.16), transparent 34%),
+                radial-gradient(circle at 82% 72%, rgba(56,189,248,0.16), transparent 30%);
+            background-size: 52px 52px, 52px 52px, auto, auto;
+        }
+
+        .interface-window {
+            position: absolute;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(2, 6, 23, 0.88);
+            box-shadow: 0 24px 70px rgba(0,0,0,0.34);
+            backdrop-filter: blur(18px);
+            will-change: transform;
+        }
+
+        .interface-window.primary {
+            left: 8%;
+            top: 12%;
+            width: min(58vw, 620px);
+            min-height: 360px;
+        }
+
+        .interface-window.secondary {
+            right: 7%;
+            bottom: 10%;
+            width: min(36vw, 380px);
+            min-height: 250px;
+        }
+
+        .window-bar {
+            height: 42px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0 18px;
+        }
+
+        .window-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.24);
+        }
+
+        .doc-preview-grid {
+            display: grid;
+            grid-template-columns: 0.78fr 1.22fr;
+            gap: 18px;
+            padding: 22px;
+        }
+
+        .localized-page {
+            min-height: 260px;
+            border-radius: 8px;
+            background: linear-gradient(180deg, #f8fafc, #dfe4ea);
+            padding: 18px;
+            box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .page-block {
+            height: 9px;
+            border-radius: 999px;
+            background: rgba(15,23,42,0.16);
+            margin-bottom: 13px;
+            transform-origin: left center;
+        }
+
+        .page-block.gold {
+            background: rgba(212,175,55,0.7);
+        }
+
+        .page-block.rtl {
+            margin-left: auto;
+            transform-origin: right center;
+        }
+
+        .localization-map {
+            position: relative;
+            min-height: 260px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            overflow: hidden;
+        }
+
+        .map-node {
+            position: absolute;
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(255,255,255,0.05);
+            color: rgba(255,255,255,0.82);
+            font-family: "Space Grotesk", monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.18em;
+        }
+
+        .map-node.source { left: 7%; top: 16%; }
+        .map-node.engine { left: 40%; top: 38%; background: rgba(212,175,55,0.16); color: #fff; }
+        .map-node.market { right: 7%; top: 16%; }
+        .map-node.output { right: 18%; bottom: 11%; }
+
+        .map-line {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212,175,55,0.85), transparent);
+            transform-origin: left center;
+            opacity: 0.8;
+        }
+
+        .map-line.one { left: 24%; top: 29%; width: 26%; transform: rotate(22deg); }
+        .map-line.two { left: 55%; top: 43%; width: 27%; transform: rotate(-24deg); }
+        .map-line.three { left: 56%; top: 61%; width: 25%; transform: rotate(27deg); }
+
+        .quality-stack {
+            display: grid;
+            gap: 12px;
+            padding: 20px;
+        }
+
+        .quality-row {
+            display: grid;
+            grid-template-columns: 76px 1fr 46px;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.65rem;
+            letter-spacing: 0.16em;
+            color: rgba(255,255,255,0.52);
+            text-transform: uppercase;
+        }
+
+        .quality-meter {
+            height: 6px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.08);
+            overflow: hidden;
+        }
+
+        .quality-meter span {
+            display: block;
+            height: 100%;
+            width: var(--value);
+            border-radius: inherit;
+            background: linear-gradient(90deg, #d4af37, #38bdf8);
+        }
+
+        .proof-card {
+            border-top: 1px solid rgba(255,255,255,0.09);
+            padding: 28px 0;
+            display: grid;
+            grid-template-columns: 90px 1fr auto;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .proof-index {
+            font-family: "Space Grotesk", monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.28em;
+            color: rgba(212,175,55,0.75);
+        }
+
+        .proof-thumb {
+            width: 118px;
+            aspect-ratio: 4 / 3;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background:
+                linear-gradient(135deg, rgba(255,255,255,0.16), transparent 42%),
+                rgba(255,255,255,0.04);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .proof-thumb::before,
+        .proof-thumb::after {
+            content: '';
+            position: absolute;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.16);
+        }
+
+        .proof-thumb::before {
+            left: 18px;
+            top: 22px;
+            width: 72px;
+            height: 8px;
+            box-shadow: 0 22px 0 rgba(255,255,255,0.11), 0 44px 0 rgba(212,175,55,0.55);
+        }
+
+        .proof-thumb::after {
+            right: 18px;
+            top: 22px;
+            width: 18px;
+            height: 18px;
+            background: rgba(56,189,248,0.45);
+        }
+
+        @media (max-width: 900px) {
+            .visual-shell { min-height: auto; }
+            .visual-stage { min-height: 760px; }
+            .interface-window.primary,
+            .interface-window.secondary {
+                left: 18px;
+                right: 18px;
+                width: auto;
+            }
+            .interface-window.secondary {
+                top: 460px;
+                bottom: auto;
+            }
+            .doc-preview-grid {
+                grid-template-columns: 1fr;
+            }
+            .proof-card {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .paper-twist { display: none; }
+            .hero-grid { grid-template-columns: 1fr; }
+            #hero {
+                padding-top: 5rem;
+                padding-bottom: 2rem;
+                justify-content: flex-start;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #hero {
+                padding-top: 4.5rem;
+                padding-bottom: 2rem;
+            }
+            .type-hero { line-height: 1.02; }
+            aside { display: none; }
+        }
+
+        @media (max-width: 480px) {
+            #hero { padding-top: 4rem; }
+        }
+
+        /* === LOADING REVEAL (commented out) ===
+        #reveal-top,
+        #reveal-bottom {
+            position: fixed;
+            left: 0; right: 0;
+            background: #09090b;
+            z-index: 2000;
+            will-change: transform;
+        }
+        #reveal-top  { top: 0;    height: 50vh; }
+        #reveal-bottom { bottom: 0; height: 50vh; }
+
+        #loading-container {
+            position: fixed;
+            top: 50%;
+            left: 10%; right: 10%;
+            transform: translateY(-50%);
+            height: 1px;
+            z-index: 2001;
+            pointer-events: none;
+        }
+        #progress-track { position: absolute; inset: 0; background: rgba(255,255,255,0.06); }
+        #progress-bar   { position: absolute; inset: 0; right: auto; background: #d4af37; width: 0; }
+        #load-pct {
+            position: absolute; right: 0; top: 16px;
+            font-family: 'Space Grotesk', monospace;
+            font-size: 9px; letter-spacing: 0.3em;
+            color: rgba(255,255,255,0.28);
+            text-transform: uppercase; white-space: nowrap;
+        }
+        #load-label {
+            position: absolute; left: 0; top: 16px;
+            font-family: 'Space Grotesk', monospace;
+            font-size: 9px; letter-spacing: 0.3em;
+            color: rgba(255,255,255,0.28);
+            text-transform: uppercase; white-space: nowrap;
+        }
+        === end loading reveal === */
+
+        /* === AMBIENT CANVAS === */
+        #ambient-canvas {
+            position: fixed; inset: 0; z-index: 0;
+            pointer-events: none;
+            mix-blend-mode: screen;
+        }
+
+        /* === SECTION ZOOM TRANSITION === */
+        section { transform-origin: center top; will-change: transform, opacity; }
+    </style>
+</head>
+<body class="font-sans antialiased">
+
+    <!-- Loading screen (commented out)
+    <div id="reveal-top"></div>
+    <div id="reveal-bottom"></div>
+    <div id="loading-container">
+        <div id="progress-track"></div>
+        <div id="progress-bar"></div>
+        <span id="load-pct">0%</span>
+        <span id="load-label">SUPERDTP ENGINE</span>
+    </div>
+    end loading screen -->
+
+    <!-- Ambient flowing background -->
+    <canvas id="ambient-canvas" aria-hidden="true"></canvas>
+
+    <div id="page-bg-overlay"></div>
+    <div id="cursor-light" aria-hidden="true"></div>
+    <div class="grain-overlay"></div>
+    <button id="next-section-btn" aria-label="Next section">
+        <svg id="arr-down" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M9 3v12M4 10l5 5 5-5"/>
+        </svg>
+        <svg id="arr-up" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M9 15V3M4 8l5-5 5 5"/>
+        </svg>
+    </button>
+
+    <header class="fixed top-0 left-0 w-full z-50 px-6 py-4 flex justify-between items-center mix-blend-difference border-b border-white/5 bg-brandBg/20 backdrop-blur-md">
+        <div class="font-mono text-sm tracking-widest font-semibold text-white">SUPERDTP</div>
+        <nav class="hidden md:flex space-x-8 font-mono text-xs tracking-wider text-neutral-400">
+            <a href="#hero" class="nav-link active">01. INCEPTION</a>
+            <a href="#visual-lab" class="nav-link">02. VISUAL SYSTEMS</a>
+            <a href="#infographics" class="nav-link">03. MATRIX DIAGRAMS</a>
+            <a href="#footer" class="nav-link">04. TERMINUS</a>
+        </nav>
+        <!-- <div class="font-mono text-xs border border-brandAccent/30 px-3 py-1 rounded-full text-brandAccent bg-brandAccent/5">
+            ENGINE STATUS: ACTIVE
+        </div> -->
+    </header>
+
+    <section id="hero" class="min-h-screen relative px-4 sm:px-6 md:px-12 overflow-x-hidden">
+        <div class="hero-scene" aria-hidden="true">
+            <canvas id="hero-three-canvas"></canvas>
+            <div class="background-grid"></div>
+        </div>
+       
+        <div class="grid gap-8 lg:gap-12 lg:grid hero-grid items-center hero-layer">
+            <div class="z-10">
+                <div class="font-mono text-[0.6rem] md:text-xs uppercase tracking-widest text-neutral-500 mb-3 md:mb-4 flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 bg-brandAccent rounded-full animate-ping"></span>
+                    SYSTEM LAYOUT AUDIT / SYSTEMIC METRICS
+                </div>
+
+                <h1 class="type-hero max-w-6xl">
+                    <span class="block overflow-hidden">
+                        <span class="line-internal block">Accelerate Global <span id="hero-word" style="color:#d4af37;display:inline-block;clip-path:inset(0 0 0 0);">Growth</span></span>
+                    </span>
+                    <span class="block overflow-hidden">
+                        <span class="line-internal block"> with Enterprise Localization</span>
+                    </span>
+                    <span class="block overflow-hidden">
+                        <span class="line-internal block"> & DTP Solutions.</span>
+                    </span>
+                </h1>
+                <script>
+                (function(){
+                    var words = ["Growth","Content Delivery","Market Expansion","Communication"];
+                    var idx = 0;
+                    var el = document.getElementById("hero-word");
+                    setInterval(function(){
+                        el.style.transition = "clip-path 0.3s cubic-bezier(0.55,0,1,0.45)";
+                        el.style.clipPath = "inset(0 0 0 100%)";
+                        setTimeout(function(){
+                            idx = (idx + 1) % words.length;
+                            el.textContent = words[idx];
+                            el.style.transition = "none";
+                            el.style.clipPath = "inset(0 100% 0 0)";
+                            requestAnimationFrame(function(){
+                                requestAnimationFrame(function(){
+                                    el.style.transition = "clip-path 0.4s cubic-bezier(0.25,0.46,0.45,0.94)";
+                                    el.style.clipPath = "inset(0 0 0 0)";
+                                });
+                            });
+                        }, 340);
+                    }, 2500);
+                })();
+                </script>
+
+                <div class="block overflow-hidden mt-4 md:mt-5 max-w-2xl">
+                    <p class="line-internal hero-subtext">
+                        Helping enterprises eliminate localization bottlenecks through scalable multilingual DTP, content adaptation, and production-ready workflows designed for global markets.
+                    </p>
+                </div>
+
+                <div id="home-action-bar" class="flex flex-row flex-wrap gap-3 mt-6 md:mt-7">
+                    <button class="pill-button pill-button-primary group overflow-hidden relative">
+                        <span class="relative z-10 transition-colors duration-300">Explore Solutions</span>
+                    </button>
+                    <button class="pill-button pill-button-secondary gap-4 group overflow-hidden relative">
+                        <span class="relative z-10 text-[0.65rem] uppercase tracking-[0.2em] opacity-70">Book a </span>
+                        <span class="relative z-10 font-semibold">consultation call</span>
+                    </button>
+                </div>
+
+            </div>
+
+            <aside class="flex items-center justify-center">
+                <object type="image/svg+xml" data="hero.svg" style="width:100%;aspect-ratio:960/560;display:block;" aria-label="SuperDTP Workflow Engine diagram"></object>
+            </aside>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-8 pb-8">
+            <div class="live-data-card rounded-3xl p-6 text-center">
+                <div class="text-[0.63rem] uppercase tracking-[0.28em] text-brandAccent/70 mb-3">Words Processed</div>
+                <div class="text-4xl font-semibold text-white">15<span class="text-lg font-normal text-neutral-300">M+</span></div>
+                <div class="text-xs text-neutral-300 mt-3 leading-relaxed">End-to-end multilingual content handled across enterprise-scale production workflows.</div>
+            </div>
+            <div class="live-data-card rounded-3xl p-6 text-center">
+                <div class="text-[0.63rem] uppercase tracking-[0.28em] text-brandAccent/70 mb-3">Pages Formatted</div>
+                <div class="text-4xl font-semibold text-white">120<span class="text-lg font-normal text-neutral-300">k+</span></div>
+                <div class="text-xs text-neutral-300 mt-3 leading-relaxed">Production-ready layouts created with precision across print, digital, and learning formats.</div>
+            </div>
+            <div class="live-data-card rounded-3xl p-6 text-center">
+                <div class="text-[0.63rem] uppercase tracking-[0.28em] text-brandAccent/70 mb-3">Languages Supported</div>
+                <div class="text-4xl font-semibold text-white">75<span class="text-lg font-normal text-neutral-300">+</span></div>
+                <div class="text-xs text-neutral-300 mt-3 leading-relaxed">From global business languages to complex scripts including Indic, RTL, and CJK systems.</div>
+            </div>
+            <div class="live-data-card rounded-3xl p-6 text-center">
+                <div class="text-[0.63rem] uppercase tracking-[0.28em] text-brandAccent/70 mb-3">QA Accuracy</div>
+                <div class="text-4xl font-semibold text-white">99<span class="text-lg font-normal text-neutral-300">%</span></div>
+                <div class="text-xs text-neutral-300 mt-3 leading-relaxed">Multi-layer quality checks ensuring consistency, formatting integrity, and publication-ready output.</div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="section-fade-bg py-32 px-6 md:px-12 bg-[#07070a] border-t border-white/5" id="visual-lab" data-bg-opacity="0.8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16 items-end">
+                <div class="lg:col-span-7">
+                    <span class="font-mono text-xs text-neutral-500 uppercase tracking-widest block mb-4">[ 02 / VISUAL SYSTEMS ]</span>
+                    <h2 class="font-serif text-5xl md:text-7xl tracking-tight max-w-3xl">Localization that still looks designed.</h2>
+                </div>
+                <p class="lg:col-span-4 lg:col-start-9 text-sm text-neutral-400 leading-relaxed">
+                    SuperDTP turns translation, accessibility, and print production into a visual control room. The graphics below are custom-built for this page: no stock placeholders, just the kind of document intelligence the product should communicate.
+                </p>
+            </div>
+
+            <div class="visual-shell rounded-xl">
+                <div class="visual-stage">
+                    <div class="interface-window primary rounded-xl">
+                        <div class="window-bar">
+                            <span class="window-dot"></span>
+                            <span class="window-dot"></span>
+                            <span class="window-dot"></span>
+                            <span class="ml-3 font-mono text-[0.62rem] uppercase tracking-[0.24em] text-neutral-500">Render workspace</span>
+                        </div>
+                        <div class="doc-preview-grid">
+                            <div class="localized-page">
+                                <div class="page-block gold" style="width: 52%;"></div>
+                                <div class="page-block" style="width: 86%;"></div>
+                                <div class="page-block" style="width: 72%;"></div>
+                                <div class="page-block" style="width: 92%;"></div>
+                                <div class="page-block rtl gold" style="width: 64%;"></div>
+                                <div class="page-block rtl" style="width: 78%;"></div>
+                                <div class="page-block rtl" style="width: 58%;"></div>
+                                <div class="page-block" style="width: 84%;"></div>
+                                <div class="page-block" style="width: 38%;"></div>
+                            </div>
+                            <div class="localization-map">
+                                <span class="map-node source">SOURCE</span>
+                                <span class="map-node engine">DTP AI</span>
+                                <span class="map-node market">RTL</span>
+                                <span class="map-node output">PDF/X</span>
+                                <span class="map-line one"></span>
+                                <span class="map-line two"></span>
+                                <span class="map-line three"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="interface-window secondary rounded-xl">
+                        <div class="window-bar">
+                            <span class="window-dot"></span>
+                            <span class="window-dot"></span>
+                            <span class="window-dot"></span>
+                            <span class="ml-3 font-mono text-[0.62rem] uppercase tracking-[0.24em] text-neutral-500">Quality gates</span>
+                        </div>
+                        <div class="quality-stack">
+                            <div class="quality-row">
+                                <span>Layout</span>
+                                <div class="quality-meter"><span style="--value: 96%;"></span></div>
+                                <strong class="text-neutral-200">96</strong>
+                            </div>
+                            <div class="quality-row">
+                                <span>WCAG</span>
+                                <div class="quality-meter"><span style="--value: 91%;"></span></div>
+                                <strong class="text-neutral-200">91</strong>
+                            </div>
+                            <div class="quality-row">
+                                <span>Print</span>
+                                <div class="quality-meter"><span style="--value: 99%;"></span></div>
+                                <strong class="text-neutral-200">99</strong>
+                            </div>
+                            <div class="rounded-lg border border-white/10 bg-white/[0.03] p-4 mt-2">
+                                <div class="font-mono text-[0.62rem] uppercase tracking-[0.24em] text-brandAccent mb-3">Flag resolved</div>
+                                <p class="text-xs leading-relaxed text-neutral-400">Arabic headline reflowed, image caption mirrored, PDF tag tree regenerated, export package ready.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-20">
+                <div class="proof-card">
+                    <span class="proof-index">01</span>
+                    <div>
+                        <h3 class="font-serif text-3xl mb-3">Adaptive document previews</h3>
+                        <p class="text-sm text-neutral-400 leading-relaxed max-w-2xl">Before and after states show how copy expansion, RTL movement, and design constraints are corrected without flattening the source file.</p>
+                    </div>
+                    <div class="proof-thumb"></div>
+                </div>
+                <div class="proof-card">
+                    <span class="proof-index">02</span>
+                    <div>
+                        <h3 class="font-serif text-3xl mb-3">Compliance graphics</h3>
+                        <p class="text-sm text-neutral-400 leading-relaxed max-w-2xl">Every visual element points back to a production concern: tag structure, contrast, page geometry, language expansion, and print output fidelity.</p>
+                    </div>
+                    <div class="proof-thumb"></div>
+                </div>
+                <div class="proof-card">
+                    <span class="proof-index">03</span>
+                    <div>
+                        <h3 class="font-serif text-3xl mb-3">Animated system confidence</h3>
+                        <p class="text-sm text-neutral-400 leading-relaxed max-w-2xl">The motion borrows the reference site's calm cinematic timing, but the content now feels specific to architectural document localization.</p>
+                    </div>
+                    <div class="proof-thumb"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-fade-bg py-32 px-6 md:px-12 bg-neutral-950 border-t border-white/5" id="infographics" data-bg-opacity="0.72">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="mb-24">
+                <span class="font-mono text-xs text-neutral-500 uppercase tracking-widest block mb-4">[ 02 / INFOGRAPHIC LABS ]</span>
+                <h2 class="font-serif text-5xl md:text-6xl tracking-tight max-w-2xl">Visualizing Typographic & Compliance Architecture</h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8">
+                
+                <div class="diagram-panel flex flex-col justify-between bg-brandBg/40 border border-white/5 p-8 rounded-xl backdrop-blur-sm group hover:border-white/20 transition-all duration-500">
+                    <div>
+                        <div class="flex justify-between items-center mb-8">
+                            <span class="font-mono text-xs text-neutral-500">DIAGRAM_01 // METRIC SHIFTS</span>
+                            <span class="font-mono text-xs text-brandAccent px-2 py-0.5 bg-brandAccent/10 rounded">+35% VOLUME</span>
+                        </div>
+                        
+                        <div class="doc-canvas p-6 flex flex-col justify-between mb-8" id="canvas-expansion">
+                            <div class="w-1/3 h-2 bg-neutral-700 rounded-full"></div>
+                            
+                            <div class="space-y-3 my-auto">
+                                <div class="w-full h-4 bg-white/10 rounded flex items-center px-2 overflow-hidden">
+                                    <div class="h-1.5 bg-brandAccent rounded-full expansion-bar-1" style="width: 45%;"></div>
+                                </div>
+                                <div class="w-full h-4 bg-white/10 rounded flex items-center px-2 overflow-hidden">
+                                    <div class="h-1.5 bg-brandAccent rounded-full expansion-bar-2" style="width: 60%;"></div>
+                                </div>
+                                <div class="w-full h-4 bg-white/10 rounded flex items-center px-2 overflow-hidden">
+                                    <div class="h-1.5 bg-brandAccent rounded-full expansion-bar-3" style="width: 30%;"></div>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between items-center border-t border-white/5 pt-4">
+                                <div class="w-4 h-4 rounded-sm bg-neutral-800"></div>
+                                <div class="w-12 h-1 bg-neutral-800"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="font-serif text-3xl mb-3">Text Expansion Overflows</h3>
+                        <p class="text-xs text-neutral-400 leading-relaxed">
+                            Translating layouts from English to European languages expands text copy by up to 35%. Our automated system scales component boundaries to prevent text truncation without altering the original art direction.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="diagram-panel flex flex-col justify-between bg-brandBg/40 border border-white/5 p-8 rounded-xl backdrop-blur-sm group hover:border-white/20 transition-all duration-500">
+                    <div>
+                        <div class="flex justify-between items-center mb-8">
+                            <span class="font-mono text-xs text-neutral-500">DIAGRAM_02 // LAYOUT AXIS</span>
+                            <span class="font-mono text-xs text-blue-400 px-2 py-0.5 bg-blue-500/10 rounded">RTL MATRIX</span>
+                        </div>
+                        
+                        <div class="doc-canvas p-6 flex flex-col justify-between mb-8" id="canvas-mirroring">
+                            <div class="flex justify-between items-center border-b border-white/5 pb-3">
+                                <div class="w-3 h-3 rounded-full bg-neutral-700"></div>
+                                <div class="w-8 h-1.5 bg-neutral-800 rounded-full"></div>
+                            </div>
+                            
+                            <div class="relative w-full h-32 my-auto flex items-center justify-between px-2">
+                                <div class="w-14 h-20 bg-white/10 rounded border border-white/10 p-2 flex flex-col justify-between rtl-box-left">
+                                    <div class="w-full h-2 bg-neutral-600 rounded"></div>
+                                    <div class="w-2/3 h-1.5 bg-neutral-700 rounded"></div>
+                                </div>
+                                
+                                <div class="absolute inset-x-0 h-px bg-dashed bg-neutral-700 z-0"></div>
+
+                                <div class="w-20 h-20 bg-brandAccent/10 rounded border border-brandAccent/20 p-2 flex flex-col justify-between relative z-10 rtl-box-right">
+                                    <div class="w-8 h-8 rounded-full bg-brandAccent/20 mx-auto animate-pulse"></div>
+                                    <div class="w-full h-2 bg-brandAccent/30 rounded"></div>
+                                </div>
+                            </div>
+
+                            <div class="w-full h-2 bg-neutral-800 rounded-full"></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="font-serif text-3xl mb-3">Bi-Directional RTL Mapping</h3>
+                        <p class="text-xs text-neutral-400 leading-relaxed">
+                            Adapting documents for Middle Eastern markets requires more than right-aligning text. We accurately mirror user paths, image structures, and geometric flows to maintain reading context in Arabic and Hebrew scripts.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="diagram-panel flex flex-col justify-between bg-brandBg/40 border border-white/5 p-8 rounded-xl backdrop-blur-sm group hover:border-white/20 transition-all duration-500">
+                    <div>
+                        <div class="flex justify-between items-center mb-8">
+                            <span class="font-mono text-xs text-neutral-500">DIAGRAM_03 // COMPLIANCE NODES</span>
+                            <span class="font-mono text-xs text-emerald-400 px-2 py-0.5 bg-emerald-500/10 rounded">WCAG 2.2</span>
+                        </div>
+                        
+                        <div class="doc-canvas p-6 flex flex-col justify-between mb-8" id="canvas-accessibility">
+                            <div class="space-y-2 my-auto relative">
+                                <div class="w-full h-8 bg-neutral-900 border border-emerald-500/30 rounded p-2 flex justify-between items-center acc-layer-1">
+                                    <div class="w-16 h-2 bg-neutral-600 rounded"></div>
+                                    <span class="font-mono text-[8px] text-emerald-400 font-semibold">&lt;H1.TAG&gt;</span>
+                                </div>
+                                <div class="w-full h-8 bg-neutral-900 border border-white/5 rounded p-2 flex justify-between items-center acc-layer-2">
+                                    <div class="w-24 h-1.5 bg-neutral-700 rounded"></div>
+                                    <span class="font-mono text-[8px] text-neutral-500">&lt;P.BODY&gt;</span>
+                                </div>
+                                <div class="w-full h-12 bg-neutral-900 border border-brandAccent/20 rounded p-2 flex justify-between items-center acc-layer-3">
+                                    <div class="w-10 h-8 bg-white/5 rounded"></div>
+                                    <span class="font-mono text-[8px] text-brandAccent font-semibold">&lt;ALT-TEXT&gt;</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="font-serif text-3xl mb-3">PDF Accessibility Tag Arrays</h3>
+                        <p class="text-xs text-neutral-400 leading-relaxed">
+                            Unstructured documents present severe barriers for assistive screen readers. We map document structures with clear tag arrays, define intuitive reading order trees, and verify contrast values to satisfy global accessibility compliance mandates.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8">
+                <div class="diagram-panel flex flex-col justify-between bg-brandBg/40 border border-white/5 p-8 rounded-xl backdrop-blur-sm group hover:border-white/20 transition-all duration-500">
+                    <div>
+                        <div class="flex justify-between items-center mb-8">
+                            <span class="font-mono text-xs text-neutral-500">DIAGRAM_04 // FONT FIDELITY</span>
+                            <span class="font-mono text-xs text-brandAccent px-2 py-0.5 bg-brandAccent/10 rounded">TYPE SYSTEM</span>
+                        </div>
+                        <div class="doc-canvas p-6 flex flex-col justify-between mb-8">
+                            <div class="space-y-3">
+                                <div class="h-3 bg-neutral-800 rounded-xl"></div>
+                                <div class="h-3 bg-neutral-700 rounded-xl w-4/5"></div>
+                                <div class="h-3 bg-neutral-800 rounded-xl w-3/5"></div>
+                            </div>
+                            <div class="flex justify-between items-center border-t border-white/5 pt-4">
+                                <span class="w-4 h-4 rounded-sm bg-neutral-800"></span>
+                                <span class="w-10 h-1 bg-neutral-800"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-serif text-3xl mb-3">Font System Fidelity</h3>
+                        <p class="text-xs text-neutral-400 leading-relaxed">
+                            Maintain typographic hierarchy across multilingual variants with adaptive font scaling, dynamic line-height adjustments, and glyph substitution logic for consistent brand expression.
+                        </p>
+                    </div>
+                </div>
+                <div class="diagram-panel flex flex-col justify-between bg-brandBg/40 border border-white/5 p-8 rounded-xl backdrop-blur-sm group hover:border-white/20 transition-all duration-500">
+                    <div>
+                        <div class="flex justify-between items-center mb-8">
+                            <span class="font-mono text-xs text-neutral-500">DIAGRAM_05 // GRID SYNC</span>
+                            <span class="font-mono text-xs text-sky-400 px-2 py-0.5 bg-sky-500/10 rounded">FLOWMAP</span>
+                        </div>
+                        <div class="doc-canvas p-6 flex flex-col justify-between mb-8">
+                            <div class="grid gap-3">
+                                <div class="w-full h-3 bg-neutral-700 rounded-full"></div>
+                                <div class="w-full h-3 bg-neutral-700 rounded-full"></div>
+                                <div class="w-2/3 h-3 bg-neutral-700 rounded-full"></div>
+                            </div>
+                            <div class="flex justify-between items-center border-t border-white/5 pt-4">
+                                <span class="w-3 h-3 rounded-full bg-brandAccent/30"></span>
+                                <span class="w-16 h-1 bg-neutral-800"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-serif text-3xl mb-3">Grid Sync Analytics</h3>
+                        <p class="text-xs text-neutral-400 leading-relaxed">
+                            Inspect responsive grid distribution and content flow ratios with live metrics for baselines, gutters, and column breaks across print and screen compositions.
+                        </p>
+                    </div>
+                </div>
+                <div class="diagram-panel flex flex-col justify-between bg-brandBg/40 border border-white/5 p-8 rounded-xl backdrop-blur-sm group hover:border-white/20 transition-all duration-500">
+                    <div>
+                        <div class="flex justify-between items-center mb-8">
+                            <span class="font-mono text-xs text-neutral-500">DIAGRAM_06 // CONTEXT NODE</span>
+                            <span class="font-mono text-xs text-violet-400 px-2 py-0.5 bg-violet-500/10 rounded">SEMANTIC</span>
+                        </div>
+                        <div class="doc-canvas p-6 flex flex-col justify-between mb-8">
+                            <div class="grid gap-3">
+                                <div class="w-full h-4 bg-neutral-700 rounded-full"></div>
+                                <div class="w-4/5 h-4 bg-neutral-800 rounded-full"></div>
+                            </div>
+                            <div class="flex justify-between items-center border-t border-white/5 pt-4">
+                                <span class="w-5 h-5 rounded-full bg-violet-500/20"></span>
+                                <span class="w-10 h-1 bg-neutral-800"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-serif text-3xl mb-3">Context Node Mapping</h3>
+                        <p class="text-xs text-neutral-400 leading-relaxed">
+                            Preserve user intent through semantic block analysis, auto-tagging, and progressive reading order generation for digital and print output.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-neutral-950 border-t border-white/10 pt-24 pb-12 px-6 md:px-12" id="footer">
+        <div class="max-w-7xl mx-auto flex flex-col justify-between items-center gap-8 font-mono text-xs text-neutral-500 md:flex-row">
+            <div>&copy; 2026 SUPERDTP LABS. WORLDWIDE DISTRIBUTION.</div>
+            <div class="flex space-x-6 text-neutral-400">
+                <a href="mailto:dtp.bulgaria@gmail.com" class="hover:text-brandAccent transition-colors">CONNECT: DTP.BULGARIA@GMAIL.COM</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r161/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.36/dist/lenis.min.js"></script>
+
+    <script>
+        // Initialize Animation Pipeline Registration
+        gsap.registerPlugin(ScrollTrigger);
+
+        let mainLenis = null;
+
+        const heroCanvas = document.getElementById('hero-three-canvas');
+        const hasThree = typeof THREE !== 'undefined' && heroCanvas;
+        let heroScene;
+        let heroCamera;
+        let heroRenderer;
+        let paperGeometry;
+        let originalPositions;
+        let paperMesh;
+
+        if (hasThree) {
+            heroScene = new THREE.Scene();
+            heroCamera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 100);
+            heroCamera.position.set(0, 0.38, 1.85);
+            heroCamera.lookAt(0, 0, 0);
+
+            heroRenderer = new THREE.WebGLRenderer({ canvas: heroCanvas, alpha: true, antialias: true });
+            heroRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            heroRenderer.setSize(window.innerWidth, window.innerHeight);
+            heroRenderer.setClearColor(0x09090b, 0);
+
+            const ambientLight = new THREE.HemisphereLight(0xffffff, 0x081d4c, 0.85);
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 1.25);
+            directionalLight.position.set(0.6, 1.2, 1);
+            heroScene.add(ambientLight, directionalLight);
+
+            paperGeometry = new THREE.PlaneGeometry(2.6, 1.9, 120, 120);
+            paperGeometry.rotateX(-0.55);
+            paperGeometry.rotateY(0.2);
+            originalPositions = Float32Array.from(paperGeometry.attributes.position.array);
+
+            const paperMaterial = new THREE.MeshPhysicalMaterial({
+                color: 0xf8f8f8,
+                metalness: 0.1,
+                roughness: 0.42,
+                transmission: 0.12,
+                thickness: 0.92,
+                emissive: 0x111111,
+                emissiveIntensity: 0.08,
+                side: THREE.DoubleSide,
+                clearcoat: 0.3,
+                clearcoatRoughness: 0.45,
+            });
+
+            paperMesh = new THREE.Mesh(paperGeometry, paperMaterial);
+            paperMesh.position.set(0, -0.12, 0);
+            paperMesh.rotation.set(0.1, 0.35, -0.05);
+            heroScene.add(paperMesh);
+        } else if (heroCanvas) {
+            heroCanvas.style.display = 'none';
+        }
+
+        function resizeHeroScene() {
+            if (!hasThree) return;
+            heroCamera.aspect = window.innerWidth / window.innerHeight;
+            heroCamera.updateProjectionMatrix();
+            heroRenderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        window.addEventListener('resize', resizeHeroScene);
+
+        function updatePaperSurface(time) {
+            if (!hasThree) return;
+            const positions = paperGeometry.attributes.position.array;
+            for (let i = 0; i < positions.length; i += 3) {
+                const x = originalPositions[i];
+                const y = originalPositions[i + 1];
+                positions[i + 2] = Math.sin((x + time * 0.0009) * 3.7) * 0.032 + Math.cos((y + time * 0.0012) * 2.8) * 0.028;
+            }
+            paperGeometry.attributes.position.needsUpdate = true;
+            paperGeometry.computeVertexNormals();
+        }
+
+        function renderHeroScene(time) {
+            if (!hasThree) return;
+            updatePaperSurface(time);
+            heroRenderer.render(heroScene, heroCamera);
+        }
+
+        gsap.ticker.add((time) => {
+            if (mainLenis) mainLenis.raf(time * 1000);
+            renderHeroScene(time * 1000);
+        });
+        gsap.ticker.lagSmoothing(0);
+
+        resizeHeroScene();
+
+        if (hasThree) {
+            gsap.to(paperMesh.rotation, {
+                x: 0.18,
+                y: 0.45,
+                z: 0.05,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '#hero',
+                    start: 'top top',
+                    end: 'bottom top',
+                    scrub: 0.8,
+                }
+            });
+
+            gsap.to(paperMesh.position, {
+                x: -0.12,
+                y: 0.22,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '#hero',
+                    start: 'top top',
+                    end: 'bottom top',
+                    scrub: 0.8,
+                }
+            });
+        }
+
+        gsap.to('#hero', {
+            scale: 0.94,
+            opacity: 0.64,
+            ease: 'none',
+            transformOrigin: 'center top',
+            scrollTrigger: {
+                trigger: '#hero',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: 1,
+            }
+        });
+
+        gsap.to('.hero-layer', {
+            x: 36,
+            y: -28,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '#hero',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: 1,
+            }
+        });
+
+        // 2. Play Hero Entry Animations
+        window.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('anim-ready');
+            initAmbientCanvas();
+            // startLoading(); // loading animation commented out
+            initPage();
+        });
+
+        gsap.to('#paper-twist', {
+            y: -110,
+            rotation: 8,
+            x: 38,
+            transformPerspective: 900,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '#hero',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: 0.9,
+                markers: false
+            }
+        });
+
+        // 3. INFOGRAPHIC INTERACTION 01: Text Expansion Flow Animation Loop
+        const tlExpansion = gsap.timeline({
+            scrollTrigger: {
+                trigger: '#canvas-expansion',
+                start: 'top 85%',
+                end: 'bottom 20%',
+                toggleActions: 'play none none reverse'
+            }
+        });
+
+        tlExpansion.fromTo('.expansion-bar-1', { width: '20%' }, { width: '90%', duration: 1.5, ease: 'elastic.out(1, 0.6)' })
+                   .fromTo('.expansion-bar-2', { width: '15%' }, { width: '85%', duration: 1.5, ease: 'elastic.out(1, 0.6)' }, '-=1.2')
+                   .fromTo('.expansion-bar-3', { width: '10%' }, { width: '65%', duration: 1.5, ease: 'elastic.out(1, 0.6)' }, '-=1.2');
+
+        // 4. INFOGRAPHIC INTERACTION 02: Structural Axis Mirroring (RTL Shift Loop)
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: '#canvas-mirroring',
+                start: 'top 75%',
+                toggleActions: 'play none none reverse'
+            }
+        })
+        .to('.rtl-box-left', { x: 130, scale: 0.9, opacity: 0.4, duration: 1.4, ease: 'power3.inOut' })
+        .to('.rtl-box-right', { x: -110, scale: 1.05, borderColor: '#d4af37', duration: 1.4, ease: 'power3.inOut' }, '-=1.4');
+
+        // 5. INFOGRAPHIC INTERACTION 03: Layer Tag Stacking Sequence
+        gsap.from('#canvas-accessibility .space-y-2 > div', {
+            opacity: 0,
+            x: -40,
+            stagger: 0.2,
+            duration: 1,
+            ease: 'back.out(1.7)',
+            scrollTrigger: {
+                trigger: '#canvas-accessibility',
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            }
+        });
+
+        // 6. Extra infographic reveal sequences
+        gsap.utils.toArray('.group').forEach((panel) => {
+            gsap.from(panel, {
+                opacity: 0,
+                y: 40,
+                duration: 1,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: panel,
+                    start: 'top 85%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        });
+
+        function scrollToTarget(target, duration = 1.6) {
+            if (target === null || target === undefined) return;
+            if (mainLenis) {
+                mainLenis.scrollTo(target, {
+                    duration,
+                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+                });
+            } else {
+                const top = typeof target === 'number'
+                    ? target
+                    : target.getBoundingClientRect().top + window.scrollY;
+                window.scrollTo({ top, behavior: 'smooth' });
+            }
+        }
+
+        function initReferenceNavigation() {
+            const navLinks = gsap.utils.toArray('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    scrollToTarget(document.querySelector(link.getAttribute('href')), 1.8);
+                });
+            });
+
+            document.querySelector('.pill-button-primary')?.addEventListener('click', () => {
+                scrollToTarget(document.getElementById('infographics'), 1.8);
+            });
+
+            const sections = [
+                { id: '#hero', trigger: '#hero' },
+                { id: '#visual-lab', trigger: '#visual-lab' },
+                { id: '#infographics', trigger: '#infographics' },
+                { id: '#footer', trigger: '#footer' }
+            ];
+
+            sections.forEach(({ id, trigger }) => {
+                ScrollTrigger.create({
+                    trigger,
+                    start: 'top center',
+                    end: 'bottom center',
+                    onToggle: self => {
+                        if (!self.isActive) return;
+                        navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === id));
+                    }
+                });
+            });
+        }
+
+        function initNextSectionButton() {
+            const nextBtn = document.getElementById('next-section-btn');
+            if (!nextBtn) return;
+
+            const targets = gsap.utils.toArray('section, footer');
+            let isBottom = false;
+
+            nextBtn.addEventListener('click', () => {
+                if (isBottom) {
+                    scrollToTarget(0, 1.9);
+                    return;
+                }
+
+                const next = targets.find(target => target.offsetTop > window.scrollY + 180);
+                scrollToTarget(next || 0, next ? 1.5 : 1.9);
+            });
+
+            ScrollTrigger.create({
+                trigger: '#hero',
+                start: '12% top',
+                onEnter: () => gsap.to(nextBtn, { autoAlpha: 1, duration: 0.35, ease: 'power2.out' }),
+                onLeaveBack: () => gsap.to(nextBtn, { autoAlpha: 0, duration: 0.25, ease: 'power2.in' })
+            });
+
+            ScrollTrigger.create({
+                trigger: '#footer',
+                start: 'top 75%',
+                onEnter: () => {
+                    isBottom = true;
+                    nextBtn.classList.add('is-bottom');
+                },
+                onLeaveBack: () => {
+                    isBottom = false;
+                    nextBtn.classList.remove('is-bottom');
+                }
+            });
+        }
+
+        function initSectionBackgrounds() {
+            const overlay = document.getElementById('page-bg-overlay');
+            if (!overlay) return;
+
+            gsap.utils.toArray('.section-fade-bg, footer').forEach(section => {
+                const targetOpacity = parseFloat(section.dataset.bgOpacity || '0.62');
+                const timeline = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: section,
+                        start: 'top bottom',
+                        end: 'bottom top',
+                        scrub: 0.6
+                    }
+                });
+
+                timeline
+                    .fromTo(overlay, { opacity: 0 }, { opacity: targetOpacity, ease: 'none', duration: 0.25 })
+                    .to(overlay, { opacity: targetOpacity, ease: 'none', duration: 0.5 })
+                    .to(overlay, { opacity: 0, ease: 'none', duration: 0.25 });
+            });
+        }
+
+        function initReferenceReveals() {
+            gsap.from('#visual-lab .font-mono, #visual-lab h2, #visual-lab p', {
+                opacity: 0,
+                y: 20,
+                stagger: 0.12,
+                duration: 0.85,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: '#visual-lab',
+                    start: 'top 76%',
+                    once: true
+                }
+            });
+
+            gsap.from('#infographics .font-mono, #infographics h2', {
+                opacity: 0,
+                y: 20,
+                stagger: 0.12,
+                duration: 0.85,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: '#infographics',
+                    start: 'top 76%',
+                    once: true
+                }
+            });
+
+            gsap.set('.diagram-panel, .proof-card', { opacity: 0, y: 38 });
+            ScrollTrigger.batch('.diagram-panel, .proof-card', {
+                start: 'top 86%',
+                once: true,
+                onEnter: batch => {
+                    gsap.to(batch, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.75,
+                        stagger: 0.08,
+                        ease: 'power3.out',
+                        onStart: () => batch.forEach(panel => panel.querySelector('.doc-canvas')?.classList.add('is-scanning'))
+                    });
+                }
+            });
+
+            gsap.from('footer > div', {
+                opacity: 0,
+                y: 24,
+                duration: 0.8,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: '#footer',
+                    start: 'top 85%',
+                    once: true
+                }
+            });
+        }
+
+        function initCursorLight() {
+            const light = document.getElementById('cursor-light');
+            if (!light || window.matchMedia('(pointer: coarse)').matches) return;
+
+            let x = window.innerWidth / 2;
+            let y = window.innerHeight / 2;
+            let currentX = x;
+            let currentY = y;
+
+            window.addEventListener('pointermove', (event) => {
+                x = event.clientX;
+                y = event.clientY;
+                gsap.to(light, { opacity: 1, duration: 0.35 });
+            });
+
+            gsap.ticker.add(() => {
+                currentX += (x - currentX) * 0.08;
+                currentY += (y - currentY) * 0.08;
+                light.style.transform = `translate(${currentX - 210}px, ${currentY - 210}px)`;
+            });
+        }
+
+        function initMagneticCards() {
+            gsap.utils.toArray('.live-data-card, .diagram-panel').forEach(card => {
+                card.addEventListener('pointermove', event => {
+                    const rect = card.getBoundingClientRect();
+                    const relX = (event.clientX - rect.left) / rect.width - 0.5;
+                    const relY = (event.clientY - rect.top) / rect.height - 0.5;
+                    gsap.to(card, {
+                        x: relX * 10,
+                        y: relY * 8,
+                        rotateX: relY * -3,
+                        rotateY: relX * 4,
+                        duration: 0.45,
+                        ease: 'power3.out'
+                    });
+                });
+
+                card.addEventListener('pointerleave', () => {
+                    gsap.to(card, {
+                        x: 0,
+                        y: 0,
+                        rotateX: 0,
+                        rotateY: 0,
+                        duration: 0.55,
+                        ease: 'expo.out'
+                    });
+                });
+            });
+        }
+
+        function initCountingMetrics() {
+            gsap.utils.toArray('.live-data-card .text-4xl, .live-data-card .text-3xl, .live-data-card .text-2xl').forEach(el => {
+                const raw = el.childNodes[0]?.textContent?.trim();
+                const value = parseFloat(raw);
+                if (Number.isNaN(value)) return;
+                const decimals = raw.includes('.') ? 2 : 0;
+                const counter = { value: 0 };
+
+                ScrollTrigger.create({
+                    trigger: el,
+                    start: 'bottom 98%',
+                    once: true,
+                    onEnter: () => {
+                        gsap.to(counter, {
+                            value,
+                            duration: 5,
+                            ease: 'power2.out',
+                            onUpdate: () => {
+                                el.childNodes[0].textContent = counter.value.toFixed(decimals);
+                            }
+                        });
+                    }
+                });
+            });
+        }
+
+        function initVisualLabMotion() {
+            gsap.from('.interface-window', {
+                opacity: 0,
+                y: 46,
+                scale: 0.96,
+                stagger: 0.16,
+                duration: 1,
+                ease: 'expo.out',
+                scrollTrigger: {
+                    trigger: '#visual-lab .visual-shell',
+                    start: 'top 90%',
+                    once: true
+                }
+            });
+
+            gsap.to('.interface-window.primary', {
+                y: -34,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '#visual-lab',
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: 1
+                }
+            });
+
+            gsap.to('.interface-window.secondary', {
+                y: 36,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '#visual-lab',
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: 1
+                }
+            });
+
+            gsap.fromTo('.page-block',
+                { scaleX: 0.2, opacity: 0.35 },
+                {
+                    scaleX: 1,
+                    opacity: 1,
+                    duration: 1.2,
+                    stagger: 0.08,
+                    ease: 'expo.out',
+                    scrollTrigger: {
+                        trigger: '.localized-page',
+                        start: 'top 78%',
+                        once: true
+                    }
+                }
+            );
+
+            gsap.fromTo('.map-line',
+                { scaleX: 0, opacity: 0 },
+                {
+                    scaleX: 1,
+                    opacity: 0.9,
+                    duration: 1,
+                    stagger: 0.16,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: '.localization-map',
+                        start: 'top 78%',
+                        once: true
+                    }
+                }
+            );
+
+            gsap.to('.map-node.engine', {
+                scale: 1.08,
+                boxShadow: '0 0 42px rgba(212,175,55,0.22)',
+                repeat: -1,
+                yoyo: true,
+                duration: 1.6,
+                ease: 'sine.inOut'
+            });
+
+            gsap.fromTo('.quality-meter span',
+                { scaleX: 0 },
+                {
+                    scaleX: 1,
+                    transformOrigin: 'left center',
+                    duration: 1.2,
+                    stagger: 0.12,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: '.quality-stack',
+                        start: 'top 82%',
+                        once: true
+                    }
+                }
+            );
+        }
+        /* ── NEW FUNCTIONS ──────────────────────────────────────── */
+
+        function initLenis() {
+            mainLenis = new Lenis({
+                duration: 1.2,
+                easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                smoothWheel: true,
+            });
+            mainLenis.on('scroll', ScrollTrigger.update);
+        }
+
+        /* === startLoading / doReveal commented out ===
+        function startLoading() {
+            const bar   = document.getElementById('progress-bar');
+            const pctEl = document.getElementById('load-pct');
+            let progress = 0;
+            const steps = [9, 14, 11, 18, 16, 10, 20];
+            let i = 0;
+            const tick = () => {
+                progress = Math.min(progress + steps[i % steps.length] + Math.random() * 5, 97);
+                i++;
+                gsap.to(bar, { width: progress + '%', ease: 'none', duration: 0.22 });
+                if (pctEl) pctEl.textContent = Math.floor(progress) + '%';
+                if (progress < 97) setTimeout(tick, 105 + Math.random() * 75);
+                else setTimeout(() => {
+                    gsap.to(bar, { width: '100%', ease: 'none', duration: 0.18 });
+                    if (pctEl) pctEl.textContent = '100%';
+                    setTimeout(doReveal, 260);
+                }, 180);
+            };
+            setTimeout(tick, 80);
+        }
+
+        function doReveal() {
+            gsap.timeline({ delay: 0.1 })
+                .to('#loading-container', { opacity: 0, duration: 0.35 })
+                .to('#reveal-top',    { yPercent: -100, duration: 0.9, ease: 'power3.inOut' }, '-=0.15')
+                .to('#reveal-bottom', { yPercent:  100, duration: 0.9, ease: 'power3.inOut' }, '<')
+                .add(() => {
+                    gsap.set(['#reveal-top', '#reveal-bottom', '#loading-container'], { display: 'none' });
+                }, '-=0.2')
+                .add(initPage, '-=0.1');
+        }
+        === end loading functions === */
+
+        function initPage() {
+            try {
+                initLenis();
+                ScrollTrigger.refresh();
+
+                const heroTimeline = gsap.timeline({ defaults: { ease: 'expo.out', duration: 1.1 } });
+                heroTimeline
+                    .to('#hero .line-internal', { y: '0%', opacity: 1, stagger: 0.18, duration: 1.1, ease: 'expo.out' })
+                    .to('#home-action-bar', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.6')
+                    .from('.live-data-card', { opacity: 0, y: 24, stagger: 0.08, duration: 1 }, '-=0.8');
+
+                initReferenceNavigation();
+                initSectionBackgrounds();
+                initReferenceReveals();
+                initNextSectionButton();
+                initCursorLight();
+                initMagneticCards();
+                initCountingMetrics();
+                initVisualLabMotion();
+                initSectionZoomEffects();
+                initScrollBackground();
+            } catch (error) {
+                document.body.classList.remove('anim-ready');
+                document.querySelectorAll('.line-internal, #home-action-bar, .diagram-panel, .proof-card, .interface-window').forEach(el => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'none';
+                });
+                console.error('Animation setup failed:', error);
+            }
+        }
+
+        function initSectionZoomEffects() {
+            ['#visual-lab', '#infographics'].forEach(id => {
+                /* zoom-in from below as section enters viewport */
+                gsap.from(id, {
+                    scale: 1.035,
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: id,
+                        start: 'top bottom',
+                        end: 'top center',
+                        scrub: 1.4,
+                    }
+                });
+                /* zoom-out / recede as you scroll past */
+                gsap.to(id, {
+                    scale: 0.95,
+                    opacity: 0.58,
+                    ease: 'none',
+                    transformOrigin: 'center top',
+                    scrollTrigger: {
+                        trigger: id,
+                        start: 'top top',
+                        end: 'bottom top',
+                        scrub: 1.4,
+                    }
+                });
+            });
+        }
+
+        function initScrollBackground() {
+            const overlay = document.getElementById('page-bg-overlay');
+            if (!overlay) return;
+            ScrollTrigger.create({
+                trigger: document.body,
+                start: 'top top',
+                end: 'bottom bottom',
+                onUpdate: self => {
+                    const p = self.progress;
+                    const x1 = 20 + p * 42,  y1 = 20 + p * 32;
+                    const x2 = 80 - p * 38,  y2 = 10 + p * 62;
+                    overlay.style.background = `
+                        radial-gradient(ellipse at ${x1}% ${y1}%, rgba(212,175,55,0.18), transparent 32%),
+                        radial-gradient(ellipse at ${x2}% ${y2}%, rgba(56,189,248,0.14), transparent 30%),
+                        #050507`;
+                }
+            });
+        }
+
+        function initAmbientCanvas() {
+            const canvas = document.getElementById('ambient-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let W = window.innerWidth, H = window.innerHeight;
+            canvas.width = W; canvas.height = H;
+            window.addEventListener('resize', () => {
+                W = window.innerWidth; H = window.innerHeight;
+                canvas.width = W; canvas.height = H;
+            }, { passive: true });
+
+            const orbs = [
+                { rx: 0.15, ry: 0.22, rr: 0.55, c: '212,175,55',  vx: 0.13, vy: 0.09, ph: 0   },
+                { rx: 0.82, ry: 0.12, rr: 0.48, c: '56,189,248',  vx: -0.10, vy: 0.08, ph: 1.4 },
+                { rx: 0.48, ry: 0.72, rr: 0.40, c: '99,102,241',  vx: 0.09,  vy: -0.07, ph: 2.8 },
+            ];
+            let scrollY = 0;
+            window.addEventListener('scroll', () => { scrollY = window.scrollY; }, { passive: true });
+
+            function draw(t) {
+                ctx.clearRect(0, 0, W, H);
+                const maxScroll = Math.max(1, document.body.scrollHeight - H);
+                const sf = scrollY / maxScroll;
+                orbs.forEach((o, i) => {
+                    const r  = o.rr * W;
+                    const ox = o.rx * W + Math.sin(t * o.vx + o.ph) * W * 0.07 + sf * W * (i % 2 === 0 ? 0.05 : -0.05);
+                    const oy = o.ry * H + Math.cos(t * o.vy + o.ph * 0.7) * H * 0.06 - sf * H * 0.055 * (i + 1) * 0.4;
+                    const g  = ctx.createRadialGradient(ox, oy, 0, ox, oy, r);
+                    g.addColorStop(0,   `rgba(${o.c},0.13)`);
+                    g.addColorStop(0.4, `rgba(${o.c},0.06)`);
+                    g.addColorStop(1,   `rgba(${o.c},0)`);
+                    ctx.fillStyle = g;
+                    ctx.beginPath();
+                    ctx.arc(ox, oy, r, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+            }
+            (function frame(ts) { draw(ts * 0.0008); requestAnimationFrame(frame); })(0);
+        }
+
+    </script>
+</body>
+</html>
