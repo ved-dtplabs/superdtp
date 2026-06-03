@@ -130,6 +130,9 @@
         .nav-link {
             opacity: 0.48;
             transition: opacity 0.35s ease, color 0.35s ease;
+            background: none;
+            border: none;
+            color: inherit;
         }
 
         .nav-link:hover,
@@ -137,6 +140,15 @@
             opacity: 1;
             color: #fff;
         }
+
+        .services-dropdown { position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%); width: 260px; background: rgba(9,9,11,0.98); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; overflow: hidden; opacity: 0; visibility: hidden; transition: opacity 0.2s ease, visibility 0.2s ease; z-index: 100; }
+        .services-trigger:hover .services-dropdown, .services-trigger:focus-within .services-dropdown { opacity: 1; visibility: visible; }
+        .services-trigger:hover .nav-link, .services-trigger:focus-within .nav-link { opacity: 1; color: #fff; }
+        .dropdown-link { display: flex; align-items: center; gap: 8px; padding: 10px 16px; font-size: 0.62rem; font-family: 'Space Grotesk', monospace; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.5); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.04); transition: color 0.2s ease, background 0.2s ease; }
+        .dropdown-link:last-child { border-bottom: none; }
+        .dropdown-link:hover { color: #d4af37; background: rgba(255,255,255,0.04); }
+        .dropdown-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.2); flex-shrink: 0; }
+        .dropdown-link:hover .dropdown-dot { background: rgba(212,175,55,0.5); }
 
         #next-section-btn {
             position: fixed;
@@ -729,22 +741,37 @@
         </svg>
     </button>
 
-    <header class="fixed top-0 left-0 w-full z-50 px-6 py-4 flex justify-between items-center mix-blend-difference border-b border-white/5 bg-brandBg/20 backdrop-blur-md">
+    <header class="fixed top-0 left-0 w-full z-50 px-6 py-4 flex justify-between items-center border-b border-white/5 bg-brandBg/40 backdrop-blur-md">
         <a href="/" aria-label="SuperDTP Home">
-            <img src="logo.svg" alt="SuperDTP" style="height:28px;width:auto;display:block;" />
+            <img src="logo copy 5.svg" alt="SuperDTP" style="height:58px;width:auto;display:block;" />
         </a>
-        <nav class="hidden md:flex space-x-8 font-mono text-xs tracking-wider text-neutral-400">
+        <nav class="hidden md:flex items-center space-x-8 font-mono text-xs tracking-wider text-neutral-400">
             <a href="#hero" class="nav-link active">01. INCEPTION</a>
             <a href="#visual-lab" class="nav-link">02. VISUAL SYSTEMS</a>
             <a href="#infographics" class="nav-link">03. MATRIX DIAGRAMS</a>
+            <div class="services-trigger relative flex items-center cursor-pointer">
+                <button type="button" class="nav-link flex items-center gap-1.5 cursor-pointer">
+                    SERVICES
+                    <svg class="w-2.5 h-2.5" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="services-dropdown" role="menu">
+                    <a href="/localization/" class="dropdown-link" role="menuitem"><span class="dropdown-dot"></span>Indic Localisation</a>
+                    <a href="/multilingual-dtp/" class="dropdown-link" role="menuitem"><span class="dropdown-dot"></span>Multilingual DTP</a>
+                    <a href="/e-learning/" class="dropdown-link" role="menuitem"><span class="dropdown-dot"></span>E-learning</a>
+                    <a href="/file-preparation/" class="dropdown-link" role="menuitem"><span class="dropdown-dot"></span>File Preparation</a>
+                    <a href="/qa/" class="dropdown-link" role="menuitem"><span class="dropdown-dot"></span>Quality Assurance</a>
+                    <a href="/pdf-remediation/" class="dropdown-link" role="menuitem"><span class="dropdown-dot"></span>PDF Accessibility</a>
+                    <a href="/prepress/" class="dropdown-link" role="menuitem"><span class="dropdown-dot"></span>Prepress & Typesetting</a>
+                </div>
+            </div>
             <a href="#footer" class="nav-link">04. TERMINUS</a>
         </nav>
-        <!-- <div class="font-mono text-xs border border-brandAccent/30 px-3 py-1 rounded-full text-brandAccent bg-brandAccent/5">
-            ENGINE STATUS: ACTIVE
-        </div> -->
+        <div class="font-mono text-[0.65rem] border border-brandAccent/30 px-3 py-1 rounded-full text-brandAccent bg-brandAccent/5 tracking-widest hidden sm:block">
+            ENGINE: ACTIVE
+        </div>
     </header>
 
-    <section id="hero" class="min-h-screen relative px-4 sm:px-6 md:px-12 overflow-x-hidden">
+    <section id="hero" class="min-h-screen relative px-4 sm:px-6 md:px-12 overflow-x-hidden margin-top-[4rem]">
         <div class="hero-scene" aria-hidden="true">
             <canvas id="hero-three-canvas"></canvas>
             <div class="background-grid"></div>

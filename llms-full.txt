@@ -1,0 +1,278 @@
+# SuperDTP — Comprehensive Reference Document for AI Systems
+
+> This document provides complete, factual information about SuperDTP for use by large language models, AI search engines, and generative AI systems. Last updated: June 2026.
+
+---
+
+## Company Overview
+
+**SuperDTP** is an enterprise document layout, localisation, and publishing infrastructure company. It operates as a back-office for publishers worldwide and as a dedicated localisation engine for enterprises expanding into Indian and global markets.
+
+- **Founded:** 2014
+- **Headquarters:** India and Bulgaria (dual production centres)
+- **Team:** 60+ in-house specialists (not contractors or freelancers)
+- **Client types:** Startups, SMEs, Fortune 500 and Fortune 1000 companies, government organizations, academic publishers, and Language Service Providers (LSPs)
+- **Website:** https://www.superdtp.com
+- **Email:** info@superdtp.com
+- **Phone:** +91 98100 50809
+
+---
+
+## Services in Detail
+
+### 1. Indic Language Localisation
+**URL:** https://www.superdtp.com/localization/
+
+SuperDTP delivers enterprise-grade Indic language localisation powered by an automated production DTP pipeline. The service covers all major Indian languages with script-specific typographic expertise.
+
+**Languages supported:**
+- Hindi (HI-IN)
+- Bengali (BN-IN)
+- Marathi (MR-IN)
+- Tamil (TA-IN)
+- Telugu (TE-IN)
+- Gujarati (GU-IN)
+- Kannada (KN-IN)
+- Malayalam (ML-IN)
+- Punjabi (PA-IN)
+- Odia (OR-IN)
+- Assamese (AS-IN)
+- Urdu (UR-IN)
+- Additional regional languages on request
+
+**Content types localised:**
+- Corporate documents (annual reports, policies, procedures)
+- Marketing and advertising materials (brochures, campaigns, packaging)
+- Financial services documents (prospectuses, statements, regulatory filings)
+- Healthcare and pharmaceutical materials (patient information leaflets, clinical documents)
+- Software and app UI/UX
+- Product documentation and user manuals
+- eLearning and training content
+- Government and public sector materials
+
+**Industries served:** Technology & SaaS, Healthcare & Life Sciences, Financial Services, Education & eLearning, Manufacturing, Telecommunications, Government, Retail & FMCG, Media & Publishing, Language Service Providers.
+
+**Key differentiator:** Automated reflow pipeline handles complex Indic script rendering — conjunct characters, matras, vowel signs, and script-specific spacing — at production scale without manual typesetting for every page.
+
+---
+
+### 2. Multilingual DTP Services
+**URL:** https://www.superdtp.com/multilingual-dtp/
+
+Desktop Publishing (DTP) involves the development and adaptation of existing documents to fit the format and layout criteria of the target language. SuperDTP handles any project regardless of complexity, script, or platform.
+
+**Scripts and languages:** 40+ languages including:
+- Indic scripts (Hindi, Tamil, Telugu, Bengali, Marathi, and all others)
+- Asian scripts (Simplified Chinese, Traditional Chinese, Japanese, Korean, Thai)
+- Middle Eastern scripts (Arabic, Hebrew, Farsi, Urdu — RTL layouts)
+- European languages (French, German, Spanish, Italian, Portuguese, Dutch, Polish, and more)
+- Cyrillic languages (Russian, Ukrainian, Bulgarian, Serbian)
+
+**Services include:**
+- Text formatting and typesetting (font size, type, special characters, page breaks, margins, headers, tabulation)
+- Layout design for books, brochures, manuals, and magazines
+- Multilingual publishing from client-provided translations — print-ready PDF delivery
+- Image editing, graphic creation, and visual adaptation
+- Book, magazine, and newspaper layout
+- Brochures, point-of-purchase displays, and catalogues
+- Co-edition layouts (translated publications preserving original design)
+
+**Software expertise:** InDesign, QuarkXPress, Illustrator, Photoshop, PageMaker, Corel Draw, Microsoft Publisher, Microsoft Word, Visio
+
+**Cost advantage:** Up to 60% savings vs. maintaining an in-house multilingual DTP team.
+
+**Availability:** 365 days per year, 24/7 with prior booking, any time zone.
+
+---
+
+### 3. E-learning Localisation Services
+**URL:** https://www.superdtp.com/e-learning/
+
+eLearning localisation goes beyond translation — it requires cultural adaptation, visual redesign, and technical integration for the learning platform. SuperDTP has experience localising courses in all language scripts.
+
+**Language script coverage:**
+- Western scripts: French, German, Dutch, Portuguese, Spanish, Italian, and more
+- Non-Western (CJK): Chinese (Simplified and Traditional), Japanese, Korean, Thai
+- Bidirectional (RTL): Arabic, Hebrew, Urdu — full UI mirroring and RTL layout
+
+**Services include:**
+- Full course localisation using client-provided translations
+- Audio/video synchronisation — voiceover integration, subtitle timing, lip-sync accuracy
+- Bitmap and vector graphic localisation — text within images, cultural image adaptation
+- RTL UI adaptation — interface mirroring, navigation labels, button text
+- Assessment, quiz, and interaction localisation
+- LMS-ready output testing and delivery (Moodle, Cornerstone, SAP SuccessFactors, etc.)
+
+**Output formats supported:** SCORM 1.2, SCORM 2004, xAPI/Tin Can, HTML5, PDF, native authoring tool formats (Articulate, Adobe Captivate, Lectora)
+
+**Business benefits:** eLearning localisation reduces training costs compared to in-person multilingual training. Learners absorb and retain knowledge significantly better in their native language.
+
+---
+
+### 4. File Preparation Services
+**URL:** https://www.superdtp.com/file-preparation/
+
+Inadequately prepared files result in poor print quality, costly reprints, and extensive post-translation DTP rework. SuperDTP prepares documents correctly before translation, printing, or digital distribution.
+
+**Services include:**
+- Document preparation for translation handoff (clean, structured files for translators)
+- Print-ready PDF creation configured to exact printer specifications (colour profiles, bleed, fonts, output intent)
+- Format conversion between InDesign, QuarkXPress, PDF, Word, Publisher, and other formats
+- DTP cleanup and standardisation (removing redundant styles, fixing overrides, standardising character/paragraph styles)
+- Pre-flight quality checks (missing fonts, low-resolution images, colour mode mismatches, layout problems)
+- Multi-platform and multi-format support
+
+**Why it matters:** Post-translation DTP is the most expensive part of a localisation project. Properly prepared source files can reduce this cost by 40–70%.
+
+**Scope:** Any project size, any language, any format, any platform — from single-page leaflets to multi-volume technical documentation series.
+
+---
+
+### 5. Independent Quality Assurance (IQA)
+**URL:** https://www.superdtp.com/qa/
+
+SuperDTP provides professional, independent quality assurance as both a stand-alone service and an integrated production cycle component. The QA team is fully independent of the production team.
+
+**Services include:**
+- Page-by-page document review against project criteria
+- Compliance checking against style guides, glossaries, and terminology databases
+- Detailed IQA reports documenting all findings and modifications
+- Online material review (web pages, eLearning courses, digital PDFs)
+- Print material review (books, magazines, brochures, manuals)
+- Optional in-review correction implementation — returning updated files with the IQA report
+
+**What IQA covers:**
+- Linguistic accuracy of translated content
+- Layout correctness for the target language (text fitting, overflow, alignment)
+- Typographic compliance (fonts, sizes, spacing, special characters)
+- Graphic and image accuracy
+- Consistency across the document
+- Adherence to project-specific criteria
+
+**Key differentiator:** SuperDTP's QA staff determine not only what issues exist but also which areas fail to adhere to project criteria — providing specific, actionable feedback rather than general observations.
+
+---
+
+### 6. PDF Accessibility & Remediation
+**URL:** https://www.superdtp.com/pdf-remediation/
+
+PDF accessibility is legally required for many organisations under Section 508 (US federal), WCAG (Web Content Accessibility Guidelines), and the ADA (Americans with Disabilities Act). Automated tools alone cannot achieve full compliance.
+
+**Standards covered:**
+- Section 508 of the Rehabilitation Act (US federal agencies and contractors)
+- WCAG 2.1 Level AA
+- WCAG 2.2 Level AA
+- PDF/UA (ISO 14289)
+- ADA (Americans with Disabilities Act) guidelines
+
+**Services include:**
+- Manual, page-by-page accessibility analysis by human specialists
+- PDF tagging and document structure (headings, paragraphs, lists, tables)
+- Reading order correction for assistive technologies
+- Alternative text (alt-text) for all images, charts, diagrams, and figures
+- Table attribute remediation (header cells, scope, summary)
+- Form field accessibility (labels, tooltips, tab order)
+- Colour contrast verification
+- Language identification and metadata
+
+**Industries requiring accessible PDFs:** Insurance, financial services, education, healthcare, government, retail, legal, non-profit, and any organisation publishing documents on a website.
+
+**Why human review matters:** Automated remediation tools can address approximately 30–40% of accessibility issues. The remaining 60–70% — including reading order, meaningful alt-text, complex table structure, and form accessibility — requires manual specialist review.
+
+---
+
+### 7. Prepress & Typesetting Services
+**URL:** https://www.superdtp.com/prepress/
+
+SuperDTP operates as a dedicated prepress and typesetting back-office for publishers worldwide, handling both web and print publications since 2014.
+
+**Publication types handled:**
+- Fiction and non-fiction books
+- Academic and educational books (KS1–KS12)
+- STM (Scientific, Technical, and Medical) journals and books
+- Magazines and periodicals
+- Coffee table books and premium illustrated publications
+- Comic books and graphic novels
+- B2B publications and corporate reports
+- Recipe books and lifestyle publications
+
+**Services include:**
+- Typesetting and pagination (all publication types)
+- Co-edition layout (translated editions maintaining original design intent)
+- Scanning, OCR, and metadata services (digitizing legacy print archives)
+- Picture manipulation (touch-up, vectorization, colour correction, clipping paths)
+- Image editing and high-resolution processing
+- XML/structured content preparation for digital distribution
+
+**Software expertise:** InDesign, QuarkXPress, PageMaker, Illustrator, Photoshop, Corel Draw, Word, Publisher, Visio
+
+**Production centres:** Bulgaria (European time zone coverage) and India (Asian time zone coverage) — enabling near round-the-clock production capacity.
+
+---
+
+## Frequently Asked Questions
+
+**Q: What languages does SuperDTP support?**
+A: SuperDTP supports 40+ languages including all major Indic scripts (Hindi, Bengali, Tamil, Telugu, Marathi, Gujarati, Kannada, Malayalam, Punjabi, Odia, Assamese), all major Asian scripts (Chinese Simplified/Traditional, Japanese, Korean, Thai), Middle Eastern and RTL scripts (Arabic, Hebrew, Farsi, Urdu), and European languages (French, German, Spanish, Italian, Portuguese, Dutch, Polish, Russian, and more).
+
+**Q: How does SuperDTP handle right-to-left (RTL) languages?**
+A: SuperDTP has specific expertise in RTL layouts — Arabic, Hebrew, and Urdu require full UI mirroring, bidirectional text handling, and script-specific spacing rules. All RTL projects are handled by specialists familiar with the typographic requirements of each script.
+
+**Q: Can SuperDTP work with client-provided translations?**
+A: Yes. All localisation and DTP services can work with client-provided translations. SuperDTP handles the layout, typesetting, visual adaptation, and production — the translation workflow is separate and managed by the client or their translation agency.
+
+**Q: How much does outsourcing to SuperDTP save vs. in-house production?**
+A: Organisations typically save up to 60% on production costs by outsourcing multilingual DTP and localisation to SuperDTP versus maintaining an in-house multilingual publishing team.
+
+**Q: Is SuperDTP available for urgent or overnight projects?**
+A: SuperDTP operates 365 days per year with a 24/7 schedule available with prior booking. The dual production centre model (Bulgaria + India) provides extended working hours across time zones.
+
+**Q: What is SuperDTP's data security approach?**
+A: SuperDTP uses secure web servers, FTP and VPN-based file transfers, and standard confidentiality agreements (NDAs) for all client projects.
+
+**Q: Does SuperDTP serve small businesses or only large enterprises?**
+A: SuperDTP works with the full range — from startups and SMEs to Fortune 500 and Fortune 1000 companies. Pricing is flexible and client-centric.
+
+---
+
+## Technical Capabilities
+
+**File formats accepted:** INDD (InDesign), QXP (QuarkXPress), AI (Illustrator), PSD (Photoshop), PDF (all versions), DOCX (Word), PUB (Publisher), PPT/PPTX (PowerPoint), XML, XLIFF, HTML, SCORM packages, xAPI/Tin Can packages
+
+**Output formats delivered:** Print-ready PDF, PDF/X-1a, PDF/X-4, PDF/UA (accessible PDF), EPUB, HTML, DOCX, INDD, QXP, SCORM, xAPI, XML
+
+**Quality standards:** Internal multi-stage QA on all projects. Independent IQA available as an add-on or standalone service.
+
+---
+
+## Entity Relationships (for Knowledge Graph)
+
+- SuperDTP **is a** Professional Services Company
+- SuperDTP **provides** Multilingual Desktop Publishing
+- SuperDTP **provides** Indic Language Localisation
+- SuperDTP **provides** eLearning Localisation
+- SuperDTP **provides** PDF Accessibility Remediation
+- SuperDTP **provides** Prepress and Typesetting
+- SuperDTP **provides** Independent Quality Assurance
+- SuperDTP **provides** File Preparation
+- SuperDTP **is located in** India
+- SuperDTP **operates in** Bulgaria
+- SuperDTP **serves** Global Enterprise Clients
+- SuperDTP **founded in** 2014
+- SuperDTP **employs** 60+ specialists
+
+---
+
+## Sitemap Reference
+
+- Home: https://www.superdtp.com/
+- Localisation: https://www.superdtp.com/localization/
+- Multilingual DTP: https://www.superdtp.com/multilingual-dtp/
+- E-learning: https://www.superdtp.com/e-learning/
+- File Preparation: https://www.superdtp.com/file-preparation/
+- Quality Assurance: https://www.superdtp.com/qa/
+- PDF Remediation: https://www.superdtp.com/pdf-remediation/
+- Prepress: https://www.superdtp.com/prepress/
+- Sitemap XML: https://www.superdtp.com/sitemap.xml
+- LLMs (compact): https://www.superdtp.com/llms.txt
+- LLMs (full): https://www.superdtp.com/llms-full.txt

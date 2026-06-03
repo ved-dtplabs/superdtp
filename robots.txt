@@ -1,0 +1,42 @@
+# SuperDTP — robots.txt
+# https://www.superdtp.com
+
+User-agent: *
+Allow: /
+
+# Block archived/test files
+Disallow: /superdtp exisitng/
+Disallow: /index copy.html
+Disallow: /127.0.0.1.html
+
+# AI Crawlers — allow full indexing for GEO
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# Crawl-delay for aggressive crawlers
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+# Sitemaps
+Sitemap: https://www.superdtp.com/sitemap.xml
