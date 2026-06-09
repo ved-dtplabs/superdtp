@@ -3,15 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SuperDTP | Architectural Localization & Document Layout Infrastructure</title>
-    
+    <title>SuperDTP | Multilingual DTP, Localization &amp; Document Layout Services</title>
+
+    <!-- SEO -->
+    <meta name="description" content="SuperDTP delivers enterprise-grade multilingual DTP, localization, typesetting, and document layout services across 120+ languages for global industry leaders.">
+    <meta name="keywords" content="multilingual DTP, localization, typesetting, document layout, translation, InDesign, FrameMaker, EPUB, RTL, Indic languages">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.superdtp.com/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.superdtp.com/">
+    <meta property="og:title" content="SuperDTP | Multilingual DTP &amp; Localization Services">
+    <meta property="og:description" content="Enterprise-grade multilingual DTP, localization, and document layout infrastructure trusted by global industry leaders across 60+ markets.">
+    <meta property="og:image" content="https://www.superdtp.com/clients/icons/Logo.png">
+    <meta property="og:site_name" content="SuperDTP">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SuperDTP | Multilingual DTP &amp; Localization Services">
+    <meta name="twitter:description" content="Enterprise-grade multilingual DTP, localization, and document layout infrastructure trusted by global industry leaders across 60+ markets.">
+    <meta name="twitter:image" content="https://www.superdtp.com/clients/icons/Logo.png">
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "SuperDTP",
+      "url": "https://www.superdtp.com",
+      "logo": "https://www.superdtp.com/clients/icons/Logo.png",
+      "description": "Enterprise multilingual DTP, localization, typesetting, and document layout services across 120+ languages.",
+      "areaServed": "Worldwide",
+      "serviceType": ["Multilingual DTP", "Localization", "Typesetting", "Document Layout", "Translation"],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "dtp.bulgaria@gmail.com",
+        "contactType": "customer service"
+      }
+    }
+    </script>
+
+    <!-- Performance: preconnect & font preload -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;600&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+
     <script>
         document.documentElement.classList.add('js-enabled');
     </script>
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -897,7 +939,7 @@
             font-size: 0.55rem;
             letter-spacing: 0.22em;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.38);
+            color: rgba(255,255,255,0.62);
         }
         #svc-zoom-bar-wrap {
             width: 80px;
@@ -951,8 +993,8 @@
             font-size: 0.52rem;
             letter-spacing: 0.17em;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.38);
-            border: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.65);
+            border: 1px solid rgba(255,255,255,0.18);
             padding: 5px 13px;
             border-radius: 100px;
         }
@@ -1022,7 +1064,7 @@
         }
         .svc-gc-desc {
             font-size: 0.68rem;
-            color: rgba(255,255,255,0.5);
+            color: rgba(255,255,255,0.70);
             line-height: 1.62;
             flex: 1;
         }
@@ -1229,7 +1271,7 @@
             min-height: clamp(80px, 11vh, 110px); cursor: default;
             padding-left: 16px;
             transition: opacity 0.4s ease, border-top-color 0.4s ease, border-left-color 0.4s ease, background 0.4s ease;
-            opacity: 0.38;
+            opacity: 0.78;
         }
         .fmt-row:last-child { border-bottom: 1px solid rgba(255,255,255,0.07); }
         .fmt-row.active {
@@ -1252,16 +1294,16 @@
         }
         .fmt-row-num {
             font-family: 'Space Grotesk', monospace; font-size: 0.62rem; letter-spacing: 0.2em;
-            color: rgba(255,255,255,0.6); transition: color 0.3s ease; flex-shrink: 0; width: 32px;
+            color: rgba(255,255,255,0.72); transition: color 0.3s ease; flex-shrink: 0; width: 32px;
         }
         .fmt-app-badge {
             font-family: 'Space Grotesk', monospace; font-size: 0.56rem; letter-spacing: 0.14em;
-            text-transform: uppercase; color: rgba(255,255,255,0.72);
-            border: 1px solid rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 4px;
+            text-transform: uppercase; color: rgba(255,255,255,0.85);
+            border: 1px solid rgba(255,255,255,0.25); padding: 4px 12px; border-radius: 4px;
             flex-shrink: 0; white-space: nowrap;
             transition: color 0.3s ease, border-color 0.3s ease, background 0.3s ease;
         }
-        .fmt-row-desc { font-size: 0.8rem; color: rgba(255,255,255,0.65); line-height: 1.6; flex: 1; }
+        .fmt-row-desc { font-size: 0.8rem; color: rgba(255,255,255,0.80); line-height: 1.6; flex: 1; }
         @media (max-width: 900px) { #fmt-pin { grid-template-columns: 1fr; } .fmt-right-panel { display: none; } }
         @media (max-width: 640px) { .fmt-row-desc { display: none; } }
 
@@ -1284,9 +1326,45 @@
         .contact-submit:hover { background: #e8c84a; transform: translateY(-2px); }
         select.contact-field option { background: #09090b; color: #fff; }
         .contact-success { display: none; align-items: center; gap: 10px; font-family: 'Space Grotesk', monospace; font-size: 0.65rem; letter-spacing: 0.18em; color: #34d399; }
+
+        /* ── Accessibility ─────────────────────────────────────── */
+        /* Skip-to-main link */
+        .skip-link {
+            position: absolute; top: -100%; left: 1rem;
+            background: #d4af37; color: #000;
+            padding: 8px 16px; border-radius: 4px;
+            font-family: 'Space Grotesk', monospace; font-size: 0.75rem;
+            font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+            z-index: 9999; text-decoration: none;
+            transition: top 0.15s ease;
+        }
+        .skip-link:focus { top: 1rem; }
+
+        /* Visible focus outline for keyboard navigation */
+        :focus-visible {
+            outline: 2px solid #d4af37;
+            outline-offset: 3px;
+            border-radius: 3px;
+        }
+        /* Remove focus ring for mouse users only */
+        :focus:not(:focus-visible) { outline: none; }
+
+        /* Respect reduced-motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .ticker-row { animation: none !important; }
+        }
     </style>
 </head>
 <body class="font-sans antialiased">
+
+    <!-- Skip navigation for keyboard/screen-reader users -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
 
     <!-- Loading screen (commented out)
     <div id="reveal-top"></div>
@@ -1302,9 +1380,9 @@
     <!-- Ambient flowing background -->
     <canvas id="ambient-canvas" aria-hidden="true"></canvas>
 
-    <div id="page-bg-overlay"></div>
+    <div id="page-bg-overlay" aria-hidden="true"></div>
     <div id="cursor-light" aria-hidden="true"></div>
-    <div class="grain-overlay"></div>
+    <div class="grain-overlay" aria-hidden="true"></div>
     <button id="next-section-btn" aria-label="Next section">
         <svg id="arr-down" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5">
             <path d="M9 3v12M4 10l5 5 5-5"/>
@@ -1316,29 +1394,29 @@
 
     <header class="fixed top-0 left-0 w-full z-50 px-6 py-4 flex justify-between items-center border-b border-white/5 bg-brandBg/40 backdrop-blur-md">
         <a href="/" aria-label="SuperDTP Home">
-            <img src="logo copy 5.svg" alt="SuperDTP" style="height:58px;width:auto;display:block;" />
+            <img src="logo copy 5.svg" alt="SuperDTP logo" style="height:58px;width:auto;display:block;" fetchpriority="high" />
         </a>
-        <nav class="hidden md:flex items-center space-x-8 font-mono text-xs tracking-wider text-neutral-400">
+        <nav aria-label="Main navigation" class="hidden md:flex items-center space-x-8 font-mono text-xs tracking-wider text-neutral-400">
             <a href="#hero" class="nav-link active">01. HOME</a>
             <a href="#visual-lab" class="nav-link">02. HOW WE WORK</a>
             <a href="#industry-solutions" class="nav-link">03. INDUSTRIES</a>
-            <div class="services-trigger relative flex items-center cursor-pointer">
-                <a href="#services" class="nav-link flex items-center gap-1.5">
+            <div class="services-trigger relative flex items-center cursor-pointer" role="none">
+                <a href="#services" class="nav-link flex items-center gap-1.5" aria-haspopup="true" aria-expanded="false">
                     04. SERVICES
                     <svg class="w-2.5 h-2.5" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>
-                <div class="services-dropdown" role="menu">
+                <div class="services-dropdown" role="menu" aria-label="Services menu">
 
                     <!-- Col 1: Localization Services -->
                     <div class="mega-col">
                         <div class="mega-col-hdr">Localization Services</div>
-                        <a href="#" class="dropdown-link" role="menuitem"><span class="dropdown-dot"></span>Translation &amp; Localization</a>
-                        <a href="#" class="dropdown-link" role="menuitem"><span class="dropdown-dot"></span>Website Localization</a>
-                        <a href="#" class="dropdown-link" role="menuitem"><span class="dropdown-dot"></span>Software &amp; App Localization</a>
-                        <a href="#" class="dropdown-link" role="menuitem"><span class="dropdown-dot"></span>eLearning Localization</a>
-                        <a href="#" class="dropdown-link" role="menuitem"><span class="dropdown-dot"></span>Multimedia Localization</a>
-                        <a href="#" class="dropdown-link" role="menuitem"><span class="dropdown-dot"></span>Linguistic QA &amp; Transcreation</a>
-                        <a href="#" class="dropdown-link" role="menuitem"><span class="dropdown-dot"></span>AI-Enabled Localization</a>
+                        <a href="/localization/" class="dropdown-link" role="menuitem"><span class="dropdown-dot"></span>Translation &amp; Localization</a>
+                        <a href="/localization/" class="dropdown-link" role="menuitem"><span class="dropdown-dot"></span>Website Localization</a>
+                        <a href="/localization/" class="dropdown-link" role="menuitem"><span class="dropdown-dot"></span>Software &amp; App Localization</a>
+                        <a href="/e-learning/" class="dropdown-link" role="menuitem"><span class="dropdown-dot"></span>eLearning Localization</a>
+                        <a href="/localization/" class="dropdown-link" role="menuitem"><span class="dropdown-dot"></span>Multimedia Localization</a>
+                        <a href="/qa/" class="dropdown-link" role="menuitem"><span class="dropdown-dot"></span>Linguistic QA &amp; Transcreation</a>
+                        <a href="/localization/" class="dropdown-link" role="menuitem"><span class="dropdown-dot"></span>AI-Enabled Localization</a>
                     </div>
 
                     <!-- Col 2: DTP & Publishing Services -->
@@ -1356,13 +1434,13 @@
                     <!-- Col 3: Indic Language Solutions -->
                     <div class="mega-col">
                         <div class="mega-col-hdr">Indic Language Solutions <span class="mega-star">★</span></div>
-                        <a href="#" class="dropdown-link" role="menuitem"><span class="dropdown-dot"></span>Overview</a>
-                        <a href="#" class="dropdown-link" role="menuitem"><span class="dropdown-dot"></span>Indian Language Localization</a>
-                        <a href="#" class="dropdown-link" role="menuitem"><span class="dropdown-dot"></span>Indic Publishing &amp; DTP</a>
-                        <a href="#" class="dropdown-link" role="menuitem"><span class="dropdown-dot"></span>Government &amp; Public Sector</a>
-                        <a href="#" class="dropdown-link" role="menuitem"><span class="dropdown-dot"></span>eLearning Localization</a>
-                        <a href="#" class="dropdown-link" role="menuitem"><span class="dropdown-dot"></span>Multimedia Localization</a>
-                        <a href="#" class="dropdown-link" role="menuitem"><span class="dropdown-dot"></span>Languages We Support</a>
+                        <a href="/localization/" class="dropdown-link" role="menuitem"><span class="dropdown-dot"></span>Overview</a>
+                        <a href="/localization/" class="dropdown-link" role="menuitem"><span class="dropdown-dot"></span>Indian Language Localization</a>
+                        <a href="/dtp-services/#multilingual-dtp" class="dropdown-link" role="menuitem"><span class="dropdown-dot"></span>Indic Publishing &amp; DTP</a>
+                        <a href="/localization/" class="dropdown-link" role="menuitem"><span class="dropdown-dot"></span>Government &amp; Public Sector</a>
+                        <a href="/e-learning/" class="dropdown-link" role="menuitem"><span class="dropdown-dot"></span>eLearning Localization</a>
+                        <a href="/localization/" class="dropdown-link" role="menuitem"><span class="dropdown-dot"></span>Multimedia Localization</a>
+                        <a href="/localization/" class="dropdown-link" role="menuitem"><span class="dropdown-dot"></span>Languages We Support</a>
                     </div>
 
                 </div>
@@ -1374,6 +1452,7 @@
         </div>
     </header>
 
+    <main id="main-content" tabindex="-1">
     <section id="hero" class="min-h-screen relative px-4 sm:px-6 md:px-12 overflow-x-hidden margin-top-[4rem]">
         <div class="hero-scene" aria-hidden="true">
             <canvas id="hero-three-canvas"></canvas>
@@ -1429,13 +1508,13 @@
                 </div>
 
                 <div id="home-action-bar" class="flex flex-row flex-wrap gap-3 mt-6 md:mt-7">
-                    <button class="pill-button pill-button-primary group overflow-hidden relative">
+                    <a href="#services" class="pill-button pill-button-primary group overflow-hidden relative" aria-label="Explore our localization and DTP solutions">
                         <span class="relative z-10 transition-colors duration-300">Explore Solutions</span>
-                    </button>
-                    <button class="pill-button pill-button-secondary gap-4 group overflow-hidden relative">
+                    </a>
+                    <a href="#contact" class="pill-button pill-button-secondary gap-4 group overflow-hidden relative" aria-label="Book a consultation call with SuperDTP">
                         <span class="relative z-10 text-[0.65rem] uppercase tracking-[0.2em] opacity-70">Book a </span>
                         <span class="relative z-10 font-semibold">consultation call</span>
-                    </button>
+                    </a>
                 </div>
 
             </div>
@@ -1482,195 +1561,119 @@
             <!-- Ribbon 1: right-to-left -->
             <div class="ticker-row dir-left" id="ticker-1">
                 <!-- Set A -->
-                <div class="ticker-item"><img class="ticker-logo" src="clients/ca-technologies-1.png" alt="CA Technologies company logo"><span class="ticker-name">CA Technologies</span></div>
-                <div class="ticker-item"><img class="ticker-logo" src="clients/cisco-2.png" alt="Cisco company logo"><span class="ticker-name">Cisco</span></div>
-                <div class="ticker-item"><img class="ticker-logo" src="clients/general-electric-1.png" alt="General Electric company logo"><span class="ticker-name">General Electric</span></div>
-                <div class="ticker-item"><img class="ticker-logo" src="clients/siemens-1.png" alt="Siemens company logo"><span class="ticker-name">Siemens</span></div>
-                <div class="ticker-item"><img class="ticker-logo" src="clients/pfizer-1.png" alt="Pfizer company logo"><span class="ticker-name">Pfizer</span></div>
-                <div class="ticker-item"><img class="ticker-logo" src="clients/diakin-1.png" alt="Daikin company logo"><span class="ticker-name">Daikin</span></div>
-                <!-- Set B (duplicate for seamless loop) -->
-                <div class="ticker-item"><img class="ticker-logo" src="clients/ca-technologies-1.png" alt="CA Technologies company logo"><span class="ticker-name">CA Technologies</span></div>
-                <div class="ticker-item"><img class="ticker-logo" src="clients/cisco-2.png" alt="Cisco company logo"><span class="ticker-name">Cisco</span></div>
-                <div class="ticker-item"><img class="ticker-logo" src="clients/general-electric-1.png" alt="General Electric company logo"><span class="ticker-name">General Electric</span></div>
-                <div class="ticker-item"><img class="ticker-logo" src="clients/siemens-1.png" alt="Siemens company logo"><span class="ticker-name">Siemens</span></div>
-                <div class="ticker-item"><img class="ticker-logo" src="clients/pfizer-1.png" alt="Pfizer company logo"><span class="ticker-name">Pfizer</span></div>
-                <div class="ticker-item"><img class="ticker-logo" src="clients/diakin-1.png" alt="Daikin company logo"><span class="ticker-name">Daikin</span></div>
+                <div class="ticker-item"><img class="ticker-logo" src="clients/ca-technologies-1.png" alt="CA Technologies company logo" width="120" height="34" loading="lazy" decoding="async"><span class="ticker-name">CA Technologies</span></div>
+                <div class="ticker-item"><img class="ticker-logo" src="clients/cisco-2.png" alt="Cisco company logo" width="120" height="34" loading="lazy" decoding="async"><span class="ticker-name">Cisco</span></div>
+                <div class="ticker-item"><img class="ticker-logo" src="clients/general-electric-1.png" alt="General Electric company logo" width="120" height="34" loading="lazy" decoding="async"><span class="ticker-name">General Electric</span></div>
+                <div class="ticker-item"><img class="ticker-logo" src="clients/siemens-1.png" alt="Siemens company logo" width="120" height="34" loading="lazy" decoding="async"><span class="ticker-name">Siemens</span></div>
+                <div class="ticker-item"><img class="ticker-logo" src="clients/pfizer-1.png" alt="Pfizer company logo" width="120" height="34" loading="lazy" decoding="async"><span class="ticker-name">Pfizer</span></div>
+                <div class="ticker-item"><img class="ticker-logo" src="clients/diakin-1.png" alt="Daikin company logo" width="120" height="34" loading="lazy" decoding="async"><span class="ticker-name">Daikin</span></div>
+                <!-- Set B (duplicate for seamless loop — hidden from screen readers) -->
+                <div class="ticker-item" aria-hidden="true"><img class="ticker-logo" src="clients/ca-technologies-1.png" alt="" width="120" height="34" loading="lazy" decoding="async"><span class="ticker-name">CA Technologies</span></div>
+                <div class="ticker-item" aria-hidden="true"><img class="ticker-logo" src="clients/cisco-2.png" alt="" width="120" height="34" loading="lazy" decoding="async"><span class="ticker-name">Cisco</span></div>
+                <div class="ticker-item" aria-hidden="true"><img class="ticker-logo" src="clients/general-electric-1.png" alt="" width="120" height="34" loading="lazy" decoding="async"><span class="ticker-name">General Electric</span></div>
+                <div class="ticker-item" aria-hidden="true"><img class="ticker-logo" src="clients/siemens-1.png" alt="" width="120" height="34" loading="lazy" decoding="async"><span class="ticker-name">Siemens</span></div>
+                <div class="ticker-item" aria-hidden="true"><img class="ticker-logo" src="clients/pfizer-1.png" alt="" width="120" height="34" loading="lazy" decoding="async"><span class="ticker-name">Pfizer</span></div>
+                <div class="ticker-item" aria-hidden="true"><img class="ticker-logo" src="clients/diakin-1.png" alt="" width="120" height="34" loading="lazy" decoding="async"><span class="ticker-name">Daikin</span></div>
             </div>
 
             <!-- Ribbon 2: left-to-right (reverse direction) -->
             <div class="ticker-row dir-right" id="ticker-2">
                 <!-- Set A -->
-                <div class="ticker-item"><img class="ticker-logo" src="clients/Emersomn-1.png" alt="Emerson company logo"><span class="ticker-name">Emerson</span></div>
-                <div class="ticker-item"><img class="ticker-logo" src="clients/honda-1.png" alt="Honda company logo"><span class="ticker-name">Honda</span></div>
-                <div class="ticker-item"><img class="ticker-logo" src="clients/hospira-1.png" alt="Hospira company logo"><span class="ticker-name">Hospira</span></div>
-                <div class="ticker-item"><img class="ticker-logo" src="clients/medtronic-1.png" alt="Medtronic company logo"><span class="ticker-name">Medtronic</span></div>
-                <div class="ticker-item"><img class="ticker-logo" src="clients/mercedez-1.png" alt="Mercedes-Benz company logo"><span class="ticker-name">Mercedes-Benz</span></div>
-                <div class="ticker-item"><img class="ticker-logo" src="clients/rolce-royce-1.png" alt="Rolls-Royce company logo"><span class="ticker-name">Rolls-Royce</span></div>
-                <!-- Set B -->
-                <div class="ticker-item"><img class="ticker-logo" src="clients/Emersomn-1.png" alt="Emerson company logo"><span class="ticker-name">Emerson</span></div>
-                <div class="ticker-item"><img class="ticker-logo" src="clients/honda-1.png" alt="Honda company logo"><span class="ticker-name">Honda</span></div>
-                <div class="ticker-item"><img class="ticker-logo" src="clients/hospira-1.png" alt="Hospira company logo"><span class="ticker-name">Hospira</span></div>
-                <div class="ticker-item"><img class="ticker-logo" src="clients/medtronic-1.png" alt="Medtronic company logo"><span class="ticker-name">Medtronic</span></div>
-                <div class="ticker-item"><img class="ticker-logo" src="clients/mercedez-1.png" alt="Mercedes-Benz company logo"><span class="ticker-name">Mercedes-Benz</span></div>
-                <div class="ticker-item"><img class="ticker-logo" src="clients/rolce-royce-1.png" alt="Rolls-Royce company logo"><span class="ticker-name">Rolls-Royce</span></div>
+                <div class="ticker-item"><img class="ticker-logo" src="clients/Emersomn-1.png" alt="Emerson company logo" width="120" height="34" loading="lazy" decoding="async"><span class="ticker-name">Emerson</span></div>
+                <div class="ticker-item"><img class="ticker-logo" src="clients/honda-1.png" alt="Honda company logo" width="120" height="34" loading="lazy" decoding="async"><span class="ticker-name">Honda</span></div>
+                <div class="ticker-item"><img class="ticker-logo" src="clients/hospira-1.png" alt="Hospira company logo" width="120" height="34" loading="lazy" decoding="async"><span class="ticker-name">Hospira</span></div>
+                <div class="ticker-item"><img class="ticker-logo" src="clients/medtronic-1.png" alt="Medtronic company logo" width="120" height="34" loading="lazy" decoding="async"><span class="ticker-name">Medtronic</span></div>
+                <div class="ticker-item"><img class="ticker-logo" src="clients/mercedez-1.png" alt="Mercedes-Benz company logo" width="120" height="34" loading="lazy" decoding="async"><span class="ticker-name">Mercedes-Benz</span></div>
+                <div class="ticker-item"><img class="ticker-logo" src="clients/rolce-royce-1.png" alt="Rolls-Royce company logo" width="120" height="34" loading="lazy" decoding="async"><span class="ticker-name">Rolls-Royce</span></div>
+                <!-- Set B (duplicate for seamless loop — hidden from screen readers) -->
+                <div class="ticker-item" aria-hidden="true"><img class="ticker-logo" src="clients/Emersomn-1.png" alt="" width="120" height="34" loading="lazy" decoding="async"><span class="ticker-name">Emerson</span></div>
+                <div class="ticker-item" aria-hidden="true"><img class="ticker-logo" src="clients/honda-1.png" alt="" width="120" height="34" loading="lazy" decoding="async"><span class="ticker-name">Honda</span></div>
+                <div class="ticker-item" aria-hidden="true"><img class="ticker-logo" src="clients/hospira-1.png" alt="" width="120" height="34" loading="lazy" decoding="async"><span class="ticker-name">Hospira</span></div>
+                <div class="ticker-item" aria-hidden="true"><img class="ticker-logo" src="clients/medtronic-1.png" alt="" width="120" height="34" loading="lazy" decoding="async"><span class="ticker-name">Medtronic</span></div>
+                <div class="ticker-item" aria-hidden="true"><img class="ticker-logo" src="clients/mercedez-1.png" alt="" width="120" height="34" loading="lazy" decoding="async"><span class="ticker-name">Mercedes-Benz</span></div>
+                <div class="ticker-item" aria-hidden="true"><img class="ticker-logo" src="clients/rolce-royce-1.png" alt="" width="120" height="34" loading="lazy" decoding="async"><span class="ticker-name">Rolls-Royce</span></div>
             </div>
 
             <!-- Ribbon 3: right-to-left fast -->
             <div class="ticker-row dir-fast" id="ticker-3">
                 <!-- Set A -->
-                <div class="ticker-item"><img class="ticker-logo" src="clients/teleflex-1.png" alt="Teleflex company logo"><span class="ticker-name">Teleflex</span></div>
-                <div class="ticker-item"><img class="ticker-logo" src="clients/wyndham-1.png" alt="Wyndham Hotels company logo"><span class="ticker-name">Wyndham Hotels</span></div>
-                <div class="ticker-item"><img class="ticker-logo" src="clients/Madcap Logo.png" alt="MadCap Software company logo"><span class="ticker-name">MadCap Software</span></div>
-                <div class="ticker-item"><img class="ticker-logo" src="clients/Microsoft.png" alt="Microsoft company logo"><span class="ticker-name">Microsoft</span></div>
-                <div class="ticker-item"><img class="ticker-logo" src="clients/Roche_Logo.png" alt="Roche company logo"><span class="ticker-name">Roche</span></div>
-                <!-- Set B -->
-                <div class="ticker-item"><img class="ticker-logo" src="clients/teleflex-1.png" alt="Teleflex company logo"><span class="ticker-name">Teleflex</span></div>
-                <div class="ticker-item"><img class="ticker-logo" src="clients/wyndham-1.png" alt="Wyndham Hotels company logo"><span class="ticker-name">Wyndham Hotels</span></div>
-                <div class="ticker-item"><img class="ticker-logo" src="clients/Madcap Logo.png" alt="MadCap Software company logo"><span class="ticker-name">MadCap Software</span></div>
-                <div class="ticker-item"><img class="ticker-logo" src="clients/Microsoft.png" alt="Microsoft company logo"><span class="ticker-name">Microsoft</span></div>
-                <div class="ticker-item"><img class="ticker-logo" src="clients/Roche_Logo.png" alt="Roche company logo"><span class="ticker-name">Roche</span></div>
+                <div class="ticker-item"><img class="ticker-logo" src="clients/teleflex-1.png" alt="Teleflex company logo" width="120" height="34" loading="lazy" decoding="async"><span class="ticker-name">Teleflex</span></div>
+                <div class="ticker-item"><img class="ticker-logo" src="clients/wyndham-1.png" alt="Wyndham Hotels company logo" width="120" height="34" loading="lazy" decoding="async"><span class="ticker-name">Wyndham Hotels</span></div>
+                <div class="ticker-item"><img class="ticker-logo" src="clients/Madcap Logo.png" alt="MadCap Software company logo" width="120" height="34" loading="lazy" decoding="async"><span class="ticker-name">MadCap Software</span></div>
+                <div class="ticker-item"><img class="ticker-logo" src="clients/Microsoft.png" alt="Microsoft company logo" width="120" height="34" loading="lazy" decoding="async"><span class="ticker-name">Microsoft</span></div>
+                <div class="ticker-item"><img class="ticker-logo" src="clients/Roche_Logo.png" alt="Roche company logo" width="120" height="34" loading="lazy" decoding="async"><span class="ticker-name">Roche</span></div>
+                <!-- Set B (duplicate for seamless loop — hidden from screen readers) -->
+                <div class="ticker-item" aria-hidden="true"><img class="ticker-logo" src="clients/teleflex-1.png" alt="" width="120" height="34" loading="lazy" decoding="async"><span class="ticker-name">Teleflex</span></div>
+                <div class="ticker-item" aria-hidden="true"><img class="ticker-logo" src="clients/wyndham-1.png" alt="" width="120" height="34" loading="lazy" decoding="async"><span class="ticker-name">Wyndham Hotels</span></div>
+                <div class="ticker-item" aria-hidden="true"><img class="ticker-logo" src="clients/Madcap Logo.png" alt="" width="120" height="34" loading="lazy" decoding="async"><span class="ticker-name">MadCap Software</span></div>
+                <div class="ticker-item" aria-hidden="true"><img class="ticker-logo" src="clients/Microsoft.png" alt="" width="120" height="34" loading="lazy" decoding="async"><span class="ticker-name">Microsoft</span></div>
+                <div class="ticker-item" aria-hidden="true"><img class="ticker-logo" src="clients/Roche_Logo.png" alt="" width="120" height="34" loading="lazy" decoding="async"><span class="ticker-name">Roche</span></div>
             </div>
 
         </div>
     </section>
 
-    <section class="section-fade-bg py-24 px-6 md:px-12 bg-[#07070a] border-t border-white/5" id="visual-lab" data-bg-opacity="0.8">
+    <!-- ═══════════════════════════════════════════════════════
+         02 / INDIC LANGUAGE EXCELLENCE
+    ═══════════════════════════════════════════════════════ -->
+    <section class="section-fade-bg py-32 px-6 md:px-12 border-t border-white/5 bg-neutral-950" id="indic-excellence" data-bg-opacity="0.65">
         <div class="max-w-7xl mx-auto">
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16 items-end">
-                <div>
-                    <span class="font-mono text-xs text-neutral-400 uppercase tracking-widest block mb-4">[ 02 / WORKFLOW ENGINE ]</span>
-                    <h2 class="font-serif text-5xl md:text-7xl tracking-tight max-w-3xl">How we work?</h2>
+            <span class="font-mono text-xs text-neutral-400 uppercase tracking-widest block mb-4">[ 02 / INDIC LANGUAGE EXCELLENCE ]</span>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16 items-end">
+                <div class="lg:col-span-7">
+                    <h2 class="font-serif text-5xl md:text-6xl tracking-tight max-w-3xl">Deep Roots in India's 22 Official Languages</h2>
                 </div>
-                <p class="text-sm text-neutral-400 leading-relaxed">
-                    Every project moves through a four-phase, quality-gated pipeline. From first brief to final invoice, the sequence runs automatically when you scroll here.
-                </p>
+                <p class="lg:col-span-4 lg:col-start-9 text-sm text-neutral-400 leading-relaxed">With expert DTP engineers and linguists specializing in every major Indic script — from Devanagari to Ol Chiki — SuperDTP delivers production-ready multilingual content for India's vast and diverse markets.</p>
             </div>
 
-            <!-- WORKFLOW ENGINE PANEL -->
-            <div class="visual-shell rounded-xl" id="workflow-engine">
+            <!-- Language grid -->
+            <div class="indic-lang-grid">
+                <div class="indic-lang-card"><div class="indic-script">हिंदी</div><div class="indic-lang-en">Hindi</div></div>
+                <div class="indic-lang-card"><div class="indic-script">বাংলা</div><div class="indic-lang-en">Bengali</div></div>
+                <div class="indic-lang-card"><div class="indic-script">తెలుగు</div><div class="indic-lang-en">Telugu</div></div>
+                <div class="indic-lang-card"><div class="indic-script">தமிழ்</div><div class="indic-lang-en">Tamil</div></div>
+                <div class="indic-lang-card"><div class="indic-script">मराठी</div><div class="indic-lang-en">Marathi</div></div>
+                <div class="indic-lang-card"><div class="indic-script">ગુજરાતી</div><div class="indic-lang-en">Gujarati</div></div>
+                <div class="indic-lang-card"><div class="indic-script">ಕನ್ನಡ</div><div class="indic-lang-en">Kannada</div></div>
+                <div class="indic-lang-card"><div class="indic-script">മലയാളം</div><div class="indic-lang-en">Malayalam</div></div>
+                <div class="indic-lang-card"><div class="indic-script">ଓଡ଼ିଆ</div><div class="indic-lang-en">Odia</div></div>
+                <div class="indic-lang-card"><div class="indic-script">ਪੰਜਾਬੀ</div><div class="indic-lang-en">Punjabi</div></div>
+                <div class="indic-lang-card"><div class="indic-script">اردو</div><div class="indic-lang-en">Urdu</div></div>
+                <div class="indic-lang-card"><div class="indic-script">संस्कृत</div><div class="indic-lang-en">Sanskrit</div></div>
+                <div class="indic-lang-card"><div class="indic-script">অসমীয়া</div><div class="indic-lang-en">Assamese</div></div>
+                <div class="indic-lang-card"><div class="indic-script">मैथिली</div><div class="indic-lang-en">Maithili</div></div>
+                <div class="indic-lang-card"><div class="indic-script">سنڌي</div><div class="indic-lang-en">Sindhi</div></div>
+                <div class="indic-lang-card"><div class="indic-script">कॉशुर</div><div class="indic-lang-en">Kashmiri</div></div>
+                <div class="indic-lang-card"><div class="indic-script">डोगरी</div><div class="indic-lang-en">Dogri</div></div>
+                <div class="indic-lang-card"><div class="indic-script">कोंकणी</div><div class="indic-lang-en">Konkani</div></div>
+                <div class="indic-lang-card"><div class="indic-script">ᱥᱟᱱᱛᱟᱲᱤ</div><div class="indic-lang-en">Santali</div></div>
+                <div class="indic-lang-card"><div class="indic-script">মৈতৈলোন্</div><div class="indic-lang-en">Manipuri</div></div>
+                <div class="indic-lang-card"><div class="indic-script">बड़ो</div><div class="indic-lang-en">Bodo</div></div>
+                <div class="indic-lang-card"><div class="indic-script">नेपाली</div><div class="indic-lang-en">Nepali</div></div>
+            </div>
 
-                <!-- TOP BAR: Phase tabs + playback controls -->
-                <div class="flex items-center border-b border-white/5" style="min-height:50px;overflow-x:auto;">
-                    <button class="wf-phase-tab active" data-phase="all">All Phases</button>
-                    <button class="wf-phase-tab" data-phase="p1">
-                        <span class="wf-tab-dot" style="background:#38bdf8;"></span>01 &middot; Initiation
-                    </button>
-                    <button class="wf-phase-tab" data-phase="p2">
-                        <span class="wf-tab-dot" style="background:#d4af37;"></span>02 &middot; Production
-                    </button>
-                    <button class="wf-phase-tab" data-phase="p3">
-                        <span class="wf-tab-dot" style="background:#38bdf8;"></span>03 &middot; Approvals
-                    </button>
-                    <button class="wf-phase-tab" data-phase="p4">
-                        <span class="wf-tab-dot" style="background:#34d399;"></span>04 &middot; Closure
-                    </button>
-                    <div class="flex items-center gap-2 px-4 py-2 ml-auto flex-shrink-0">
-                        <button id="wf-prev" class="wf-ctrl-btn" aria-label="Previous step">
-                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 2L4 6.5 9 11"/></svg>
-                        </button>
-                        <button id="wf-play" class="wf-ctrl-btn" aria-label="Play / Pause">
-                            <svg id="wf-icon-play" width="13" height="13" viewBox="0 0 13 13" fill="currentColor"><path d="M3 2l8 4.5L3 11V2z"/></svg>
-                            <svg id="wf-icon-pause" width="13" height="13" viewBox="0 0 13 13" fill="currentColor" style="display:none"><rect x="2" y="2" width="3.5" height="9" rx="1"/><rect x="7.5" y="2" width="3.5" height="9" rx="1"/></svg>
-                        </button>
-                        <button id="wf-next" class="wf-ctrl-btn" aria-label="Next step">
-                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 2l5 4.5L4 11"/></svg>
-                        </button>
-                        <button id="wf-reset" class="wf-ctrl-btn" aria-label="Reset">
-                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 6.5A4.5 4.5 0 1 0 3 4M2 2v3h3"/></svg>
-                        </button>
-                    </div>
+            <!-- Stats row -->
+            <div class="indic-stat-row">
+                <div class="indic-stat-cell">
+                    <div class="text-4xl font-semibold text-white mb-2">22<span class="text-lg font-normal text-neutral-400">+</span></div>
+                    <div class="font-mono text-[0.58rem] uppercase tracking-widest text-brandAccent/70">Official Languages</div>
+                    <div class="text-xs text-neutral-400 mt-2 leading-relaxed">Full coverage of all languages recognized by the Indian Constitution</div>
                 </div>
-
-                <!-- BODY: Step navigator + SVG sequence diagram -->
-                <div class="wf-body">
-
-                    <!-- LEFT: Sticky step navigator -->
-                    <div class="wf-nav" id="wf-step-panel">
-                        <ul id="wf-step-list"></ul>
-                    </div>
-
-                    <!-- RIGHT: Full-height responsive sequence diagram -->
-                    <div class="wf-diagram-wrap" id="wf-diagram-wrap">
-                    <div id="wf-marker-0" style="position:absolute;top:9.93%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
-                    <div id="wf-marker-1" style="position:absolute;top:13.91%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
-                    <div id="wf-marker-2" style="position:absolute;top:19.87%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
-                    <div id="wf-marker-3" style="position:absolute;top:23.84%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
-                    <div id="wf-marker-4" style="position:absolute;top:27.81%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
-                    <div id="wf-marker-5" style="position:absolute;top:35.10%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
-                    <div id="wf-marker-6" style="position:absolute;top:39.07%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
-                    <div id="wf-marker-7" style="position:absolute;top:43.05%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
-                    <div id="wf-marker-8" style="position:absolute;top:47.02%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
-                    <div id="wf-marker-9" style="position:absolute;top:51.00%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
-                    <div id="wf-marker-10" style="position:absolute;top:56.95%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
-                    <div id="wf-marker-11" style="position:absolute;top:60.93%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
-                    <div id="wf-marker-12" style="position:absolute;top:64.90%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
-                    <div id="wf-marker-13" style="position:absolute;top:68.87%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
-                    <div id="wf-marker-14" style="position:absolute;top:72.85%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
-                    <div id="wf-marker-15" style="position:absolute;top:78.81%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
-                    <div id="wf-marker-16" style="position:absolute;top:82.78%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
-                    <div id="wf-marker-17" style="position:absolute;top:86.75%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
-                    <div id="wf-marker-18" style="position:absolute;top:90.73%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
-                    <div id="wf-marker-19" style="position:absolute;top:94.70%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
-
-                        <svg id="wf-svg" width="100%" viewBox="0 0 800 1510" xmlns="http://www.w3.org/2000/svg" aria-label="Localization project workflow sequence diagram">
-                            <defs>
-                                <linearGradient id="wf-actor-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="rgba(15,23,42,0.97)"/>
-                                    <stop offset="100%" stop-color="rgba(7,9,20,0.97)"/>
-                                </linearGradient>
-                            </defs>
-
-                            <!-- Phase background boxes (built by JS) -->
-                            <g id="wf-phase-bg"></g>
-
-                            <!-- Actor lifelines + headers -->
-                            <g id="wf-actors">
-                                <!-- Client -->
-                                <line x1="80"  y1="90" x2="80"  y2="1475" stroke="rgba(56,189,248,0.12)"  stroke-width="1" stroke-dasharray="4,7"/>
-                                <rect x="15"  y="18" width="130" height="58" rx="8" fill="url(#wf-actor-grad)" stroke="rgba(56,189,248,0.35)" stroke-width="1.5"/>
-                                <text x="80"  y="52" fill="#ffffff" font-size="13" font-weight="600" text-anchor="middle" font-family="Space Grotesk,monospace">Client</text>
-
-                                <!-- PM -->
-                                <line x1="240" y1="90" x2="240" y2="1475" stroke="rgba(212,175,55,0.12)"  stroke-width="1" stroke-dasharray="4,7"/>
-                                <rect x="175" y="18" width="130" height="58" rx="8" fill="url(#wf-actor-grad)" stroke="rgba(212,175,55,0.35)" stroke-width="1.5"/>
-                                <text x="240" y="44" fill="#ffffff" font-size="13" font-weight="600" text-anchor="middle" font-family="Space Grotesk,monospace">Project</text>
-                                <text x="240" y="62" fill="#ffffff" font-size="13" font-weight="600" text-anchor="middle" font-family="Space Grotesk,monospace">Management</text>
-
-                                <!-- DTP -->
-                                <line x1="400" y1="90" x2="400" y2="1475" stroke="rgba(167,139,250,0.12)" stroke-width="1" stroke-dasharray="4,7"/>
-                                <rect x="335" y="18" width="130" height="58" rx="8" fill="url(#wf-actor-grad)" stroke="rgba(167,139,250,0.35)" stroke-width="1.5"/>
-                                <text x="400" y="52" fill="#ffffff" font-size="13" font-weight="600" text-anchor="middle" font-family="Space Grotesk,monospace">DTP Team</text>
-
-                                <!-- QA/LSO -->
-                                <line x1="560" y1="90" x2="560" y2="1475" stroke="rgba(52,211,153,0.12)"  stroke-width="1" stroke-dasharray="4,7"/>
-                                <rect x="495" y="18" width="130" height="58" rx="8" fill="url(#wf-actor-grad)" stroke="rgba(52,211,153,0.35)" stroke-width="1.5"/>
-                                <text x="560" y="43" fill="#ffffff" font-size="13" font-weight="600" text-anchor="middle" font-family="Space Grotesk,monospace">Internal QA</text>
-                                <text x="560" y="62" fill="#ffffff" font-size="12" text-anchor="middle" font-family="Space Grotesk,monospace">/ LSO</text>
-
-                                <!-- Finance -->
-                                <line x1="720" y1="90" x2="720" y2="1475" stroke="rgba(251,113,133,0.12)" stroke-width="1" stroke-dasharray="4,7"/>
-                                <rect x="655" y="18" width="130" height="58" rx="8" fill="url(#wf-actor-grad)" stroke="rgba(251,113,133,0.35)" stroke-width="1.5"/>
-                                <text x="720" y="43" fill="#ffffff" font-size="13" font-weight="600" text-anchor="middle" font-family="Space Grotesk,monospace">Accounts</text>
-                                <text x="720" y="62" fill="#ffffff" font-size="12" text-anchor="middle" font-family="Space Grotesk,monospace">&amp; Finance</text>
-                            </g>
-
-                            <!-- Message groups (built by JS) -->
-                            <g id="wf-msg-stage"></g>
-                        </svg>
-                    </div>
-
+                <div class="indic-stat-cell">
+                    <div class="text-4xl font-semibold text-white mb-2">12<span class="text-lg font-normal text-neutral-400">+</span></div>
+                    <div class="font-mono text-[0.58rem] uppercase tracking-widest text-brandAccent/70">Unique Scripts</div>
+                    <div class="text-xs text-neutral-400 mt-2 leading-relaxed">From Devanagari and Perso-Arabic to Ol Chiki and Meitei Mayek</div>
                 </div>
-
-                
-                <div class="border-t border-white/5 px-5 py-3 flex items-center gap-4">
-                    <span class="font-mono text-[0.6rem] text-neutral-400 uppercase tracking-widest flex-shrink-0" id="wf-counter">0 / 20</span>
-                    <div class="flex-1 relative overflow-hidden rounded-full" style="height:1px;background:rgba(255,255,255,0.08);">
-                        <div id="wf-progress" style="position:absolute;inset:0 auto 0 0;width:0%;background:linear-gradient(90deg,#d4af37,#38bdf8);transition:width 0.45s ease;"></div>
-                    </div>
-                    <span class="font-mono text-[0.6rem] text-neutral-400 tracking-wide flex-shrink-0" id="wf-current-label" aria-live="polite">--</span>
+                <div class="indic-stat-cell">
+                    <div class="text-4xl font-semibold text-white mb-2">10<span class="text-lg font-normal text-neutral-400">M+</span></div>
+                    <div class="font-mono text-[0.58rem] uppercase tracking-widest text-brandAccent/70">Indic Words Processed</div>
+                    <div class="text-xs text-neutral-400 mt-2 leading-relaxed">Across publishing, government, education, and corporate sectors</div>
                 </div>
-
+                <div class="indic-stat-cell">
+                    <div class="text-4xl font-semibold text-white mb-2">RTL<span class="text-lg font-normal text-neutral-400"> + LTR</span></div>
+                    <div class="font-mono text-[0.58rem] uppercase tracking-widest text-brandAccent/70">Bi-Directional Mastery</div>
+                    <div class="text-xs text-neutral-400 mt-2 leading-relaxed">Expert handling of mixed-direction layouts including Urdu and Sindhi</div>
+                </div>
             </div>
         </div>
     </section>
@@ -1749,7 +1752,7 @@
         <div id="svc-loc-section">
             <div class="svc-split-wrap">
                 <div class="svc-split-left" id="svc-loc-head">
-                    <span class="font-mono text-[0.6rem] text-neutral-500 uppercase tracking-widest block mb-6">Localization Services</span>
+                    <span class="font-mono text-[0.6rem] text-neutral-400 uppercase tracking-widest block mb-6">Localization Services</span>
                     <h2 class="font-serif text-4xl lg:text-[2.8rem] tracking-tight text-white leading-tight mb-5">Build multilingual<br>experiences that<br>connect globally.</h2>
                     <p class="text-sm text-neutral-400 leading-relaxed mb-8">Through enterprise localization, language adaptation, and production-ready delivery across 120+ languages.</p>
                     <div class="svc-split-pills">
@@ -1770,7 +1773,7 @@
             <div id="svc-dtp-section">
                 <div class="svc-split-wrap">
                     <div class="svc-split-left" id="svc-dtp-head">
-                        <span class="font-mono text-[0.6rem] text-neutral-500 uppercase tracking-widest block mb-6">DTP &amp; Publishing Services</span>
+                        <span class="font-mono text-[0.6rem] text-neutral-400 uppercase tracking-widest block mb-6">DTP &amp; Publishing Services</span>
                         <h2 class="font-serif text-4xl lg:text-[2.8rem] tracking-tight text-white leading-tight mb-5">Transform multilingual<br>content into<br>production-ready work.</h2>
                         <p class="text-sm text-neutral-400 leading-relaxed mb-8">Expert formatting, typesetting, artwork adaptation, and publishing workflows built for global enterprises.</p>
                         <div class="svc-split-pills">
@@ -1953,67 +1956,143 @@
 
     </section>
 
-    <!-- ═══════════════════════════════════════════════════════
-         06 / INDIC LANGUAGE EXCELLENCE
-    ═══════════════════════════════════════════════════════ -->
-    <section class="section-fade-bg py-32 px-6 md:px-12 border-t border-white/5 bg-neutral-950" id="indic-excellence" data-bg-opacity="0.65">
+    <section class="section-fade-bg py-24 px-6 md:px-12 bg-[#07070a] border-t border-white/5" id="visual-lab" data-bg-opacity="0.8">
         <div class="max-w-7xl mx-auto">
-            <span class="font-mono text-xs text-neutral-400 uppercase tracking-widest block mb-4">[ 06 / INDIC LANGUAGE EXCELLENCE ]</span>
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16 items-end">
-                <div class="lg:col-span-7">
-                    <h2 class="font-serif text-5xl md:text-6xl tracking-tight max-w-3xl">Deep Roots in India's 22 Official Languages</h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16 items-end">
+                <div>
+                    <span class="font-mono text-xs text-neutral-400 uppercase tracking-widest block mb-4">[ 06 / WORKFLOW ENGINE ]</span>
+                    <h2 class="font-serif text-5xl md:text-7xl tracking-tight max-w-3xl">How we work?</h2>
                 </div>
-                <p class="lg:col-span-4 lg:col-start-9 text-sm text-neutral-400 leading-relaxed">With expert DTP engineers and linguists specializing in every major Indic script — from Devanagari to Ol Chiki — SuperDTP delivers production-ready multilingual content for India's vast and diverse markets.</p>
+                <p class="text-sm text-neutral-400 leading-relaxed">
+                    Every project moves through a four-phase, quality-gated pipeline. From first brief to final invoice, the sequence runs automatically when you scroll here.
+                </p>
             </div>
 
-            <!-- Language grid -->
-            <div class="indic-lang-grid">
-                <div class="indic-lang-card"><div class="indic-script">हिंदी</div><div class="indic-lang-en">Hindi</div></div>
-                <div class="indic-lang-card"><div class="indic-script">বাংলা</div><div class="indic-lang-en">Bengali</div></div>
-                <div class="indic-lang-card"><div class="indic-script">తెలుగు</div><div class="indic-lang-en">Telugu</div></div>
-                <div class="indic-lang-card"><div class="indic-script">தமிழ்</div><div class="indic-lang-en">Tamil</div></div>
-                <div class="indic-lang-card"><div class="indic-script">मराठी</div><div class="indic-lang-en">Marathi</div></div>
-                <div class="indic-lang-card"><div class="indic-script">ગુજરાતી</div><div class="indic-lang-en">Gujarati</div></div>
-                <div class="indic-lang-card"><div class="indic-script">ಕನ್ನಡ</div><div class="indic-lang-en">Kannada</div></div>
-                <div class="indic-lang-card"><div class="indic-script">മലയാളം</div><div class="indic-lang-en">Malayalam</div></div>
-                <div class="indic-lang-card"><div class="indic-script">ଓଡ଼ିଆ</div><div class="indic-lang-en">Odia</div></div>
-                <div class="indic-lang-card"><div class="indic-script">ਪੰਜਾਬੀ</div><div class="indic-lang-en">Punjabi</div></div>
-                <div class="indic-lang-card"><div class="indic-script">اردو</div><div class="indic-lang-en">Urdu</div></div>
-                <div class="indic-lang-card"><div class="indic-script">संस्कृत</div><div class="indic-lang-en">Sanskrit</div></div>
-                <div class="indic-lang-card"><div class="indic-script">অসমীয়া</div><div class="indic-lang-en">Assamese</div></div>
-                <div class="indic-lang-card"><div class="indic-script">मैथिली</div><div class="indic-lang-en">Maithili</div></div>
-                <div class="indic-lang-card"><div class="indic-script">سنڌي</div><div class="indic-lang-en">Sindhi</div></div>
-                <div class="indic-lang-card"><div class="indic-script">कॉशुर</div><div class="indic-lang-en">Kashmiri</div></div>
-                <div class="indic-lang-card"><div class="indic-script">डोगरी</div><div class="indic-lang-en">Dogri</div></div>
-                <div class="indic-lang-card"><div class="indic-script">कोंकणी</div><div class="indic-lang-en">Konkani</div></div>
-                <div class="indic-lang-card"><div class="indic-script">ᱥᱟᱱᱛᱟᱲᱤ</div><div class="indic-lang-en">Santali</div></div>
-                <div class="indic-lang-card"><div class="indic-script">মৈতৈলোন্</div><div class="indic-lang-en">Manipuri</div></div>
-                <div class="indic-lang-card"><div class="indic-script">बड़ो</div><div class="indic-lang-en">Bodo</div></div>
-                <div class="indic-lang-card"><div class="indic-script">नेपाली</div><div class="indic-lang-en">Nepali</div></div>
-            </div>
+            <!-- WORKFLOW ENGINE PANEL -->
+            <div class="visual-shell rounded-xl" id="workflow-engine">
 
-            <!-- Stats row -->
-            <div class="indic-stat-row">
-                <div class="indic-stat-cell">
-                    <div class="text-4xl font-semibold text-white mb-2">22<span class="text-lg font-normal text-neutral-400">+</span></div>
-                    <div class="font-mono text-[0.58rem] uppercase tracking-widest text-brandAccent/70">Official Languages</div>
-                    <div class="text-xs text-neutral-400 mt-2 leading-relaxed">Full coverage of all languages recognized by the Indian Constitution</div>
+                <!-- TOP BAR: Phase tabs + playback controls -->
+                <div class="flex items-center border-b border-white/5" style="min-height:50px;overflow-x:auto;">
+                    <button class="wf-phase-tab active" data-phase="all">All Phases</button>
+                    <button class="wf-phase-tab" data-phase="p1">
+                        <span class="wf-tab-dot" style="background:#38bdf8;"></span>01 &middot; Initiation
+                    </button>
+                    <button class="wf-phase-tab" data-phase="p2">
+                        <span class="wf-tab-dot" style="background:#d4af37;"></span>02 &middot; Production
+                    </button>
+                    <button class="wf-phase-tab" data-phase="p3">
+                        <span class="wf-tab-dot" style="background:#38bdf8;"></span>03 &middot; Approvals
+                    </button>
+                    <button class="wf-phase-tab" data-phase="p4">
+                        <span class="wf-tab-dot" style="background:#34d399;"></span>04 &middot; Closure
+                    </button>
+                    <div class="flex items-center gap-2 px-4 py-2 ml-auto flex-shrink-0">
+                        <button id="wf-prev" class="wf-ctrl-btn" aria-label="Previous step">
+                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 2L4 6.5 9 11"/></svg>
+                        </button>
+                        <button id="wf-play" class="wf-ctrl-btn" aria-label="Play / Pause">
+                            <svg id="wf-icon-play" width="13" height="13" viewBox="0 0 13 13" fill="currentColor"><path d="M3 2l8 4.5L3 11V2z"/></svg>
+                            <svg id="wf-icon-pause" width="13" height="13" viewBox="0 0 13 13" fill="currentColor" style="display:none"><rect x="2" y="2" width="3.5" height="9" rx="1"/><rect x="7.5" y="2" width="3.5" height="9" rx="1"/></svg>
+                        </button>
+                        <button id="wf-next" class="wf-ctrl-btn" aria-label="Next step">
+                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 2l5 4.5L4 11"/></svg>
+                        </button>
+                        <button id="wf-reset" class="wf-ctrl-btn" aria-label="Reset">
+                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 6.5A4.5 4.5 0 1 0 3 4M2 2v3h3"/></svg>
+                        </button>
+                    </div>
                 </div>
-                <div class="indic-stat-cell">
-                    <div class="text-4xl font-semibold text-white mb-2">12<span class="text-lg font-normal text-neutral-400">+</span></div>
-                    <div class="font-mono text-[0.58rem] uppercase tracking-widest text-brandAccent/70">Unique Scripts</div>
-                    <div class="text-xs text-neutral-400 mt-2 leading-relaxed">From Devanagari and Perso-Arabic to Ol Chiki and Meitei Mayek</div>
+
+                <!-- BODY: Step navigator + SVG sequence diagram -->
+                <div class="wf-body">
+
+                    <!-- LEFT: Sticky step navigator -->
+                    <div class="wf-nav" id="wf-step-panel">
+                        <ul id="wf-step-list"></ul>
+                    </div>
+
+                    <!-- RIGHT: Full-height responsive sequence diagram -->
+                    <div class="wf-diagram-wrap" id="wf-diagram-wrap">
+                    <div id="wf-marker-0" style="position:absolute;top:9.93%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
+                    <div id="wf-marker-1" style="position:absolute;top:13.91%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
+                    <div id="wf-marker-2" style="position:absolute;top:19.87%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
+                    <div id="wf-marker-3" style="position:absolute;top:23.84%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
+                    <div id="wf-marker-4" style="position:absolute;top:27.81%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
+                    <div id="wf-marker-5" style="position:absolute;top:35.10%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
+                    <div id="wf-marker-6" style="position:absolute;top:39.07%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
+                    <div id="wf-marker-7" style="position:absolute;top:43.05%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
+                    <div id="wf-marker-8" style="position:absolute;top:47.02%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
+                    <div id="wf-marker-9" style="position:absolute;top:51.00%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
+                    <div id="wf-marker-10" style="position:absolute;top:56.95%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
+                    <div id="wf-marker-11" style="position:absolute;top:60.93%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
+                    <div id="wf-marker-12" style="position:absolute;top:64.90%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
+                    <div id="wf-marker-13" style="position:absolute;top:68.87%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
+                    <div id="wf-marker-14" style="position:absolute;top:72.85%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
+                    <div id="wf-marker-15" style="position:absolute;top:78.81%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
+                    <div id="wf-marker-16" style="position:absolute;top:82.78%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
+                    <div id="wf-marker-17" style="position:absolute;top:86.75%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
+                    <div id="wf-marker-18" style="position:absolute;top:90.73%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
+                    <div id="wf-marker-19" style="position:absolute;top:94.70%;left:0;width:1px;height:1px;pointer-events:none;" aria-hidden="true"></div>
+
+                        <svg id="wf-svg" width="100%" viewBox="0 0 800 1510" xmlns="http://www.w3.org/2000/svg" aria-label="Localization project workflow sequence diagram">
+                            <defs>
+                                <linearGradient id="wf-actor-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="rgba(15,23,42,0.97)"/>
+                                    <stop offset="100%" stop-color="rgba(7,9,20,0.97)"/>
+                                </linearGradient>
+                            </defs>
+
+                            <!-- Phase background boxes (built by JS) -->
+                            <g id="wf-phase-bg"></g>
+
+                            <!-- Actor lifelines + headers -->
+                            <g id="wf-actors">
+                                <!-- Client -->
+                                <line x1="80"  y1="90" x2="80"  y2="1475" stroke="rgba(56,189,248,0.12)"  stroke-width="1" stroke-dasharray="4,7"/>
+                                <rect x="15"  y="18" width="130" height="58" rx="8" fill="url(#wf-actor-grad)" stroke="rgba(56,189,248,0.35)" stroke-width="1.5"/>
+                                <text x="80"  y="52" fill="#ffffff" font-size="13" font-weight="600" text-anchor="middle" font-family="Space Grotesk,monospace">Client</text>
+
+                                <!-- PM -->
+                                <line x1="240" y1="90" x2="240" y2="1475" stroke="rgba(212,175,55,0.12)"  stroke-width="1" stroke-dasharray="4,7"/>
+                                <rect x="175" y="18" width="130" height="58" rx="8" fill="url(#wf-actor-grad)" stroke="rgba(212,175,55,0.35)" stroke-width="1.5"/>
+                                <text x="240" y="44" fill="#ffffff" font-size="13" font-weight="600" text-anchor="middle" font-family="Space Grotesk,monospace">Project</text>
+                                <text x="240" y="62" fill="#ffffff" font-size="13" font-weight="600" text-anchor="middle" font-family="Space Grotesk,monospace">Management</text>
+
+                                <!-- DTP -->
+                                <line x1="400" y1="90" x2="400" y2="1475" stroke="rgba(167,139,250,0.12)" stroke-width="1" stroke-dasharray="4,7"/>
+                                <rect x="335" y="18" width="130" height="58" rx="8" fill="url(#wf-actor-grad)" stroke="rgba(167,139,250,0.35)" stroke-width="1.5"/>
+                                <text x="400" y="52" fill="#ffffff" font-size="13" font-weight="600" text-anchor="middle" font-family="Space Grotesk,monospace">DTP Team</text>
+
+                                <!-- QA/LSO -->
+                                <line x1="560" y1="90" x2="560" y2="1475" stroke="rgba(52,211,153,0.12)"  stroke-width="1" stroke-dasharray="4,7"/>
+                                <rect x="495" y="18" width="130" height="58" rx="8" fill="url(#wf-actor-grad)" stroke="rgba(52,211,153,0.35)" stroke-width="1.5"/>
+                                <text x="560" y="43" fill="#ffffff" font-size="13" font-weight="600" text-anchor="middle" font-family="Space Grotesk,monospace">Internal QA</text>
+                                <text x="560" y="62" fill="#ffffff" font-size="12" text-anchor="middle" font-family="Space Grotesk,monospace">/ LSO</text>
+
+                                <!-- Finance -->
+                                <line x1="720" y1="90" x2="720" y2="1475" stroke="rgba(251,113,133,0.12)" stroke-width="1" stroke-dasharray="4,7"/>
+                                <rect x="655" y="18" width="130" height="58" rx="8" fill="url(#wf-actor-grad)" stroke="rgba(251,113,133,0.35)" stroke-width="1.5"/>
+                                <text x="720" y="43" fill="#ffffff" font-size="13" font-weight="600" text-anchor="middle" font-family="Space Grotesk,monospace">Accounts</text>
+                                <text x="720" y="62" fill="#ffffff" font-size="12" text-anchor="middle" font-family="Space Grotesk,monospace">&amp; Finance</text>
+                            </g>
+
+                            <!-- Message groups (built by JS) -->
+                            <g id="wf-msg-stage"></g>
+                        </svg>
+                    </div>
+
                 </div>
-                <div class="indic-stat-cell">
-                    <div class="text-4xl font-semibold text-white mb-2">10<span class="text-lg font-normal text-neutral-400">M+</span></div>
-                    <div class="font-mono text-[0.58rem] uppercase tracking-widest text-brandAccent/70">Indic Words Processed</div>
-                    <div class="text-xs text-neutral-400 mt-2 leading-relaxed">Across publishing, government, education, and corporate sectors</div>
+
+                
+                <div class="border-t border-white/5 px-5 py-3 flex items-center gap-4">
+                    <span class="font-mono text-[0.6rem] text-neutral-400 uppercase tracking-widest flex-shrink-0" id="wf-counter">0 / 20</span>
+                    <div class="flex-1 relative overflow-hidden rounded-full" style="height:1px;background:rgba(255,255,255,0.08);">
+                        <div id="wf-progress" style="position:absolute;inset:0 auto 0 0;width:0%;background:linear-gradient(90deg,#d4af37,#38bdf8);transition:width 0.45s ease;"></div>
+                    </div>
+                    <span class="font-mono text-[0.6rem] text-neutral-400 tracking-wide flex-shrink-0" id="wf-current-label" aria-live="polite">--</span>
                 </div>
-                <div class="indic-stat-cell">
-                    <div class="text-4xl font-semibold text-white mb-2">RTL<span class="text-lg font-normal text-neutral-400"> + LTR</span></div>
-                    <div class="font-mono text-[0.58rem] uppercase tracking-widest text-brandAccent/70">Bi-Directional Mastery</div>
-                    <div class="text-xs text-neutral-400 mt-2 leading-relaxed">Expert handling of mixed-direction layouts including Urdu and Sindhi</div>
-                </div>
+
             </div>
         </div>
     </section>
@@ -2267,12 +2346,12 @@
                             <textarea id="cf-message" name="message" class="contact-field" placeholder="Describe your project — file formats, volume, deadline, and any special requirements…"></textarea>
                         </div>
                         <div class="flex items-center gap-6 pt-2">
-                            <button type="submit" class="contact-submit">
+                            <button type="submit" class="contact-submit" aria-label="Submit project brief">
                                 Send Brief
-                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 7h12M8 3l4 4-4 4"/></svg>
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><path d="M1 7h12M8 3l4 4-4 4"/></svg>
                             </button>
-                            <div class="contact-success" id="contact-success">
-                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 7l3.5 3.5L12 3"/></svg>
+                            <div class="contact-success" id="contact-success" role="status" aria-live="polite">
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><path d="M2 7l3.5 3.5L12 3"/></svg>
                                 Message sent — we'll reply within 24 hours.
                             </div>
                         </div>
@@ -2283,7 +2362,9 @@
         </div>
     </section>
 
-    <footer class="bg-neutral-950 border-t border-white/10 pt-24 pb-12 px-6 md:px-12" id="footer">
+    </main>
+
+    <footer class="bg-neutral-950 border-t border-white/10 pt-24 pb-12 px-6 md:px-12" id="footer" role="contentinfo">
         <div class="max-w-7xl mx-auto flex flex-col justify-between items-center gap-8 font-mono text-xs text-neutral-400 md:flex-row">
             <div>&copy; 2026 SUPERDTP LABS. WORLDWIDE DISTRIBUTION.</div>
             <div class="flex space-x-6 text-neutral-400">
@@ -2542,8 +2623,14 @@
                 });
             });
 
-            document.querySelector('.pill-button-primary')?.addEventListener('click', () => {
-                scrollToTarget(document.getElementById('infographics'), 1.8);
+            document.querySelectorAll('a.pill-button').forEach(function(link) {
+                var href = link.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        scrollToTarget(document.querySelector(href), 1.8);
+                    });
+                }
             });
 
             const sections = [
@@ -3380,31 +3467,31 @@
         (function initSvcFlip() {
             // 9 Localization cards
             var LOC = [
-                { title: 'Translation & Localization',   desc: 'Adapt content beyond language. Market-ready communication across 120+ languages maintaining brand consistency and business intent.',    hover: 'Global Content. Local Impact.',        icon: '🌐', grad: 'linear-gradient(135deg,rgba(14,60,120,0.9),rgba(30,110,70,0.5))' },
-                { title: 'Website Localization',          desc: 'Transform websites into local digital experiences through multilingual content adaptation, SEO localization, and optimized user journeys.', hover: 'One Website. Multiple Experiences.',   icon: '🖥️', grad: 'linear-gradient(135deg,rgba(80,25,120,0.9),rgba(120,50,20,0.5))' },
-                { title: 'Software & App Localization',   desc: 'Create intuitive multilingual product experiences with UI localization, linguistic validation, and scalable release workflows.',           hover: 'Built Global. Feels Local.',            icon: '📱', grad: 'linear-gradient(135deg,rgba(20,75,120,0.9),rgba(55,20,100,0.5))' },
-                { title: 'eLearning Localization',        desc: 'Localize training and learning experiences through multilingual content adaptation, media localization, and learning-ready delivery.',     hover: 'Learning Without Barriers.',            icon: '🎓', grad: 'linear-gradient(135deg,rgba(120,75,20,0.9),rgba(60,110,30,0.5))' },
-                { title: 'Multimedia Localization',       desc: 'Scale global engagement through multilingual audio, video, subtitling, dubbing, and comprehensive multimedia adaptation.',                  hover: 'Every Frame Speaks Local.',             icon: '🎬', grad: 'linear-gradient(135deg,rgba(120,18,38,0.9),rgba(38,18,100,0.5))' },
-                { title: 'Linguistic QA & Transcreation', desc: 'Go beyond translation with linguistic validation and creative adaptation that preserve tone, meaning, and brand identity.',                hover: 'Quality Beyond Accuracy.',              icon: '✍️', grad: 'linear-gradient(135deg,rgba(18,95,75,0.9),rgba(60,38,120,0.5))' },
-                { title: 'AI-Enabled Localization',       desc: 'Accelerate multilingual delivery through AI-powered workflows enhanced by human expertise and enterprise-grade quality control.',          hover: 'AI Speed. Human Confidence.',           icon: '⚡', grad: 'linear-gradient(135deg,rgba(212,175,55,0.35),rgba(38,18,80,0.9))' },
-                { title: 'Legal & Compliance Localization', desc: 'Navigate international regulatory requirements with certified translation of contracts, compliance frameworks, and legal documentation.', hover: 'Every Clause. Every Market.',          icon: '⚖️', grad: 'linear-gradient(135deg,rgba(18,60,80,0.9),rgba(80,18,60,0.5))' },
-                { title: 'Gaming & Entertainment Localization', desc: 'Deliver immersive multilingual experiences covering UI, dialogue, lore, cultural adaptation, and platform-specific release workflows.', hover: 'Play Global. Feel Local.',             icon: '🎮', grad: 'linear-gradient(135deg,rgba(60,18,100,0.9),rgba(18,80,38,0.5))' }
+                { title: 'Translation & Localization',   url: '/localization/', desc: 'Adapt content beyond language. Market-ready communication across 120+ languages maintaining brand consistency and business intent.',    hover: 'Global Content. Local Impact.',        icon: '🌐', grad: 'linear-gradient(135deg,rgba(14,60,120,0.9),rgba(30,110,70,0.5))' },
+                { title: 'Website Localization',          url: '/localization/', desc: 'Transform websites into local digital experiences through multilingual content adaptation, SEO localization, and optimized user journeys.', hover: 'One Website. Multiple Experiences.',   icon: '🖥️', grad: 'linear-gradient(135deg,rgba(80,25,120,0.9),rgba(120,50,20,0.5))' },
+                { title: 'Software & App Localization',   url: '/localization/', desc: 'Create intuitive multilingual product experiences with UI localization, linguistic validation, and scalable release workflows.',           hover: 'Built Global. Feels Local.',            icon: '📱', grad: 'linear-gradient(135deg,rgba(20,75,120,0.9),rgba(55,20,100,0.5))' },
+                { title: 'eLearning Localization',        url: '/e-learning/',   desc: 'Localize training and learning experiences through multilingual content adaptation, media localization, and learning-ready delivery.',     hover: 'Learning Without Barriers.',            icon: '🎓', grad: 'linear-gradient(135deg,rgba(120,75,20,0.9),rgba(60,110,30,0.5))' },
+                { title: 'Multimedia Localization',       url: '/localization/', desc: 'Scale global engagement through multilingual audio, video, subtitling, dubbing, and comprehensive multimedia adaptation.',                  hover: 'Every Frame Speaks Local.',             icon: '🎬', grad: 'linear-gradient(135deg,rgba(120,18,38,0.9),rgba(38,18,100,0.5))' },
+                { title: 'Linguistic QA & Transcreation', url: '/qa/',           desc: 'Go beyond translation with linguistic validation and creative adaptation that preserve tone, meaning, and brand identity.',                hover: 'Quality Beyond Accuracy.',              icon: '✍️', grad: 'linear-gradient(135deg,rgba(18,95,75,0.9),rgba(60,38,120,0.5))' },
+                { title: 'AI-Enabled Localization',       url: '/localization/', desc: 'Accelerate multilingual delivery through AI-powered workflows enhanced by human expertise and enterprise-grade quality control.',          hover: 'AI Speed. Human Confidence.',           icon: '⚡', grad: 'linear-gradient(135deg,rgba(212,175,55,0.35),rgba(38,18,80,0.9))' },
+                { title: 'Legal & Compliance Localization', url: '/localization/', desc: 'Navigate international regulatory requirements with certified translation of contracts, compliance frameworks, and legal documentation.', hover: 'Every Clause. Every Market.',          icon: '⚖️', grad: 'linear-gradient(135deg,rgba(18,60,80,0.9),rgba(80,18,60,0.5))' },
+                { title: 'Gaming & Entertainment Localization', url: '/localization/', desc: 'Deliver immersive multilingual experiences covering UI, dialogue, lore, cultural adaptation, and platform-specific release workflows.', hover: 'Play Global. Feel Local.',             icon: '🎮', grad: 'linear-gradient(135deg,rgba(60,18,100,0.9),rgba(18,80,38,0.5))' }
             ];
             // 9 DTP & Publishing cards
             var DTP = [
-                { title: 'Multilingual DTP',              desc: 'Maintain design consistency across every language with expert multilingual formatting, layout adaptation, and production-ready desktop publishing.', hover: 'Every Language. Perfect Layout.',       icon: '📐', grad: 'linear-gradient(135deg,rgba(18,55,120,0.9),rgba(80,18,60,0.5))' },
-                { title: 'Typesetting Services',           desc: 'Create visually refined multilingual publications with professional typography, formatting, and layout optimization for digital and print.',         hover: 'Designed for Readability Everywhere.', icon: '🔤', grad: 'linear-gradient(135deg,rgba(60,18,120,0.9),rgba(18,80,55,0.5))' },
-                { title: 'Publishing Production',          desc: 'Simplify complex publishing workflows with scalable production support from content preparation to final print and digital delivery.',                hover: 'From Content to Market-Ready.',         icon: '📖', grad: 'linear-gradient(135deg,rgba(80,55,18,0.9),rgba(18,60,80,0.5))' },
-                { title: 'Artwork Localization',           desc: 'Adapt marketing visuals, graphics, and creative assets for different markets while preserving brand identity and design impact.',                    hover: 'Same Brand. Local Expression.',         icon: '🎨', grad: 'linear-gradient(135deg,rgba(120,38,18,0.9),rgba(18,38,100,0.5))' },
-                { title: 'Packaging & Label Localization', desc: 'Prepare multilingual packaging and labels with accurate formatting, content adaptation, and market-ready production support.',                       hover: 'Ready for Every Shelf.',                icon: '📦', grad: 'linear-gradient(135deg,rgba(18,95,55,0.9),rgba(80,38,18,0.5))' },
-                { title: 'File Engineering & Conversion',  desc: 'Convert, prepare, and optimize complex files for smooth localization, publishing, and multilingual production workflows.',                           hover: 'Complex Files. Simplified.',            icon: '⚙️', grad: 'linear-gradient(135deg,rgba(38,38,100,0.9),rgba(80,18,38,0.5))' },
-                { title: 'QA & Compliance',                desc: 'Ensure every multilingual asset meets quality, formatting, brand, and technical standards before reaching your audience.',                          hover: 'Quality Before Delivery.',              icon: '✅', grad: 'linear-gradient(135deg,rgba(212,175,55,0.28),rgba(18,55,38,0.9))' },
-                { title: 'RTL Document Formatting',        desc: 'Expert right-to-left document adaptation for Arabic, Hebrew, Urdu, and Farsi across all DTP formats and publishing workflows.',                     hover: 'Right Direction. Perfect Output.',      icon: '↩️', grad: 'linear-gradient(135deg,rgba(80,20,80,0.9),rgba(20,60,100,0.5))' },
-                { title: 'EPUB & Digital Publishing',      desc: 'Standards-compliant EPUB 2/3 production with reflowable text, fixed layout, accessibility markup, and multi-storefront delivery.',                  hover: 'Digital-Ready. Everywhere.',            icon: '📲', grad: 'linear-gradient(135deg,rgba(18,80,100,0.9),rgba(60,18,80,0.5))' }
+                { title: 'Multilingual DTP',              url: '/dtp-services/#multilingual-dtp', desc: 'Maintain design consistency across every language with expert multilingual formatting, layout adaptation, and production-ready desktop publishing.', hover: 'Every Language. Perfect Layout.',       icon: '📐', grad: 'linear-gradient(135deg,rgba(18,55,120,0.9),rgba(80,18,60,0.5))' },
+                { title: 'Typesetting Services',           url: '/dtp-services/#prepress',         desc: 'Create visually refined multilingual publications with professional typography, formatting, and layout optimization for digital and print.',         hover: 'Designed for Readability Everywhere.', icon: '🔤', grad: 'linear-gradient(135deg,rgba(60,18,120,0.9),rgba(18,80,55,0.5))' },
+                { title: 'Publishing Production',          url: '/dtp-services/#multilingual-dtp', desc: 'Simplify complex publishing workflows with scalable production support from content preparation to final print and digital delivery.',                hover: 'From Content to Market-Ready.',         icon: '📖', grad: 'linear-gradient(135deg,rgba(80,55,18,0.9),rgba(18,60,80,0.5))' },
+                { title: 'Artwork Localization',           url: '/dtp-services/#multilingual-dtp', desc: 'Adapt marketing visuals, graphics, and creative assets for different markets while preserving brand identity and design impact.',                    hover: 'Same Brand. Local Expression.',         icon: '🎨', grad: 'linear-gradient(135deg,rgba(120,38,18,0.9),rgba(18,38,100,0.5))' },
+                { title: 'Packaging & Label Localization', url: '/dtp-services/#multilingual-dtp', desc: 'Prepare multilingual packaging and labels with accurate formatting, content adaptation, and market-ready production support.',                       hover: 'Ready for Every Shelf.',                icon: '📦', grad: 'linear-gradient(135deg,rgba(18,95,55,0.9),rgba(80,38,18,0.5))' },
+                { title: 'File Engineering & Conversion',  url: '/dtp-services/#file-preparation', desc: 'Convert, prepare, and optimize complex files for smooth localization, publishing, and multilingual production workflows.',                           hover: 'Complex Files. Simplified.',            icon: '⚙️', grad: 'linear-gradient(135deg,rgba(38,38,100,0.9),rgba(80,18,38,0.5))' },
+                { title: 'QA & Compliance',                url: '/dtp-services/#quality-assurance', desc: 'Ensure every multilingual asset meets quality, formatting, brand, and technical standards before reaching your audience.',                          hover: 'Quality Before Delivery.',              icon: '✅', grad: 'linear-gradient(135deg,rgba(212,175,55,0.28),rgba(18,55,38,0.9))' },
+                { title: 'RTL Document Formatting',        url: '/dtp-services/#multilingual-dtp', desc: 'Expert right-to-left document adaptation for Arabic, Hebrew, Urdu, and Farsi across all DTP formats and publishing workflows.',                     hover: 'Right Direction. Perfect Output.',      icon: '↩️', grad: 'linear-gradient(135deg,rgba(80,20,80,0.9),rgba(20,60,100,0.5))' },
+                { title: 'EPUB & Digital Publishing',      url: '/dtp-services/#multilingual-dtp', desc: 'Standards-compliant EPUB 2/3 production with reflowable text, fixed layout, accessibility markup, and multi-storefront delivery.',                  hover: 'Digital-Ready. Everywhere.',            icon: '📲', grad: 'linear-gradient(135deg,rgba(18,80,100,0.9),rgba(60,18,80,0.5))' }
             ];
 
             function buildCard(d) {
-                return '<div class="svc-gc" style="opacity:0;transform:translateY(22px)">'
+                return '<a class="svc-gc" href="' + d.url + '" style="opacity:0;transform:translateY(22px);text-decoration:none;display:block;">'
                     + '<div class="svc-gc-top" style="background:' + d.grad + '"><span>' + d.icon + '</span></div>'
                     + '<div class="svc-gc-body">'
                     + '<div class="svc-gc-title">' + d.title + '</div>'
@@ -3412,7 +3499,7 @@
                     + '<span class="svc-gc-cta">Read More &#8594;</span>'
                     + '</div>'
                     + '<div class="svc-gc-hover">' + d.hover + '</div>'
-                    + '</div>';
+                    + '</a>';
             }
 
             var locGrid = document.getElementById('svc-loc-grid');
@@ -4040,7 +4127,7 @@
                 });
         })();
 
-        // ── Contact form: mailto submission ─────────────────────────
+        // ── Contact form: Web3Forms API submission ───────────────────
         (function initContactForm() {
             var form    = document.getElementById('contact-form');
             var success = document.getElementById('contact-success');
@@ -4060,21 +4147,45 @@
                     return;
                 }
 
-                var subject = 'SuperDTP Enquiry — ' + (service || 'General') + (company ? ' / ' + company : '');
-                var body    = 'Name: ' + name + '\nEmail: ' + email
-                            + (company  ? '\nCompany: '  + company  : '')
-                            + (service  ? '\nService: '  + service  : '')
-                            + (langs    ? '\nLanguages: ' + langs   : '')
-                            + (message  ? '\n\nBrief:\n' + message  : '');
+                var submitBtn = form.querySelector('button[type="submit"]');
+                var origHtml  = submitBtn.innerHTML;
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending…';
 
-                window.location.href = 'mailto:dtp.bulgaria@gmail.com'
-                    + '?subject=' + encodeURIComponent(subject)
-                    + '&body='    + encodeURIComponent(body);
-
-                if (success) {
-                    success.style.display = 'flex';
-                    if (typeof gsap !== 'undefined') gsap.from(success, { opacity: 0, y: 8, duration: 0.5, ease: 'power2.out' });
-                }
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({
+                        access_key: '75703a66-e5a7-497d-9bf5-f747be94c7a2',
+                        subject: 'SuperDTP Enquiry — ' + (service || 'General') + (company ? ' / ' + company : ''),
+                        from_name: 'SuperDTP Website',
+                        name: name,
+                        email: email,
+                        company: company || '',
+                        service: service || '',
+                        languages: langs || '',
+                        message: message || ''
+                    })
+                })
+                .then(function(res) { return res.json(); })
+                .then(function(data) {
+                    if (data.success) {
+                        if (success) {
+                            success.style.display = 'flex';
+                            if (typeof gsap !== 'undefined') gsap.from(success, { opacity: 0, y: 8, duration: 0.5, ease: 'power2.out' });
+                        }
+                        form.reset();
+                    } else {
+                        alert('Something went wrong. Please try again or email us at dtp.bulgaria@gmail.com');
+                    }
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = origHtml;
+                })
+                .catch(function() {
+                    alert('Network error. Please check your connection and try again.');
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = origHtml;
+                });
             });
         })();
 
