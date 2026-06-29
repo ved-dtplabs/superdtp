@@ -1070,11 +1070,53 @@
         }
         @media (max-width: 768px) {
             #wf-phase-tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; flex-wrap: nowrap; }
-            .wf-phase-tab { font-size: 0.48rem; padding: 10px 10px; letter-spacing: 0.08em; flex-shrink: 0; }
+            .wf-phase-tab { font-size: 0.55rem; padding: 12px 12px; letter-spacing: 0.1em; flex-shrink: 0; }
+
+            /* Replace complex diagram with clean mobile list */
+            #workflow-engine { position: relative !important; top: 0 !important; height: auto !important; min-height: 0 !important; }
+            #wf-actors-bar   { display: none !important; }
+            .wf-body         { display: none !important; }
+            .wf-bottom-bar   { display: none !important; }
+            #wf-scroll-spacer { height: 0 !important; }
+            #wf-mobile-phases { display: block; }
         }
         @media (max-width: 480px) {
             .wf-phase-tab { padding: 11px 10px; font-size: 0.5rem; }
             #wf-current-label { display: none; }
+        }
+
+        /* Mobile workflow phase list — hidden on desktop */
+        #wf-mobile-phases { display: none; padding: 0; }
+        .wfm-phase { border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .wfm-phase:last-child { border-bottom: none; }
+        .wfm-phase-hdr {
+            display: flex; align-items: center; gap: 10px;
+            padding: 14px 16px 12px;
+            background: rgba(255,255,255,0.025);
+        }
+        .wfm-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+        .wfm-num {
+            font-family: 'Space Grotesk', monospace; font-size: 0.6rem;
+            font-weight: 700; letter-spacing: 0.2em;
+            color: rgba(255,255,255,0.38);
+        }
+        .wfm-name {
+            font-family: 'Space Grotesk', monospace; font-size: 0.68rem;
+            font-weight: 700; letter-spacing: 0.14em;
+            text-transform: uppercase; color: #fff;
+        }
+        .wfm-steps { list-style: none; margin: 0; padding: 2px 0 10px; }
+        .wfm-steps li {
+            display: flex; align-items: flex-start; gap: 12px;
+            padding: 8px 16px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.78rem; color: rgba(255,255,255,0.72);
+            line-height: 1.5;
+        }
+        .wfm-seq {
+            font-family: 'Space Grotesk', monospace; font-size: 0.6rem;
+            color: #d4af37; opacity: 0.8; flex-shrink: 0;
+            min-width: 20px; margin-top: 2px; letter-spacing: 0.06em;
         }
         /* ── Services 3D Word Zoom ─────────────────────────────── */
         #svc-word-zoom {
@@ -2364,6 +2406,66 @@
                     </div>
                 </div>
 
+                <!-- MOBILE: Clean phase + step list (desktop: display:none via CSS) -->
+                <div id="wf-mobile-phases">
+                    <div class="wfm-phase" data-wfm-phase="p1">
+                        <div class="wfm-phase-hdr">
+                            <span class="wfm-dot" style="background:#38bdf8;"></span>
+                            <span class="wfm-num">01</span>
+                            <span class="wfm-name">Initiation &amp; Prep</span>
+                        </div>
+                        <ol class="wfm-steps">
+                            <li><span class="wfm-seq">01</span>Project Initiated (Email / FTP / WeTransfer)</li>
+                            <li><span class="wfm-seq">02</span>Run Pre-Flight Checks</li>
+                            <li><span class="wfm-seq">03</span>Send Quote</li>
+                            <li><span class="wfm-seq">04</span>Issue Preliminary Purchase Order (PO)</li>
+                            <li><span class="wfm-seq">05</span>Allocation to Team Leaders</li>
+                        </ol>
+                    </div>
+                    <div class="wfm-phase" data-wfm-phase="p2">
+                        <div class="wfm-phase-hdr">
+                            <span class="wfm-dot" style="background:#d4af37;"></span>
+                            <span class="wfm-num">02</span>
+                            <span class="wfm-name">Production &amp; Verification</span>
+                        </div>
+                        <ol class="wfm-steps">
+                            <li><span class="wfm-seq">06</span>Assign to DTP 1</li>
+                            <li><span class="wfm-seq">07</span>Send to Internal QA</li>
+                            <li><span class="wfm-seq">08</span>Deliver PDF for QA / Language Sign-Off (LSO)</li>
+                            <li><span class="wfm-seq">09</span>Feedback / Edits for DTP 2</li>
+                            <li><span class="wfm-seq">10</span>Deliver for Client Review (CR)</li>
+                        </ol>
+                    </div>
+                    <div class="wfm-phase" data-wfm-phase="p3">
+                        <div class="wfm-phase-hdr">
+                            <span class="wfm-dot" style="background:#38bdf8;"></span>
+                            <span class="wfm-num">03</span>
+                            <span class="wfm-name">Final Approvals</span>
+                        </div>
+                        <ol class="wfm-steps">
+                            <li><span class="wfm-seq">11</span>Send CR Feedback for DTP 3</li>
+                            <li><span class="wfm-seq">12</span>Deliver for Client&#8217;s Client Review (CCR)</li>
+                            <li><span class="wfm-seq">13</span>Send CCR Feedback for DTP 4</li>
+                            <li><span class="wfm-seq">14</span>Final Approval Granted</li>
+                            <li><span class="wfm-seq">15</span>Final Delivery to Client</li>
+                        </ol>
+                    </div>
+                    <div class="wfm-phase" data-wfm-phase="p4">
+                        <div class="wfm-phase-hdr">
+                            <span class="wfm-dot" style="background:#34d399;"></span>
+                            <span class="wfm-num">04</span>
+                            <span class="wfm-name">Closure &amp; Billing</span>
+                        </div>
+                        <ol class="wfm-steps">
+                            <li><span class="wfm-seq">16</span>Financial Closure of the Project</li>
+                            <li><span class="wfm-seq">17</span>Provide Final Purchase Order (PO)</li>
+                            <li><span class="wfm-seq">18</span>Project Feedback</li>
+                            <li><span class="wfm-seq">19</span>Send Invoice</li>
+                            <li><span class="wfm-seq">20</span>Project Archived</li>
+                        </ol>
+                    </div>
+                </div>
+
                 <!-- BODY: Step navigator + SVG sequence diagram -->
                 <div class="wf-body">
 
@@ -2446,7 +2548,7 @@
                 </div>
 
                 
-                <div class="border-t border-white/5 px-5 py-3 flex items-center gap-4">
+                <div class="wf-bottom-bar border-t border-white/5 px-5 py-3 flex items-center gap-4">
                     <span class="font-mono text-[0.6rem] text-neutral-200 uppercase tracking-widest flex-shrink-0" id="wf-counter">0 / 20</span>
                     <div class="flex-1 relative overflow-hidden rounded-full" style="height:1px;background:rgba(255,255,255,0.08);">
                         <div id="wf-progress" style="position:absolute;inset:0 auto 0 0;width:0%;background:linear-gradient(90deg,#d4af37,#38bdf8);transition:width 0.45s ease;"></div>
@@ -3736,6 +3838,10 @@
                 document.querySelectorAll('[data-phase-div]').forEach(function(el){
                     el.style.display = (all || el.dataset.phaseDiv === id) ? '' : 'none';
                 });
+                // Mobile phase cards
+                document.querySelectorAll('[data-wfm-phase]').forEach(function(el){
+                    el.style.display = (all || el.dataset.wfmPhase === id) ? '' : 'none';
+                });
             }
 
             // ── Scroll diagram wrap to show the active step ────
@@ -3757,6 +3863,8 @@
             // sentinel each scroll event, so layout shifts from lazy-built
             // sections above (e.g. the ecosystem) can never desync the steps.
             function initScrollPin() {
+                if (window.innerWidth <= 768) return; // mobile uses static list
+
                 var SCROLL_PER_STEP = 220;
                 var STICKY_TOP      = 88;   // matches #workflow-engine { top: 88px }
                 var totalScroll     = steps.length * SCROLL_PER_STEP;
