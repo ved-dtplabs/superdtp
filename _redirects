@@ -17,6 +17,3 @@
 /iqa/                 /qa/                   301
 /pdf-accessibility/   /pdf-remediation/      301
 /typesetting/         /prepress/             301
-
-# 404 fallback
-/*                    /index.html            200
