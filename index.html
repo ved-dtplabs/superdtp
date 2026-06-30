@@ -125,18 +125,9 @@
         width: auto;
         display: block;
         flex-shrink: 0;
-        aspect-ratio: 148 / 50;
       }
-      @media (min-width: 640px) {
-        .site-logo {
-          height: 36px;
-        }
-      }
-      @media (min-width: 1024px) {
-        .site-logo {
-          height: 46px;
-        }
-      }
+      @media (min-width: 640px) { .site-logo { height: 34px; } }
+      @media (min-width: 1024px) { .site-logo { height: 42px; } }
       html.lenis {
         height: auto;
       }
@@ -9910,9 +9901,32 @@
           if (logo) logo.style.opacity = "0.09";
         }
 
+        function onTouchMove(e) {
+          var t = e.touches[0];
+          lastMX = t.clientX;
+          lastMY = t.clientY;
+          repelTiles(lastMX, lastMY);
+        }
+        function onTouchEnd() {
+          lastMX = lastMY = -9999;
+          cards.forEach(function (c) {
+            c.classList.remove("indic-flee");
+            c.style.transform = "translate(0,0)";
+            c._fleeing = false;
+          });
+          if (logo) logo.style.opacity = "0.09";
+        }
+
         function init() {
           layBricks();
           document.addEventListener("mousemove", onMouseMove, {
+            passive: true,
+          });
+          document.addEventListener("touchmove", onTouchMove, {
+            passive: true,
+          });
+          document.addEventListener("touchend", onTouchEnd, { passive: true });
+          document.addEventListener("touchcancel", onTouchEnd, {
             passive: true,
           });
           window.addEventListener("scroll", onScroll, { passive: true });
