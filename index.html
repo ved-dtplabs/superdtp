@@ -1560,6 +1560,24 @@
           margin-bottom: 1.5rem;
         }
 
+        /* ── Mobile: engine scrolls with page, no sticky pin ── */
+        #workflow-engine {
+          position: static !important;
+          top: auto !important;
+          height: auto !important;
+        }
+        /* Remove internal clip so diagram flows at full natural height */
+        .wf-body {
+          grid-template-columns: 1fr !important;
+          overflow: visible !important;
+          flex: none !important;
+        }
+        .wf-diagram-wrap {
+          overflow-y: visible !important;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+
         #wf-phase-tabs {
           overflow-x: auto;
           -webkit-overflow-scrolling: touch;
@@ -1572,12 +1590,9 @@
           flex-shrink: 0;
         }
 
-        /* Hide step-list sidebar; full-width diagram */
+        /* Hide step-list sidebar */
         .wf-nav {
           display: none !important;
-        }
-        .wf-body {
-          grid-template-columns: 1fr !important;
         }
         /* Shrink actor pills to fit on narrow screens */
         #wf-actors-bar {
@@ -1592,11 +1607,7 @@
           letter-spacing: 0 !important;
           border-radius: 5px !important;
         }
-        /* Keep SVG legible — pan horizontally rather than crushing it */
-        .wf-diagram-wrap {
-          overflow-x: auto;
-          -webkit-overflow-scrolling: touch;
-        }
+        /* SVG: fixed width so it stays legible; pan left-right if needed */
         .wf-diagram-wrap svg {
           min-width: 560px;
           width: 560px;
@@ -1614,10 +1625,7 @@
         #wf-current-label {
           display: none;
         }
-        /* Use svh on small phones so browser chrome doesn't clip the engine */
-        #workflow-engine {
-          height: calc(100svh - 64px);
-        }
+        /* engine is static/auto on mobile — no height override needed */
       }
 
       /* Mobile workflow phase list — hidden on desktop */
@@ -2020,6 +2028,33 @@
           background 0.25s ease,
           transform 0.25s ease;
       }
+      /* Icon variant: row layout */
+      .psub--has-icon {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 11px;
+      }
+      .psub-icon {
+        width: 42px;
+        height: 42px;
+        flex-shrink: 0;
+        object-fit: contain;
+        border-radius: 8px;
+        opacity: 0.88;
+        transition: opacity 0.25s ease;
+      }
+      .psub:hover .psub-icon,
+      .psub:focus-visible .psub-icon {
+        opacity: 1;
+      }
+      /* Text column next to icon */
+      .psub-content {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        flex: 1;
+        min-width: 0;
+      }
       .psub:hover,
       .psub:focus-visible {
         border-color: rgba(212, 175, 55, 0.45);
@@ -2039,6 +2074,7 @@
         font-size: 0.64rem;
         line-height: 1.45;
         color: rgba(255, 255, 255, 0.55);
+        text-align: justify;
       }
       .psub-more {
         margin-top: auto;
@@ -7212,7 +7248,33 @@
         buildStepList();
         updateProgress(-1);
 
-        initScrollPin();
+        if (window.innerWidth <= 768) {
+          // Mobile: engine scrolls with the page — reveal arrows as each
+          // marker enters the viewport (no sticky, no spacer height needed).
+          if ("IntersectionObserver" in window) {
+            var mobileObs = new IntersectionObserver(
+              function (entries) {
+                entries.forEach(function (entry) {
+                  if (!entry.isIntersecting) return;
+                  var idx = parseInt(
+                    entry.target.id.replace("wf-marker-", ""),
+                    10,
+                  );
+                  if (!isNaN(idx) && idx > currentIdx) revealUpTo(idx);
+                });
+              },
+              { rootMargin: "0px 0px -8% 0px", threshold: 0 },
+            );
+            for (var mi = 0; mi < steps.length; mi++) {
+              var mk = document.getElementById("wf-marker-" + mi);
+              if (mk) mobileObs.observe(mk);
+            }
+          } else {
+            revealUpTo(steps.length - 1); // fallback: show all
+          }
+        } else {
+          initScrollPin();
+        }
       })();
 
       function initAmbientCanvas() {
@@ -7504,6 +7566,7 @@
             items: [
               {
                 h: "Multilingual DTP & Typesetting",
+                icon: "static/dtp/1%20Multilingual%20DTP%20%26%20Typesetting.svg",
                 line: "Professional multilingual desktop publishing and typesetting for over 200 languages, ensuring every translated document retains its original design, accuracy, and readability.",
                 long: [
                   "We preserve layouts, typography, graphics, and document structure across every language while adapting text expansion, right-to-left scripts, and complex writing systems.",
@@ -7512,6 +7575,7 @@
               },
               {
                 h: "Document Formatting & Corporate Publishing",
+                icon: "static/dtp/2%20Document%20Formatting%20%26%20Corporate%20Publishing.svg",
                 line: "Professional formatting for reports, manuals, proposals, presentations, marketing collateral, and business documents that reflect your brand standards.",
                 long: [
                   "We format business documents to match your corporate identity, ensuring consistent typography, spacing, branding, templates, and visual presentation.",
@@ -7520,6 +7584,7 @@
               },
               {
                 h: "PDF Remediation & Accessible Documents",
+                icon: "static/dtp/3%20PDF%20Remediation%20%26%20Accessible%20Documents.svg",
                 line: "Create accessible, WCAG and PDF/UA-compliant documents that improve usability, meet accessibility standards, and support inclusive communication.",
                 long: [
                   "We remediate PDFs with proper tagging, reading order, alternative text, bookmarks, and semantic structure to meet accessibility requirements.",
@@ -7528,6 +7593,7 @@
               },
               {
                 h: "Layout Recreation & File Conversion",
+                icon: "static/dtp/4%20Layout%20Recreation%20%26%20File%20Conversion.svg",
                 line: "Convert scanned files, PDFs, images, and legacy documents into fully editable, translation-ready, production-quality files.",
                 long: [
                   "We recreate complex layouts with editable text, tables, graphics, and formatting while preserving the original appearance and document structure.",
@@ -7536,6 +7602,7 @@
               },
               {
                 h: "Technical Documentation & eLearning DTP",
+                icon: "static/dtp/5%20Technical%20Documentation%20%26%20eLearning%20DTP.svg",
                 line: "Accurate formatting for technical manuals, engineering documentation, software guides, and multilingual eLearning content.",
                 long: [
                   "Technical documents are formatted with precision, preserving complex tables, diagrams, callouts, code samples, and engineering illustrations.",
@@ -7544,6 +7611,7 @@
               },
               {
                 h: "Image, Graphics & Presentation Localization",
+                icon: "static/dtp/6%20Image%2C%20Graphics%20%26%20Presentation%20Localization.svg",
                 line: "Localize presentations, graphics, screenshots, diagrams, charts, and visual assets while maintaining design consistency and brand identity.",
                 long: [
                   "We localize visual assets by replacing embedded text, adapting graphics, and recreating layouts without compromising design quality.",
@@ -7552,6 +7620,7 @@
               },
               {
                 h: "Translation File Engineering & Production Support",
+                icon: "static/dtp/7%20Translation%20File%20Engineering%20%26%20Production%20Support.svg",
                 line: "Prepare source files for faster translation, cleaner CAT tool processing, smoother localization workflows, and error-free multilingual publishing.",
                 long: [
                   "Our engineering team prepares clean source files, extracts translatable content, and resolves formatting issues before localization begins.",
@@ -7560,6 +7629,7 @@
               },
               {
                 h: "Print & Digital Publishing Services",
+                icon: "static/dtp/8%20Print%20%26%20Digital%20Publishing%20Services.svg",
                 line: "Deliver production-ready files optimized for professional printing, online publishing, websites, learning platforms, and digital distribution.",
                 long: [
                   "We produce press-ready and digital-ready files that meet publishing specifications for commercial printing, web platforms, and electronic distribution.",
@@ -7578,14 +7648,19 @@
           var no = (i < 9 ? "0" : "") + (i + 1);
           var subs = p.items
             .map(function (it, si) {
+              var iconHtml = it.icon
+                ? '<img class="psub-icon" src="' + it.icon + '" alt="" aria-hidden="true" loading="lazy">'
+                : "";
               return (
-                '<button class="psub" type="button" data-p="' +
+                '<button class="psub' + (it.icon ? " psub--has-icon" : "") + '" type="button" data-p="' +
                 i +
                 '" data-s="' +
                 si +
                 '" aria-label="' +
                 escAttr(it.h) +
                 ' — details">' +
+                iconHtml +
+                '<div class="psub-content">' +
                 '<span class="psub-name">' +
                 it.h +
                 "</span>" +
@@ -7593,6 +7668,7 @@
                 it.line +
                 "</span>" +
                 '<span class="psub-more">Details &#8594;</span>' +
+                "</div>" +
                 "</button>"
               );
             })

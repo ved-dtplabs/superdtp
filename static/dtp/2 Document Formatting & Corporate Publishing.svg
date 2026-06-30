@@ -1,0 +1,283 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F2A5F"/>
+      <stop offset="100%" stop-color="#1E3C72"/>
+    </linearGradient>
+
+    <linearGradient id="paper" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#EAF3FF"/>
+    </linearGradient>
+
+    <linearGradient id="blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4DA6FF"/>
+      <stop offset="100%" stop-color="#2D78FF"/>
+    </linearGradient>
+
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12"
+        flood-color="#001A44" flood-opacity=".35"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="40" fill="url(#bg)"/>
+
+  <!-- Floating Group -->
+  <g filter="url(#shadow)">
+
+    <animateTransform
+      attributeName="transform"
+      type="translate"
+      values="0 0;0 -8;0 0"
+      dur="4s"
+      repeatCount="indefinite"/>
+
+    <!-- Document -->
+    <rect x="136" y="96"
+          width="240"
+          height="320"
+          rx="18"
+          fill="url(#paper)"
+          stroke="#B9D8FF"
+          stroke-width="3"/>
+
+    <!-- Fold -->
+    <polygon points="336,96 376,136 376,96"
+             fill="#D7E9FF"/>
+
+    <!-- Header -->
+    <rect x="164"
+          y="126"
+          width="170"
+          height="18"
+          rx="6"
+          fill="url(#blue)"/>
+
+    <!-- Text Lines -->
+    <g fill="#8FA9CC">
+
+      <rect x="164" y="165" width="150" height="7" rx="3">
+        <animate attributeName="width"
+                 values="0;150;150"
+                 dur="2.5s"
+                 repeatCount="indefinite"/>
+      </rect>
+
+      <rect x="164" y="185" width="120" height="7" rx="3">
+        <animate attributeName="width"
+                 values="0;120;120"
+                 dur="2.5s"
+                 begin=".2s"
+                 repeatCount="indefinite"/>
+      </rect>
+
+      <rect x="164" y="205" width="145" height="7" rx="3">
+        <animate attributeName="width"
+                 values="0;145;145"
+                 dur="2.5s"
+                 begin=".4s"
+                 repeatCount="indefinite"/>
+      </rect>
+
+      <rect x="164" y="225" width="130" height="7" rx="3">
+        <animate attributeName="width"
+                 values="0;130;130"
+                 dur="2.5s"
+                 begin=".6s"
+                 repeatCount="indefinite"/>
+      </rect>
+
+    </g>
+
+    <!-- Table -->
+    <rect x="164"
+          y="258"
+          width="180"
+          height="70"
+          rx="6"
+          fill="#F4F9FF"
+          stroke="#B7D7FF"/>
+
+    <line x1="164" y1="282" x2="344" y2="282"
+          stroke="#B7D7FF"/>
+
+    <line x1="224" y1="258" x2="224" y2="328"
+          stroke="#B7D7FF"/>
+
+    <line x1="284" y1="258" x2="284" y2="328"
+          stroke="#B7D7FF"/>
+
+    <!-- Chart -->
+    <polyline
+      fill="none"
+      stroke="#2D78FF"
+      stroke-width="4"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      points="174,370 205,350 240,360 278,320 322,340">
+      <animate
+        attributeName="points"
+        dur="3s"
+        repeatCount="indefinite"
+        values="
+174,370 205,350 240,360 278,320 322,340;
+174,365 205,340 240,355 278,315 322,330;
+174,370 205,350 240,360 278,320 322,340"/>
+    </polyline>
+
+  </g>
+
+  <!-- PDF Icon -->
+  <g>
+    <animateTransform
+      attributeName="transform"
+      type="translate"
+      values="0 0;0 -8;0 0"
+      dur="3s"
+      repeatCount="indefinite"/>
+
+    <rect x="70"
+          y="150"
+          width="58"
+          height="70"
+          rx="10"
+          fill="#2D78FF"/>
+
+    <text x="99"
+          y="192"
+          text-anchor="middle"
+          font-size="18"
+          font-family="Arial"
+          font-weight="bold"
+          fill="white">PDF</text>
+  </g>
+
+  <!-- Presentation -->
+  <g>
+    <animateTransform
+      attributeName="transform"
+      type="translate"
+      values="0 0;0 8;0 0"
+      dur="4s"
+      repeatCount="indefinite"/>
+
+    <rect x="385"
+          y="145"
+          width="70"
+          height="52"
+          rx="8"
+          fill="#4DA6FF"/>
+
+    <rect x="397"
+          y="158"
+          width="45"
+          height="6"
+          fill="white"/>
+
+    <rect x="397"
+          y="172"
+          width="30"
+          height="6"
+          fill="white"/>
+
+    <line x1="420"
+          y1="198"
+          x2="420"
+          y2="220"
+          stroke="#4DA6FF"
+          stroke-width="4"/>
+
+    <line x1="405"
+          y1="220"
+          x2="435"
+          y2="220"
+          stroke="#4DA6FF"
+          stroke-width="4"/>
+  </g>
+
+  <!-- Typography -->
+  <g>
+    <animateTransform
+      attributeName="transform"
+      type="translate"
+      values="0 0;0 -6;0 0"
+      dur="2.5s"
+      repeatCount="indefinite"/>
+
+    <circle cx="92"
+            cy="330"
+            r="32"
+            fill="#4DA6FF"/>
+
+    <text x="92"
+          y="340"
+          text-anchor="middle"
+          font-size="26"
+          font-family="Georgia"
+          font-weight="bold"
+          fill="white">Aa</text>
+  </g>
+
+  <!-- Check -->
+  <g>
+    <animateTransform
+      attributeName="transform"
+      type="translate"
+      values="0 0;0 6;0 0"
+      dur="3.5s"
+      repeatCount="indefinite"/>
+
+    <circle cx="420"
+            cy="330"
+            r="28"
+            fill="#2D78FF"/>
+
+    <path
+      d="M408 330 L418 340 L435 320"
+      fill="none"
+      stroke="white"
+      stroke-width="5"
+      stroke-linecap="round"
+      stroke-linejoin="round"/>
+  </g>
+
+  <!-- Sparkles -->
+  <g fill="#FFFFFF">
+
+    <circle cx="120" cy="80" r="3">
+      <animate attributeName="opacity"
+        values="0;1;0"
+        dur="2s"
+        repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="410" cy="90" r="2">
+      <animate attributeName="opacity"
+        values="0;1;0"
+        begin=".5s"
+        dur="2s"
+        repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="430" cy="410" r="3">
+      <animate attributeName="opacity"
+        values="0;1;0"
+        begin="1s"
+        dur="2s"
+        repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="80" cy="420" r="2">
+      <animate attributeName="opacity"
+        values="0;1;0"
+        begin="1.5s"
+        dur="2s"
+        repeatCount="indefinite"/>
+    </circle>
+
+  </g>
+
+</svg>
