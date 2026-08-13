@@ -12,7 +12,7 @@
 - **Headquarters:** India and Bulgaria (dual production centres)
 - **Team:** 60+ in-house specialists (not contractors or freelancers)
 - **Client types:** Startups, SMEs, Fortune 500 and Fortune 1000 companies, government organizations, academic publishers, and Language Service Providers (LSPs)
-- **Website:** https://www.superdtp.com
+- **Website:** https://superdtp.com
 - **Email:** info@superdtp.com
 - **Phone:** +91 98100 50809
 
@@ -21,7 +21,7 @@
 ## Services in Detail
 
 ### 1. Indic Language Localisation
-**URL:** https://www.superdtp.com/localization/
+**URL:** https://superdtp.com/localization/
 
 SuperDTP delivers enterprise-grade Indic language localisation powered by an automated production DTP pipeline. The service covers all major Indian languages with script-specific typographic expertise.
 
@@ -57,7 +57,7 @@ SuperDTP delivers enterprise-grade Indic language localisation powered by an aut
 ---
 
 ### 2. Multilingual DTP Services
-**URL:** https://www.superdtp.com/dtp-services/#multilingual-dtp
+**URL:** https://superdtp.com/dtp-services/#multilingual-dtp
 
 Desktop Publishing (DTP) involves the development and adaptation of existing documents to fit the format and layout criteria of the target language. SuperDTP handles any project regardless of complexity, script, or platform.
 
@@ -86,7 +86,7 @@ Desktop Publishing (DTP) involves the development and adaptation of existing doc
 ---
 
 ### 3. E-learning Localisation Services
-**URL:** https://www.superdtp.com/localization/#elearning-localization
+**URL:** https://superdtp.com/localization/#elearning-localization
 
 eLearning localisation goes beyond translation — it requires cultural adaptation, visual redesign, and technical integration for the learning platform. SuperDTP has experience localising courses in all language scripts.
 
@@ -110,7 +110,7 @@ eLearning localisation goes beyond translation — it requires cultural adaptati
 ---
 
 ### 4. File Preparation Services
-**URL:** https://www.superdtp.com/dtp-services/#file-engineering
+**URL:** https://superdtp.com/dtp-services/#file-engineering
 
 Inadequately prepared files result in poor print quality, costly reprints, and extensive post-translation DTP rework. SuperDTP prepares documents correctly before translation, printing, or digital distribution.
 
@@ -129,7 +129,7 @@ Inadequately prepared files result in poor print quality, costly reprints, and e
 ---
 
 ### 5. Independent Quality Assurance (IQA)
-**URL:** https://www.superdtp.com/localization/#localization-qa-testing
+**URL:** https://superdtp.com/localization/#localization-qa-testing
 
 SuperDTP provides professional, independent quality assurance as both a stand-alone service and an integrated production cycle component. The QA team is fully independent of the production team.
 
@@ -154,7 +154,7 @@ SuperDTP provides professional, independent quality assurance as both a stand-al
 ---
 
 ### 6. PDF Accessibility & Remediation
-**URL:** https://www.superdtp.com/dtp-services/#pdf-remediation
+**URL:** https://superdtp.com/dtp-services/#pdf-remediation
 
 PDF accessibility is legally required for many organisations under Section 508 (US federal), WCAG (Web Content Accessibility Guidelines), and the ADA (Americans with Disabilities Act). Automated tools alone cannot achieve full compliance.
 
@@ -182,7 +182,7 @@ PDF accessibility is legally required for many organisations under Section 508 (
 ---
 
 ### 7. Prepress & Typesetting Services
-**URL:** https://www.superdtp.com/dtp-services/#document-formatting
+**URL:** https://superdtp.com/dtp-services/#document-formatting
 
 SuperDTP operates as a dedicated prepress and typesetting back-office for publishers worldwide, handling both web and print publications since 2014.
 
@@ -265,26 +265,26 @@ A: SuperDTP works with the full range — from startups and SMEs to Fortune 500 
 
 ## Sitemap Reference
 
-- Home: https://www.superdtp.com/
-- Indic Language Localisation: https://www.superdtp.com/localization/
-  - Website & Digital Experience Localization: https://www.superdtp.com/localization/#website-localization
-  - Software, SaaS & App Localization: https://www.superdtp.com/localization/#software-app-localization
-  - Marketing & Brand Localization: https://www.superdtp.com/localization/#marketing-localization
-  - Technical & Business Document Localization: https://www.superdtp.com/localization/#technical-documentation-localization
-  - Multimedia & eLearning Localization: https://www.superdtp.com/localization/#multimedia-localization
-  - eLearning Localization: https://www.superdtp.com/localization/#elearning-localization
-  - Multimedia DTP & Desktop Publishing: https://www.superdtp.com/localization/#multilingual-dtp-publishing
-  - Localization QA & Testing: https://www.superdtp.com/localization/#localization-qa-testing
-- Multilingual DTP Services: https://www.superdtp.com/dtp-services/
-  - Multilingual DTP & Typesetting: https://www.superdtp.com/dtp-services/#multilingual-dtp
-  - Document Formatting & Corporate Publishing: https://www.superdtp.com/dtp-services/#document-formatting
-  - PDF Remediation & Accessible Documents: https://www.superdtp.com/dtp-services/#pdf-remediation
-  - Layout Recreation & File Conversion: https://www.superdtp.com/dtp-services/#layout-recreation
-  - Technical Documentation & eLearning DTP: https://www.superdtp.com/dtp-services/#technical-documentation
-  - Image, Graphics & Presentation Localization: https://www.superdtp.com/dtp-services/#image-graphics
-  - Translation File Engineering & Production Support: https://www.superdtp.com/dtp-services/#file-engineering
-  - Print & Digital Publishing Services: https://www.superdtp.com/dtp-services/#print-publishing
-- Sitemap XML: https://www.superdtp.com/sitemap.xml
-- Robots.txt: https://www.superdtp.com/robots.txt
-- LLMs (compact): https://www.superdtp.com/llms.txt
-- LLMs (full): https://www.superdtp.com/llms-full.txt
+- Home: https://superdtp.com/
+- Indic Language Localisation: https://superdtp.com/localization/
+  - Website & Digital Experience Localization: https://superdtp.com/localization/#website-localization
+  - Software, SaaS & App Localization: https://superdtp.com/localization/#software-app-localization
+  - Marketing & Brand Localization: https://superdtp.com/localization/#marketing-localization
+  - Technical & Business Document Localization: https://superdtp.com/localization/#technical-documentation-localization
+  - Multimedia & eLearning Localization: https://superdtp.com/localization/#multimedia-localization
+  - eLearning Localization: https://superdtp.com/localization/#elearning-localization
+  - Multimedia DTP & Desktop Publishing: https://superdtp.com/localization/#multilingual-dtp-publishing
+  - Localization QA & Testing: https://superdtp.com/localization/#localization-qa-testing
+- Multilingual DTP Services: https://superdtp.com/dtp-services/
+  - Multilingual DTP & Typesetting: https://superdtp.com/dtp-services/#multilingual-dtp
+  - Document Formatting & Corporate Publishing: https://superdtp.com/dtp-services/#document-formatting
+  - PDF Remediation & Accessible Documents: https://superdtp.com/dtp-services/#pdf-remediation
+  - Layout Recreation & File Conversion: https://superdtp.com/dtp-services/#layout-recreation
+  - Technical Documentation & eLearning DTP: https://superdtp.com/dtp-services/#technical-documentation
+  - Image, Graphics & Presentation Localization: https://superdtp.com/dtp-services/#image-graphics
+  - Translation File Engineering & Production Support: https://superdtp.com/dtp-services/#file-engineering
+  - Print & Digital Publishing Services: https://superdtp.com/dtp-services/#print-publishing
+- Sitemap XML: https://superdtp.com/sitemap.xml
+- Robots.txt: https://superdtp.com/robots.txt
+- LLMs (compact): https://superdtp.com/llms.txt
+- LLMs (full): https://superdtp.com/llms-full.txt
