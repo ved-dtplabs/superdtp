@@ -714,6 +714,42 @@
         color: #fff;
       }
 
+      .brochure-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-family: "Space Grotesk", monospace;
+        font-size: 0.65rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        padding: 0.4rem 0.9rem;
+        border-radius: 999px;
+        border: 1px solid rgba(212, 175, 55, 0.4);
+        background: rgba(212, 175, 55, 0.08);
+        color: #d4af37;
+        transition:
+          background 0.25s ease,
+          color 0.25s ease,
+          border-color 0.25s ease,
+          transform 0.25s ease;
+      }
+      .brochure-btn:hover,
+      .brochure-btn:focus-visible {
+        background: #d4af37;
+        color: #09090b;
+        border-color: #d4af37;
+        transform: translateY(-1px);
+      }
+      .brochure-btn svg {
+        width: 13px;
+        height: 13px;
+        flex-shrink: 0;
+        transition: transform 0.25s ease;
+      }
+      .brochure-btn:hover svg {
+        transform: translateY(2px);
+      }
+
       #home-action-bar {
         opacity: 1;
         transform: translateY(0);
@@ -3355,6 +3391,28 @@
       </nav>
       <!-- Right-side group: CONTACT US + hamburger stay together at all breakpoints -->
       <div class="flex items-center gap-3 flex-shrink-0">
+        <a
+          href="/static/brochure.pdf"
+          download="SuperDTP-Company-Brochure.pdf"
+          title="See our work"
+          aria-label="Download the SuperDTP company brochure — see our work"
+          class="brochure-btn hidden sm:inline-flex"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M12 3v12" />
+            <path d="M7 10l5 5 5-5" />
+            <path d="M5 21h14" />
+          </svg>
+          <span>Brochure</span>
+        </a>
         <div
           class="font-mono text-[0.65rem] border border-brandAccent/30 px-3 py-1 rounded-full text-brandAccent bg-brandAccent/5 tracking-widest hidden sm:block"
         >
