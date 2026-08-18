@@ -1,15 +1,6 @@
 # Cloudflare Pages — Redirect Rules
 # SuperDTP Service Pages
 
-# www → apex. Inert today: www.superdtp.com has no DNS record at all
-# (ERR_NAME_NOT_RESOLVED), so requests never reach this edge to hit the rule.
-# Kept as a safety net for if/when a DNS record for www is created — without
-# this, www would start serving as a second, uncanonicalized copy of the site.
-# The site canonicalizes to the apex (see sitemap.xml, robots.txt, llms.txt,
-# every <link rel="canonical">) — do not revert this without also reverting
-# those.
-https://www.superdtp.com/*    https://superdtp.com/:splat    301
-
 # Canonical redirects (no trailing slash → with trailing slash)
 /localization         /localization/         301
 /dtp-services     /dtp-services/     301

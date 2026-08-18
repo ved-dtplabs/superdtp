@@ -1,5 +1,5 @@
 # SuperDTP — robots.txt
-# https://superdtp.com
+# https://www.superdtp.com
 
 User-agent: *
 Allow: /
@@ -34,4 +34,4 @@ User-agent: SemrushBot
 Crawl-delay: 10
 
 # Sitemaps
-Sitemap: https://superdtp.com/sitemap.xml
+Sitemap: https://www.superdtp.com/sitemap.xml
