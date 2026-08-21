@@ -73,7 +73,7 @@
     </tbody>
   </table>
   <footer>
-    Generated for <a href="https://www.superdtp.com/">superdtp.com</a> — see also <a href="/robots.txt">robots.txt</a> and <a href="/llms.txt">llms.txt</a>
+    Generated for <a href="https://superdtp.com/">superdtp.com</a> — see also <a href="/robots.txt">robots.txt</a> and <a href="/llms.txt">llms.txt</a>
   </footer>
 </div>
 </body>
