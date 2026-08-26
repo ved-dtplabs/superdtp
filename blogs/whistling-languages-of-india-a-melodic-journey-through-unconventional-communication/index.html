@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog — Insights on Multilingual DTP &amp; Localization | SuperDTP</title>
-  <meta name="description" content="Field notes on multilingual desktop publishing, PDF accessibility, eLearning localization and translation production from the SuperDTP team." />
+  <title>Whistling Languages of India: A Melodic Journey Through Unconventional Communication | SuperDTP Blog</title>
+  <meta name="description" content="A look at India's whistling languages — from Kongthong's bird-language speakers to the tonal systems that carry meaning across hills and valleys." />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
   <meta name="theme-color" content="#09090b" />
-  <link rel="canonical" href="https://superdtp.com/blogs/" />
+  <link rel="canonical" href="https://superdtp.com/blogs/whistling-languages-of-india/" />
   <link rel="icon" type="image/png" href="/static/favicon.png" />
   <link rel="apple-touch-icon" href="/static/favicon.png" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Blog — Insights on Multilingual DTP &amp; Localization | SuperDTP" />
-  <meta property="og:description" content="Field notes on multilingual desktop publishing, PDF accessibility, eLearning localization and translation production from the SuperDTP team." />
-  <meta property="og:url" content="https://superdtp.com/blogs/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Whistling Languages of India: A Melodic Journey Through Unconventional Communication | SuperDTP Blog" />
+  <meta property="og:description" content="A look at India's whistling languages — from Kongthong's bird-language speakers to the tonal systems that carry meaning across hills and valleys." />
+  <meta property="og:url" content="https://superdtp.com/blogs/whistling-languages-of-india/" />
   <meta property="og:image" content="https://superdtp.com/clients/icons/Logo.png" />
   <meta property="og:image:alt" content="SuperDTP" />
   <meta property="og:site_name" content="SuperDTP" />
   <meta property="og:locale" content="en_US" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Blog — Insights on Multilingual DTP &amp; Localization | SuperDTP" />
-  <meta name="twitter:description" content="Field notes on multilingual desktop publishing, PDF accessibility, eLearning localization and translation production from the SuperDTP team." />
+  <meta name="twitter:title" content="Whistling Languages of India: A Melodic Journey Through Unconventional Communication | SuperDTP Blog" />
+  <meta name="twitter:description" content="A look at India's whistling languages — from Kongthong's bird-language speakers to the tonal systems that carry meaning across hills and valleys." />
   <meta name="twitter:image" content="https://superdtp.com/clients/icons/Logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -52,7 +52,7 @@
     @media (min-width: 480px) { .site-logo { max-width: none; } }
     @media (min-width: 1024px) { .site-logo { height: 42px; } }
 
-    /* ── Header nav (mirrors index.html) ─────────────────── */
+    /* ── Header nav ─────────────────── */
     .nav-link { opacity: .75; transition: opacity .35s ease, color .35s ease; background: none; border: none; color: inherit; font-size: 1rem; }
     .nav-link:hover, .nav-link.active { opacity: 1; color: #fff; }
 
@@ -120,19 +120,39 @@
         radial-gradient(60rem 30rem at 15% -10%, rgba(212,175,55,.10), transparent 60%),
         radial-gradient(45rem 25rem at 95% 0%, rgba(212,175,55,.05), transparent 55%);
     }
-    .post-card { transition: border-color .35s ease, background .35s ease, transform .35s ease; }
-    .post-card:hover { border-color: rgba(212,175,55,.35); background: rgba(255,255,255,.02); transform: translateY(-3px); }
-    .chip {
-      font-family: "Space Grotesk", monospace; font-size: .6rem; letter-spacing: .16em;
-      text-transform: uppercase; padding: 8px 16px; border-radius: 9999px; cursor: pointer;
-      border: 1px solid rgba(255,255,255,.12); color: rgba(255,255,255,.55);
-      background: none; transition: all .25s ease;
+    /* ── Article typography ──────────────────────────────── */
+    .prose { font-size: 1.02rem; line-height: 1.85; color: rgba(231,231,234,.82); }
+    .prose > * + * { margin-top: 1.35em; }
+    .prose h2 {
+      font-family: "Instrument Serif", serif; font-size: clamp(1.6rem, 3.2vw, 2.15rem);
+      line-height: 1.2; color: #fff; margin-top: 2.6em; margin-bottom: .1em; letter-spacing: -.01em;
     }
-    .chip:hover { color: #fff; border-color: rgba(255,255,255,.3); }
-    .chip.active { color: #d4af37; border-color: rgba(212,175,55,.5); background: rgba(212,175,55,.07); }
-    .post-card[hidden] { display: none; }
+    .prose h2::after { content: ""; display: block; width: 42px; height: 1px; background: rgba(212,175,55,.55); margin-top: .55rem; }
+    .prose h3 { font-family: "Instrument Serif", serif; font-size: clamp(1.25rem, 2.4vw, 1.5rem); color: #f4f4f5; margin-top: 2em; margin-bottom: .1em; }
+    .prose h4 { font-family: "Space Grotesk", monospace; font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: #d4af37; margin-top: 2em; }
+    .prose strong { color: #fff; font-weight: 600; }
+    .prose a { color: #d4af37; text-decoration: none; border-bottom: 1px solid rgba(212,175,55,.35); transition: border-color .2s ease, color .2s ease; }
+    .prose a:hover { color: #e9c65a; border-bottom-color: #e9c65a; }
+    .prose ul, .prose ol { padding-left: 1.35em; }
+    .prose ul { list-style: none; padding-left: 0; }
+    .prose ul > li { position: relative; padding-left: 1.5em; margin-top: .6em; }
+    .prose ul > li::before { content: ""; position: absolute; left: .25em; top: .72em; width: 5px; height: 5px; border-radius: 50%; background: rgba(212,175,55,.6); }
+    .prose ol { list-style: decimal; }
+    .prose ol > li { margin-top: .6em; padding-left: .3em; }
+    .prose ol > li::marker { color: rgba(212,175,55,.7); font-family: "Space Grotesk", monospace; font-size: .85em; }
+    .prose blockquote {
+      border-left: 2px solid rgba(212,175,55,.5); padding: .2em 0 .2em 1.4em; margin-left: 0;
+      font-family: "Instrument Serif", serif; font-size: 1.25rem; line-height: 1.5; color: #fff; font-style: italic;
+    }
+    .prose table { width: 100%; border-collapse: collapse; font-size: .9rem; display: block; overflow-x: auto; }
+    .prose th, .prose td { border: 1px solid rgba(255,255,255,.1); padding: .6em .85em; text-align: left; }
+    .prose th { color: #d4af37; font-family: "Space Grotesk", monospace; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; }
+    .prose code { font-family: "Space Grotesk", monospace; font-size: .88em; background: rgba(255,255,255,.06); padding: .15em .45em; border-radius: 4px; color: #e9c65a; }
+
+    /* Reading progress bar */
+    #read-bar { position: fixed; top: 64px; left: 0; height: 2px; width: 0%; background: linear-gradient(90deg, rgba(212,175,55,.4), #d4af37); z-index: 60; transition: width .1s linear; }
   </style>
-  <script type="application/ld+json">[{"@context":"https://schema.org","@type":"Blog","name":"SuperDTP Blog","url":"https://superdtp.com/blogs/","description":"Field notes on multilingual desktop publishing, PDF accessibility, eLearning localization and translation production from the SuperDTP team.","inLanguage":"en","publisher":{"@type":"Organization","name":"SuperDTP","url":"https://superdtp.com/","logo":{"@type":"ImageObject","url":"https://superdtp.com/clients/icons/Logo.png"}},"blogPost":{"@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"url":"https://superdtp.com/blogs/ensuring-equal-access-unveiling-the-top-pdf-accessibility-errors-and-how-to-fix-them/","name":"The Top PDF Accessibility Errors — and How to Fix Them"},{"@type":"ListItem","position":2,"url":"https://superdtp.com/blogs/step-by-step-multilingual-dtp-workflow-from-translation-to-final-output/","name":"A Step-by-Step Multilingual DTP Workflow, Translation to Final Output"},{"@type":"ListItem","position":3,"url":"https://superdtp.com/blogs/the-ultimate-guide-to-e-learning-localization/","name":"The Ultimate Guide to eLearning Localization"},{"@type":"ListItem","position":4,"url":"https://superdtp.com/blogs/best-practices-for-managing-text-expansion-and-contraction-in-dtp/","name":"Managing Text Expansion and Contraction in Multilingual DTP"},{"@type":"ListItem","position":5,"url":"https://superdtp.com/blogs/essential-steps-for-quality-assurance-in-dtp-services/","name":"Essential Steps for Quality Assurance in DTP"},{"@type":"ListItem","position":6,"url":"https://superdtp.com/blogs/pdf-remediation-a-beginners-guide-to-accessibility/","name":"PDF Remediation: A Beginner's Guide to Accessibility"},{"@type":"ListItem","position":7,"url":"https://superdtp.com/blogs/a-step-by-step-guide-to-preparing-documents-for-translation/","name":"A Step-by-Step Guide to Preparing Documents for Translation"},{"@type":"ListItem","position":8,"url":"https://superdtp.com/blogs/why-multilingual-dtp-is-the-hidden-hero-of-global-marketing/","name":"Why Multilingual DTP Is the Hidden Hero of Global Marketing"},{"@type":"ListItem","position":9,"url":"https://superdtp.com/blogs/human-translation-vs-mtpe-which-is-right-for-your-content/","name":"Human Translation vs MTPE: Which Is Right for Your Content?"},{"@type":"ListItem","position":10,"url":"https://superdtp.com/blogs/can-ai-replace-human-expertise-in-desktop-publishing/","name":"Can AI Replace Human Expertise in Desktop Publishing?"}]}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org","@type":"BlogPosting","headline":"Whistling Languages of India: A Melodic Journey Through Unconventional Communication","description":"A look at India's whistling languages — from Kongthong's bird-language speakers to the tonal systems that carry meaning across hills and valleys.","url":"https://superdtp.com/blogs/whistling-languages-of-india/","inLanguage":"en","articleSection":"Language","image":"https://superdtp.com/clients/icons/Logo.png","author":{"@type":"Organization","name":"SuperDTP","url":"https://superdtp.com/"},"publisher":{"@type":"Organization","name":"SuperDTP","logo":{"@type":"ImageObject","url":"https://superdtp.com/clients/icons/Logo.png"}},"isPartOf":{"@type":"Blog","name":"SuperDTP Blog","@id":"https://superdtp.com/blogs/"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://superdtp.com/blogs/whistling-languages-of-india/"}},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://superdtp.com/"},{"@type":"ListItem","position":2,"name":"Blogs","item":"https://superdtp.com/blogs/"},{"@type":"ListItem","position":3,"name":"Whistling Languages of India","item":"https://superdtp.com/blogs/whistling-languages-of-india/"}]}]</script>
 </head>
 <body class="bg-brandBg text-neutral-200 antialiased">
   <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[60] focus:bg-brandAccent focus:text-black focus:px-4 focus:py-2 focus:rounded">Skip to content</a>
@@ -215,161 +235,125 @@
         </button>
       </div>
     </header>
+  <div id="read-bar" aria-hidden="true"></div>
 
   <main id="main-content" tabindex="-1">
-    <!-- ── Hero ── -->
-    <section class="relative grain overflow-x-clip pt-36 pb-16 px-5 sm:px-8">
-      <div class="relative max-w-5xl mx-auto">
-        <div class="eyebrow mb-6">Insights &amp; Field Notes</div>
-        <!-- One line on anything wider than a phone; wraps naturally below that
-             rather than being force-broken. line-height is inline because the
-             Tailwind CDN build has no JIT, so leading-[1.05] would be a no-op. -->
-        <h1 class="font-serif text-5xl sm:text-6xl md:text-7xl text-white tracking-tight mb-7" style="line-height: 1.05">
-          The SuperDTP <span class="text-brandAccent italic">Journal</span>
-        </h1>
-        <p class="text-neutral-400 text-base sm:text-lg leading-relaxed max-w-2xl">
-          Ten essential reads on multilingual desktop publishing, PDF accessibility,
-          eLearning localization and translation production &mdash; written by the team
-          that ships these files every day.
-        </p>
-        <div class="flex flex-wrap gap-2.5 mt-10">
-            <button class="chip active" data-cat="all" type="button">All</button>
-            <button class="chip" data-cat="PDF Accessibility" type="button">PDF Accessibility</button>
-            <button class="chip" data-cat="Multilingual DTP" type="button">Multilingual DTP</button>
-            <button class="chip" data-cat="eLearning" type="button">eLearning</button>
-            <button class="chip" data-cat="Quality Assurance" type="button">Quality Assurance</button>
-            <button class="chip" data-cat="File Engineering" type="button">File Engineering</button>
-            <button class="chip" data-cat="Localization" type="button">Localization</button>
-            <button class="chip" data-cat="Translation &amp; AI" type="button">Translation &amp; AI</button>
+    <!-- ── Article header ── -->
+    <section class="relative grain overflow-x-clip pt-32 pb-14 px-5 sm:px-8">
+      <div class="relative max-w-3xl mx-auto">
+        <nav aria-label="Breadcrumb" class="font-mono text-[0.6rem] tracking-[0.2em] uppercase text-neutral-500 mb-8">
+          <a href="/" class="hover:text-brandAccent transition-colors">Home</a>
+          <span class="mx-2 text-neutral-700">/</span>
+          <a href="/blogs/" class="hover:text-brandAccent transition-colors">Blogs</a>
+          <span class="mx-2 text-neutral-700">/</span>
+          <span class="text-neutral-400">Language</span>
+        </nav>
+
+        <div class="eyebrow mb-5">Language</div>
+        <h1 class="font-serif text-4xl sm:text-5xl md:text-[3.4rem] leading-[1.08] text-white mb-7 tracking-tight">Whistling Languages of India: A Melodic Journey Through Unconventional Communication</h1>
+        <p class="text-neutral-400 text-base sm:text-lg leading-relaxed max-w-2xl">From the hills of Meghalaya to the forests of Karnataka, how tonal whistling became a sophisticated system of long-distance communication.</p>
+
+        <div class="flex flex-wrap items-center gap-x-5 gap-y-2 mt-9 pt-6 border-t border-white/8 font-mono text-[0.62rem] tracking-[0.18em] uppercase text-neutral-500">
+          <span class="text-brandAccent/80">SuperDTP Editorial</span>
+          <span class="text-neutral-700">&bull;</span>
+          <span>6 min read</span>
         </div>
       </div>
     </section>
 
-    <!-- ── Posts ── -->
-    <section class="px-5 sm:px-8 pb-28">
+    <!-- ── Article body ── -->
+    <article class="px-5 sm:px-8 pb-24">
+      <div class="prose max-w-3xl mx-auto">
+
+<p>India, a land of diversity and cultural richness, is home to a plethora of languages and dialects. While most people are familiar with the spoken languages like Hindi, Bengali, or Tamil, there exists a fascinating and lesser-known form of communication in certain regions of the country&mdash;whistling languages. These unique and melodic methods of communication have been practiced for generations, providing an unconventional yet effective means of conveying messages across distances. In this blog post, we will embark on a captivating journey through the whistling languages of India, exploring their origins, significance, and the communities that have preserved this ancient art form.</p>
+
+<h2>The Origins of Whistling Languages</h2>
+
+<p>Whistling languages, also known as bird languages, have ancient roots in India. The practice is believed to have originated in remote tribal communities where the challenging terrain and dense forests made traditional communication difficult. The need for conveying messages across long distances without the aid of modern technology led to the development of whistling languages. Over time, these unique forms of communication became an integral part of the cultural heritage of certain communities.</p>
+
+<h2>The Geographical Spread of Whistling Languages</h2>
+
+<p>Whistling languages are not uniform across the country; rather, they vary in style and structure from region to region. One of the most well-known instances is the bird language of Kongthong in Meghalaya, where the Khasi community has perfected the art of whistling to communicate across the hills and valleys. Similarly, in the Himalayan region, the inhabitants of the Apatani tribe in Arunachal Pradesh have their own distinct whistling language.</p>
+
+<p>In the southern part of India, the Hakki Pikki tribe in Karnataka is renowned for their whistling communication. These diverse examples highlight the adaptability of whistling languages to different landscapes, reflecting the resourcefulness of communities in the face of geographical challenges.</p>
+
+<h2>The Structure of Whistling Languages</h2>
+
+<p>Whistling languages are not mere imitations of birdcalls; they are sophisticated systems with distinct tones, pitches, and rhythms that convey specific messages. Just like spoken languages, whistling languages have their own vocabulary and grammar. The nuances of pitch and tone enable speakers to communicate a wide range of information, from simple greetings to detailed messages about events, dangers, or hunting activities.</p>
+
+<h2>Preservation and Threats</h2>
+
+<p>While whistling languages have been passed down through generations, the advent of modern communication technologies poses a threat to their survival. As younger generations gravitate towards more mainstream forms of communication, the transmission of whistling languages is at risk. Efforts to preserve these unique linguistic traditions involve documenting and studying the languages, as well as introducing them to younger community members through educational programs.</p>
+
+<h2>Cultural Significance</h2>
+
+<p>Beyond the practical aspect of long-distance communication, whistling languages hold deep cultural significance for the communities that practice them. They are woven into the fabric of traditional ceremonies, rituals, and storytelling, becoming an integral part of the identity of these communities. The melodic nature of whistling languages adds a layer of artistic expression to everyday communication, making them a rich cultural heritage.</p>
+
+<h2>The History and Significance of Whistling Languages</h2>
+
+<p>The origins of whistling languages in India are shrouded in mystery, but they are believed to have emerged centuries ago as a means of communication for communities living in remote and mountainous regions. These languages served as a vital tool for coordinating hunting, agriculture, and social interactions, allowing communities to maintain their cultural identity and cohesiveness.</p>
+
+<p>Today, whistling languages face the threat of extinction as younger generations increasingly adopt mainstream languages like Hindi and English. However, there are dedicated efforts underway to revitalize and preserve these unique linguistic treasures. Language enthusiasts and community leaders are working to document and teach whistling languages, ensuring that these melodies of communication continue to echo through the hills and valleys of India.</p>
+
+<h2>The Melodies of Meaning: Understanding Whistling Languages</h2>
+
+<p>Whistling languages are not just a collection of whistles; they are intricate systems of communication that convey complex meanings. The pitch, duration, and rhythm of the whistles encode information about the speaker, the topic of conversation, and the emotions being expressed. Just as spoken languages have their own intonation patterns, whistling languages have their own tonal melodies that carry meaning.</p>
+
+<p>For instance, in the Khasi whistling language, a high-pitched whistle can signify urgency, while a low-pitched whistle indicates a calm and deliberate tone. The duration of the whistle can also convey meaning; a short whistle might indicate a greeting, while a longer whistle could signal a question or a statement of importance.</p>
+
+<h2>The Social and Cultural Significance of Whistling Languages</h2>
+
+<p>Beyond their practical function as a means of communication, whistling languages hold deep social and cultural significance for the communities that use them. They serve as a marker of identity, a connection to the past, and a symbol of cultural resilience. The ability to whistle fluently is considered a mark of pride and skill, and whistling competitions and cultural events are held to celebrate and promote these unique languages.</p>
+
+<h2>The Future of Whistling Languages: Preservation and Revitalization</h2>
+
+<p>The future of whistling languages in India depends on ongoing efforts to preserve and revitalize these linguistic treasures. Documenting these languages, teaching them to younger generations, and integrating them into education systems are crucial steps in ensuring their survival.</p>
+
+<p>Technology can also play a role in preserving whistling languages. Recording and archiving whistle recordings, developing digital learning tools, and creating smartphone apps that teach these languages can make them more accessible and engaging for younger generations.</p>
+
+<h2>Conclusion</h2>
+
+<p>The whistling languages of India offer a unique lens through which to explore the rich tapestry of linguistic diversity in the country. These melodic forms of communication not only serve practical purposes in challenging terrains but also contribute to the cultural identity of the communities that practice them. As we delve into the enchanting world of whistling languages, it becomes evident that their preservation is not just a linguistic endeavor but a crucial step in safeguarding the intangible cultural heritage of India. In a rapidly changing world, the melodic journey through these unconventional communication methods serves as a reminder of the resilience and ingenuity of human expression.</p>
+
+      </div>
+    </article>
+
+    <!-- ── Service CTA ── -->
+    <section class="px-5 sm:px-8 pb-24">
+      <div class="max-w-3xl mx-auto border border-brandAccent/20 bg-brandAccent/[0.04] rounded-2xl p-8 sm:p-10">
+        <div class="eyebrow mb-4">Related Service</div>
+        <h2 class="font-serif text-2xl sm:text-3xl text-white leading-snug mb-4">Marketing &amp; Brand Localization</h2>
+        <p class="text-neutral-400 text-sm leading-relaxed mb-7 max-w-xl">
+          Our production team delivers this work in 120+ languages with layout fidelity checked at every stage. Tell us what you need and we will scope it.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/localization/#marketing-localization" class="font-mono text-[0.65rem] tracking-widest uppercase border border-brandAccent/40 text-brandAccent px-6 py-3 rounded-full hover:bg-brandAccent hover:text-black transition-all duration-300">Explore the service</a>
+          <a href="/#contact" class="font-mono text-[0.65rem] tracking-widest uppercase border border-white/15 text-neutral-300 px-6 py-3 rounded-full hover:border-white/40 hover:text-white transition-all duration-300">Start a project</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Keep reading ── -->
+    <section class="px-5 sm:px-8 pb-24 border-t border-white/5 pt-16">
       <div class="max-w-5xl mx-auto">
-        <div id="lead-slot">
-          <a href="/blogs/ensuring-equal-access-unveiling-the-top-pdf-accessibility-errors-and-how-to-fix-them/" class="post-card group block border border-white/10 rounded-2xl overflow-hidden p-8 sm:p-12 mb-5 bg-white/[0.015]">
-            <div class="flex flex-wrap items-center gap-3 mb-6">
-              <span class="font-mono text-[0.55rem] tracking-[0.2em] uppercase border border-brandAccent/40 text-brandAccent px-3 py-1 rounded-full">Featured</span>
-              <span class="eyebrow">PDF Accessibility</span>
-            </div>
-            <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl leading-[1.1] text-white mb-5 group-hover:text-brandAccent transition-colors duration-300 max-w-3xl">The Top PDF Accessibility Errors — and How to Fix Them</h2>
-            <p class="text-neutral-400 text-sm sm:text-base leading-relaxed max-w-2xl mb-7">The tagging, reading-order and alt-text failures that make PDFs unreadable to screen readers — and the remediation steps that fix each one.</p>
-            <div class="flex items-center gap-4 font-mono text-[0.6rem] tracking-[0.18em] uppercase text-neutral-500">
-              <span>6 min read</span>
-              <span class="text-neutral-700">&bull;</span>
-              <span class="text-brandAccent group-hover:text-white transition-colors">Read article &rarr;</span>
-            </div>
-          </a>
+        <div class="flex items-baseline justify-between mb-8 flex-wrap gap-3">
+          <h2 class="font-serif text-3xl text-white">Keep reading</h2>
+          <a href="/blogs/" class="font-mono text-[0.62rem] tracking-widest uppercase text-brandAccent hover:text-white transition-colors">All articles &rarr;</a>
         </div>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" id="post-grid">
-            <a href="/blogs/step-by-step-multilingual-dtp-workflow-from-translation-to-final-output/" class="post-card group flex flex-col border border-white/10 rounded-2xl p-7" data-cat="Multilingual DTP">
-              <div class="eyebrow mb-4">Multilingual DTP</div>
-              <h2 class="font-serif text-2xl leading-snug text-white mb-3.5 group-hover:text-brandAccent transition-colors duration-300">A Step-by-Step Multilingual DTP Workflow, Translation to Final Output</h2>
-              <p class="text-neutral-500 text-sm leading-relaxed mb-6 flex-grow">How a multilingual DTP project runs, from source file analysis and translation import through layout adjustment, linguistic QA and print-ready export.</p>
-              <div class="flex items-center justify-between font-mono text-[0.58rem] tracking-[0.18em] uppercase text-neutral-600 pt-4 border-t border-white/6">
-                <span>5 min read</span>
-                <span class="text-brandAccent/70 group-hover:text-brandAccent transition-colors">Read &rarr;</span>
-              </div>
+        <div class="grid sm:grid-cols-3 gap-4">
+            <a href="/blogs/why-multilingual-dtp-is-the-hidden-hero-of-global-marketing/" class="group block border border-white/8 rounded-xl p-5 hover:border-brandAccent/35 hover:bg-white/[0.02] transition-all duration-300">
+              <div class="eyebrow mb-2.5">Localization</div>
+              <div class="font-serif text-lg leading-snug text-neutral-200 group-hover:text-white transition-colors">Why Multilingual DTP Is the Hidden Hero of Global Marketing</div>
             </a>
-            <a href="/blogs/the-ultimate-guide-to-e-learning-localization/" class="post-card group flex flex-col border border-white/10 rounded-2xl p-7" data-cat="eLearning">
-              <div class="eyebrow mb-4">eLearning</div>
-              <h2 class="font-serif text-2xl leading-snug text-white mb-3.5 group-hover:text-brandAccent transition-colors duration-300">The Ultimate Guide to eLearning Localization</h2>
-              <p class="text-neutral-500 text-sm leading-relaxed mb-6 flex-grow">How to localize eLearning courses: on-screen text, voiceover, interactive elements and layout, adapted for every target language and market.</p>
-              <div class="flex items-center justify-between font-mono text-[0.58rem] tracking-[0.18em] uppercase text-neutral-600 pt-4 border-t border-white/6">
-                <span>6 min read</span>
-                <span class="text-brandAccent/70 group-hover:text-brandAccent transition-colors">Read &rarr;</span>
-              </div>
+            <a href="/blogs/step-by-step-multilingual-dtp-workflow-from-translation-to-final-output/" class="group block border border-white/8 rounded-xl p-5 hover:border-brandAccent/35 hover:bg-white/[0.02] transition-all duration-300">
+              <div class="eyebrow mb-2.5">Multilingual DTP</div>
+              <div class="font-serif text-lg leading-snug text-neutral-200 group-hover:text-white transition-colors">A Step-by-Step Multilingual DTP Workflow, Translation to Final Output</div>
             </a>
-            <a href="/blogs/best-practices-for-managing-text-expansion-and-contraction-in-dtp/" class="post-card group flex flex-col border border-white/10 rounded-2xl p-7" data-cat="Multilingual DTP">
-              <div class="eyebrow mb-4">Multilingual DTP</div>
-              <h2 class="font-serif text-2xl leading-snug text-white mb-3.5 group-hover:text-brandAccent transition-colors duration-300">Managing Text Expansion and Contraction in Multilingual DTP</h2>
-              <p class="text-neutral-500 text-sm leading-relaxed mb-6 flex-grow">Translated text rarely matches the source in length. Flexible layouts, font choices and spacing tactics that absorb the difference without a redesign.</p>
-              <div class="flex items-center justify-between font-mono text-[0.58rem] tracking-[0.18em] uppercase text-neutral-600 pt-4 border-t border-white/6">
-                <span>5 min read</span>
-                <span class="text-brandAccent/70 group-hover:text-brandAccent transition-colors">Read &rarr;</span>
-              </div>
-            </a>
-            <a href="/blogs/essential-steps-for-quality-assurance-in-dtp-services/" class="post-card group flex flex-col border border-white/10 rounded-2xl p-7" data-cat="Quality Assurance">
-              <div class="eyebrow mb-4">Quality Assurance</div>
-              <h2 class="font-serif text-2xl leading-snug text-white mb-3.5 group-hover:text-brandAccent transition-colors duration-300">Essential Steps for Quality Assurance in DTP</h2>
-              <p class="text-neutral-500 text-sm leading-relaxed mb-6 flex-grow">The layout, typography and linguistic checks that catch defects in multilingual DTP files before they reach the client or the printer.</p>
-              <div class="flex items-center justify-between font-mono text-[0.58rem] tracking-[0.18em] uppercase text-neutral-600 pt-4 border-t border-white/6">
-                <span>5 min read</span>
-                <span class="text-brandAccent/70 group-hover:text-brandAccent transition-colors">Read &rarr;</span>
-              </div>
-            </a>
-            <a href="/blogs/pdf-remediation-a-beginners-guide-to-accessibility/" class="post-card group flex flex-col border border-white/10 rounded-2xl p-7" data-cat="PDF Accessibility">
-              <div class="eyebrow mb-4">PDF Accessibility</div>
-              <h2 class="font-serif text-2xl leading-snug text-white mb-3.5 group-hover:text-brandAccent transition-colors duration-300">PDF Remediation: A Beginner&#x27;s Guide to Accessibility</h2>
-              <p class="text-neutral-500 text-sm leading-relaxed mb-6 flex-grow">What PDF tagging is, why screen readers depend on it, and how remediation turns a flat document into an accessible, compliant one.</p>
-              <div class="flex items-center justify-between font-mono text-[0.58rem] tracking-[0.18em] uppercase text-neutral-600 pt-4 border-t border-white/6">
-                <span>5 min read</span>
-                <span class="text-brandAccent/70 group-hover:text-brandAccent transition-colors">Read &rarr;</span>
-              </div>
-            </a>
-            <a href="/blogs/a-step-by-step-guide-to-preparing-documents-for-translation/" class="post-card group flex flex-col border border-white/10 rounded-2xl p-7" data-cat="File Engineering">
-              <div class="eyebrow mb-4">File Engineering</div>
-              <h2 class="font-serif text-2xl leading-snug text-white mb-3.5 group-hover:text-brandAccent transition-colors duration-300">A Step-by-Step Guide to Preparing Documents for Translation</h2>
-              <p class="text-neutral-500 text-sm leading-relaxed mb-6 flex-grow">File preparation that cuts translation cost and downstream DTP rework: clean source files, editable text, consistent styles and packaged assets.</p>
-              <div class="flex items-center justify-between font-mono text-[0.58rem] tracking-[0.18em] uppercase text-neutral-600 pt-4 border-t border-white/6">
-                <span>5 min read</span>
-                <span class="text-brandAccent/70 group-hover:text-brandAccent transition-colors">Read &rarr;</span>
-              </div>
-            </a>
-            <a href="/blogs/why-multilingual-dtp-is-the-hidden-hero-of-global-marketing/" class="post-card group flex flex-col border border-white/10 rounded-2xl p-7" data-cat="Localization">
-              <div class="eyebrow mb-4">Localization</div>
-              <h2 class="font-serif text-2xl leading-snug text-white mb-3.5 group-hover:text-brandAccent transition-colors duration-300">Why Multilingual DTP Is the Hidden Hero of Global Marketing</h2>
-              <p class="text-neutral-500 text-sm leading-relaxed mb-6 flex-grow">Translation alone does not ship a campaign. How layout fidelity keeps brand and design consistent across every language you market in.</p>
-              <div class="flex items-center justify-between font-mono text-[0.58rem] tracking-[0.18em] uppercase text-neutral-600 pt-4 border-t border-white/6">
-                <span>5 min read</span>
-                <span class="text-brandAccent/70 group-hover:text-brandAccent transition-colors">Read &rarr;</span>
-              </div>
-            </a>
-            <a href="/blogs/human-translation-vs-mtpe-which-is-right-for-your-content/" class="post-card group flex flex-col border border-white/10 rounded-2xl p-7" data-cat="Translation &amp; AI">
-              <div class="eyebrow mb-4">Translation &amp; AI</div>
-              <h2 class="font-serif text-2xl leading-snug text-white mb-3.5 group-hover:text-brandAccent transition-colors duration-300">Human Translation vs MTPE: Which Is Right for Your Content?</h2>
-              <p class="text-neutral-500 text-sm leading-relaxed mb-6 flex-grow">Full human translation or machine translation post-editing? How light and full post-editing compare, and how to choose by content type and risk.</p>
-              <div class="flex items-center justify-between font-mono text-[0.58rem] tracking-[0.18em] uppercase text-neutral-600 pt-4 border-t border-white/6">
-                <span>5 min read</span>
-                <span class="text-brandAccent/70 group-hover:text-brandAccent transition-colors">Read &rarr;</span>
-              </div>
-            </a>
-            <a href="/blogs/can-ai-replace-human-expertise-in-desktop-publishing/" class="post-card group flex flex-col border border-white/10 rounded-2xl p-7" data-cat="Translation &amp; AI">
-              <div class="eyebrow mb-4">Translation &amp; AI</div>
-              <h2 class="font-serif text-2xl leading-snug text-white mb-3.5 group-hover:text-brandAccent transition-colors duration-300">Can AI Replace Human Expertise in Desktop Publishing?</h2>
-              <p class="text-neutral-500 text-sm leading-relaxed mb-6 flex-grow">Where AI genuinely speeds up desktop publishing production, and where human judgment on typography, layout and language still decides quality.</p>
-              <div class="flex items-center justify-between font-mono text-[0.58rem] tracking-[0.18em] uppercase text-neutral-600 pt-4 border-t border-white/6">
-                <span>5 min read</span>
-                <span class="text-brandAccent/70 group-hover:text-brandAccent transition-colors">Read &rarr;</span>
-              </div>
-            </a>
-            <a href="/blogs/whistling-languages-of-india-a-melodic-journey-through-unconventional-communication/" class="post-card group flex flex-col border border-white/10 rounded-2xl p-7" data-cat="Language">
-              <div class="eyebrow mb-4">Language</div>
-              <h2 class="font-serif text-2xl leading-snug text-white mb-3.5 group-hover:text-brandAccent transition-colors duration-300">Whistling Languages of India: A Melodic Journey Through Unconventional Communication</h2>
-              <p class="text-neutral-500 text-sm leading-relaxed mb-6 flex-grow">From Kongthong's bird-language speakers to the Hakki Pikki and Apatani tribes, how tonal whistling became a sophisticated system of communication across India's hills and forests.</p>
-              <div class="flex items-center justify-between font-mono text-[0.58rem] tracking-[0.18em] uppercase text-neutral-600 pt-4 border-t border-white/6">
-                <span>6 min read</span>
-                <span class="text-brandAccent/70 group-hover:text-brandAccent transition-colors">Read &rarr;</span>
-              </div>
+            <a href="/blogs/the-ultimate-guide-to-e-learning-localization/" class="group block border border-white/8 rounded-xl p-5 hover:border-brandAccent/35 hover:bg-white/[0.02] transition-all duration-300">
+              <div class="eyebrow mb-2.5">eLearning</div>
+              <div class="font-serif text-lg leading-snug text-neutral-200 group-hover:text-white transition-colors">The Ultimate Guide to eLearning Localization</div>
             </a>
         </div>
-        <p id="empty-state" class="hidden text-center text-neutral-500 font-mono text-xs tracking-widest uppercase py-16">
-          No articles in this category.
-        </p>
-      </div>
-    </section>
-
-    <!-- ── CTA ── -->
-    <section class="px-5 sm:px-8 pb-28">
-      <div class="max-w-5xl mx-auto border border-white/10 rounded-2xl p-9 sm:p-14 text-center bg-white/[0.015]">
-        <div class="eyebrow mb-5">Work With Us</div>
-        <h2 class="font-serif text-3xl sm:text-4xl text-white leading-snug mb-5">Have a multilingual file that needs to land perfectly?</h2>
-        <p class="text-neutral-400 text-sm sm:text-base leading-relaxed max-w-xl mx-auto mb-9">
-          We handle DTP, localization engineering and accessibility remediation across 120+ languages.
-        </p>
-        <a href="/#contact" class="inline-block font-mono text-[0.65rem] tracking-widest uppercase border border-brandAccent/40 text-brandAccent px-8 py-3.5 rounded-full hover:bg-brandAccent hover:text-black transition-all duration-300">Start a project</a>
       </div>
     </section>
   </main>
@@ -500,36 +484,20 @@
       })();
     </script>
   <script>
-    // Category filter. The featured card is part of the "All" view only —
-    // once a category is chosen every matching post is shown in the grid,
-    // so the lead card is hidden to avoid rendering it twice.
     (function () {
-      var chips = document.querySelectorAll(".chip");
-      var cards = document.querySelectorAll("#post-grid .post-card");
-      var leadSlot = document.getElementById("lead-slot");
-      var empty = document.getElementById("empty-state");
-      var leadCat = "PDF Accessibility";
-
-      chips.forEach(function (chip) {
-        chip.addEventListener("click", function () {
-          var cat = this.getAttribute("data-cat");
-          chips.forEach(function (c) { c.classList.remove("active"); });
-          this.classList.add("active");
-
-          var shown = 0;
-          cards.forEach(function (card) {
-            var match = cat === "all" || card.getAttribute("data-cat") === cat;
-            card.hidden = !match;
-            if (match) shown++;
-          });
-
-          var leadVisible = cat === "all" || cat === leadCat;
-          leadSlot.hidden = !leadVisible;
-          if (leadVisible) shown++;
-
-          empty.classList.toggle("hidden", shown > 0);
-        });
-      });
+      var bar = document.getElementById("read-bar");
+      var article = document.querySelector("article");
+      if (!bar || !article) return;
+      function update() {
+        var rect = article.getBoundingClientRect();
+        var total = rect.height - window.innerHeight;
+        var seen = -rect.top;
+        var pct = total > 0 ? Math.min(1, Math.max(0, seen / total)) : 0;
+        bar.style.width = (pct * 100).toFixed(2) + "%";
+      }
+      window.addEventListener("scroll", update, { passive: true });
+      window.addEventListener("resize", update);
+      update();
     })();
   </script>
 </body>
